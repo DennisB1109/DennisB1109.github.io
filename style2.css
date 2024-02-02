@@ -7,31 +7,191 @@
     font-family: sans-serif;
 }
 
-.container {
+/* Gender Container */
+.containerGender {
     display: none;
     justify-content: center;
     align-items: center;
     height: 20vh;   /* ggf. anpassen */
 }
-
-.radio-tile-group {
+.radioTileGroupGender {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-
-.checkbox-group {
+.inputContainerGender {
+    position: relative;
+    height: 6rem;
+    width: 6rem;
+    margin: 0.5rem;
+}
+.inputContainerGender input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    cursor: pointer;
+    z-index: 2;
+    opacity: 0;
+}
+.inputContainerGender .radio-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border: 2px solid var(--primary-color);
+    border-radius: 6px;
+    transition: all 300ms ease;
+}
+.inputContainerGender ion-icon {
+    color: var(--primary-color);
+    font-size: 3rem;
+}
+/* Fitness Level Container */
+.containerFitnessLevel {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;   /* ggf. anpassen */
+}
+.radioTileGroupFitnessLevel {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
-
+.inputContainerFitnessLevel {
+    position: relative;
+    height: 6rem;
+    width: 6rem;
+    margin: 0.5rem;
+}
+.inputContainerFitnessLevel input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    cursor: pointer;
+    z-index: 2;
+    opacity: 0;
+}
+.inputContainerFitnessLevel .radio-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border: 2px solid var(--primary-color);
+    border-radius: 6px;
+    transition: all 300ms ease;
+}
+.inputContainerFitnessLevel label {
+    color: var(--primary-color);
+    font-size: 0.60rem;
+    font-weight: 600;
+    text-transform:  uppercase;
+    letter-spacing: 1px;
+}
+/* Injuries Container */
+.containerInjuries {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;   /* ggf. anpassen */
+}
+.checkboxGroupInjuries {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.inputContainerInjuries {
+    position: relative;
+    height: 6rem;
+    width: 6rem;
+    margin: 0.5rem;
+}
+.inputContainerInjuries input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    cursor: pointer;
+    z-index: 2;
+    opacity: 0;
+}
+.inputContainerInjuries .checkbox-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border: 2px solid var(--primary-color);
+    border-radius: 6px;
+    transition: all 300ms ease;
+}
+.inputContainerInjuries label {
+    color: var(--primary-color);
+    font-size: 0.60rem;
+    font-weight: 600;
+    text-transform:  uppercase;
+    letter-spacing: 1px;
+}
+/* Training Goals Container */
+.containerTrainingGoals {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;   /* ggf. anpassen */
+}
+.checkboxGroupTrainingGoals {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.inputContainerTrainingGoals {
+    position: relative;
+    height: 6rem;
+    width: 6rem;
+    margin: 0.5rem;
+}
+.inputContainerTrainingGoals input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    cursor: pointer;
+    z-index: 2;
+    opacity: 0;
+}
+.inputContainerTrainingGoals .checkbox-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border: 2px solid var(--primary-color);
+    border-radius: 6px;
+    transition: all 300ms ease;
+}
+.inputContainerTrainingGoals label {
+    color: var(--primary-color);
+    font-size: 0.60rem;
+    font-weight: 600;
+    text-transform:  uppercase;
+    letter-spacing: 1px;
+}
+/* Weekly Schedule Container */
+.containerSchedule {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;   /* ggf. anpassen */
+}
 table {
     width: 100%;
     border-collapse: collapse;
 }
-
-.checkbox-cell {
+.checkboxCellWeeklySchedule {
     width: 14.2857%; /* Setze die Breite auf 100% / 7 Spalten */
     height: 7rem;
     width: 7rem;
@@ -39,8 +199,7 @@ table {
     border: 2px solid var(--primary-color);
     position: relative;
 }
-
-.checkbox-cell input {
+.checkboxCellWeeklySchedule input {
     position: absolute;
     top: 0;
     left: 0;
@@ -50,60 +209,7 @@ table {
     z-index: 2;
     opacity: 0;
 }
-
-.input-container {
-    position: relative;
-    height: 6rem;
-    width: 6rem;
-    margin: 0.5rem;
-}
-
-.input-container input {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    cursor: pointer;
-    z-index: 2;
-    opacity: 0;
-}
-
-.input-container .radio-tile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    border: 2px solid var(--primary-color);
-    border-radius: 6px;
-    transition: all 300ms ease;
-}
-
-.input-container .checkbox-tile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    border: 2px solid var(--primary-color);
-    border-radius: 6px;
-    transition: all 300ms ease;
-}
-
-.input-container ion-icon {
-    color: var(--primary-color);
-    font-size: 3rem;
-}
-
-.input-container label {
-    color: var(--primary-color);
-    font-size: 0.60rem;
-    font-weight: 600;
-    text-transform:  uppercase;
-    letter-spacing: 1px;
-}
-
-.checkbox-cell label {
+.checkboxCellWeeklySchedule label {
     display: block;
     color: var(--primary-color);
     font-size: 0.60rem;
@@ -115,6 +221,9 @@ table {
     align-items: center;
     justify-content: center;
 }
+
+/* -------------- ToDo -------------- */
+
 
 input:checked + .radio-tile {
     background-color: var(--primary-color);

@@ -38,8 +38,12 @@
         }
 
         .button-container {
+            position: fixed;
+            bottom: 0;
+            margin-bottom: 1vh;
             display: flex;
             justify-content: space-between;
+            padding: 10px; /* optional: Abstand vom unteren Rand */
         }
 
         .ageSliderContainer {
@@ -73,23 +77,23 @@
     <div class="spacer"></div>
     <button class="waves" onclick="startQuestions()" id="test">Start</button>
         
-    <div class="container" id="genderID">
-        <div class="radio-tile-group">
-            <div class="input-container">
+    <div class="containerGender" id="genderID">
+        <div class="radioTileGroupGender">
+            <div class="inputContainerGender">
                 <input id="male" type="radio" name="radio">
                 <div class="radio-tile">
                     <ion-icon name="man-outline"></ion-icon>
                     <label for="male">Male</label>
                 </div>
             </div>
-            <div class="input-container">
+            <div class="inputContainerGender">
                 <input id="female" type="radio" name="radio">
                 <div class="radio-tile">
                     <ion-icon name="woman-outline"></ion-icon>
                     <label for="female">Female</label>
                 </div>
             </div>
-            <div class="input-container">
+            <div class="inputContainerGender">
                 <input id="diverse" type="radio" name="radio">
                 <div class="radio-tile">
                     <ion-icon name="male-female-outline"></ion-icon>
@@ -104,23 +108,23 @@
         <input type="range" min="1" max="100" value="1" id="myRange" class="slider">
     </div>
 
-    <div class="container" id="fitnessLevelID">
-        <div class="radio-tile-group">
-            <div class="input-container">
+    <div class="containerFitnessLevel" id="fitnessLevelID">
+        <div class="radioTileGroupFitnessLevel">
+            <div class="inputContainerFitnessLevel">
                 <input id="lauch" type="radio" name="radio">
                 <div class="radio-tile">
                     <img src="Lauch.png" alt="Lauch">
                     <label for="lauch">Lauch</label>
                 </div>
             </div>
-            <div class="input-container">
+            <div class="inputContainerFitnessLevel">
                 <input id="erfahren" type="radio" name="radio">
                 <div class="radio-tile">
                     <img src="Fortgeschritten.png" alt="Erfahren">
                     <label for="erfahren">Erfahren</label>
                 </div>
             </div>
-            <div class="input-container">
+            <div class="inputContainerFitnessLevel">
                 <input id="profi" type="radio" name="radio">
                 <div class="radio-tile">
                     <img src="Profi.png" alt="Profi">
@@ -130,30 +134,30 @@
         </div>
     </div>
 
-    <div class="container" id="verletzungenID">
-        <div class="checkbox-group">
-            <div class="input-container">
+    <div class="containerInjuries" id="verletzungenID">
+        <div class="checkboxGroupInjuries">
+            <div class="inputContainerInjuries">
                 <input id="kneeCheckbox" type="checkbox" name="injuries">
                 <div class="checkbox-tile">
                     <img src="Knie.png" alt="Knie">
                     <label for="kneeCheckbox">Knee</label>
                 </div>
             </div>
-            <div class="input-container">
+            <div class="inputContainerInjuries">
                 <input id="hipCheckbox" type="checkbox" name="injuries">
                 <div class="checkbox-tile">
                     <img src="Huefte.png" alt="Huefte">
                     <label for="hipCheckbox">Hip</label>
                 </div>
             </div>
-            <div class="input-container">
+            <div class="inputContainerInjuries">
                 <input id="shoulderCheckbox" type="checkbox" name="injuries">
                 <div class="checkbox-tile">
                     <img src="Schulter.png" alt="Schulter">
                     <label for="shoulderCheckbox">Shoulder</label>
                 </div>
             </div>
-            <div class="input-container">
+            <div class="inputContainerInjuries">
                 <input id="backCheckbox" type="checkbox" name="injuries">
                 <div class="checkbox-tile">
                     <img src="Ruecken.png" alt="Ruecken">
@@ -163,34 +167,60 @@
         </div>
     </div>
 
-    <div class="container" id="wochenplanID">
+    <div class="containerTrainingGoals" id="trainingsZieleID">
+        <div class="checkboxGroupTrainingGoals">
+            <div class="inputContainerTrainingGoals">
+                <input id="muskelaufbau" type="checkbox" name="ziele">
+                <div class="checkbox-tile">
+                    <img src="Muskelaufbau.png" alt="Knie">
+                    <label for="muskelaufbau">Muskelaufbau</label>
+                </div>
+            </div>
+            <div class="inputContainerTrainingGoals">
+                <input id="abnehmen" type="checkbox" name="ziele">
+                <div class="checkbox-tile">
+                    <img src="Abnehmen.png" alt="Huefte">
+                    <label for="abnehmen">Abnehmen</label>
+                </div>
+            </div>
+            <div class="inputContainerTrainingGoals">
+                <input id="reha" type="checkbox" name="ziele">
+                <div class="checkbox-tile">
+                    <img src="Reha.png" alt="Schulter">
+                    <label for="reha">Reha</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="containerSchedule" id="wochenplanID">
         <table>
             <tr>
-                <td class="checkbox-cell">
+                <td class="checkboxCellWeeklySchedule">
                     <input id="mondayCheckbox" type="checkbox" name="weeklySchedule">
                     <label for="mondayCheckbox">Montag</label>
                 </td>
-                <td class="checkbox-cell">
+                <td class="checkboxCellWeeklySchedule">
                     <input id="tuesdayCheckbox" type="checkbox" name="weeklySchedule">
                     <label for="tuesdayCheckbox">Dienstag</label>
                 </td>
-                <td class="checkbox-cell">
+                <td class="checkboxCellWeeklySchedule">
                     <input id="wednesdayCheckbox" type="checkbox" name="weeklySchedule">
                     <label for="wednesdayCheckbox">Mittwoch</label>
                 </td>
-                <td class="checkbox-cell">
+                <td class="checkboxCellWeeklySchedule">
                     <input id="thursdayCheckbox" type="checkbox" name="weeklySchedule">
                     <label for="thursdayCheckbox">Donnerstag</label>
                 </td>
-                <td class="checkbox-cell">
+                <td class="checkboxCellWeeklySchedule">
                     <input id="fridayCheckbox" type="checkbox" name="weeklySchedule">
                     <label for="fridayCheckbox">Freitag</label>
                 </td>
-                <td class="checkbox-cell">
+                <td class="checkboxCellWeeklySchedule">
                     <input id="saturdayCheckbox" type="checkbox" name="weeklySchedule">
                     <label for="saturdayCheckbox">Samstag</label>
                 </td>
-                <td class="checkbox-cell">
+                <td class="checkboxCellWeeklySchedule">
                     <input id="sundayCheckbox" type="checkbox" name="weeklySchedule">
                     <label for="sundayCheckbox">Sonntag</label>
                 </td>
