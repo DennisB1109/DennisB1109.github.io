@@ -57,7 +57,7 @@ const questions = [
     "Frage 1: Bitte wähle dein Geschecht aus",
     "Frage 2: Nenne mir dein Alter",
     "Frage 3: Wie würdest du dein aktuelles Fitnesslevel beschreiben?",
-    "Frage 4: Wie ist dein momentaner Gesundheitszustand?",
+    "Frage 4: Hast du aktuell Verletzungen?",
     "Frage 5: Was sind deine Trainingsziele?",
     "Frage 6: Wo willst du in Zukunft trainieren?",
     "Frage 7: Welche Trainingsausrüstung steht dir zur Verfügung?",
@@ -69,6 +69,9 @@ const prevButton = document.getElementById('prevButton');
 const nextButton = document.getElementById('nextButton');
 const genderContainer = document.getElementById("genderID");
 const sliderContainer = document.getElementById("slideContainerID");
+const fitnessLevelContainer = document.getElementById("fitnessLevelID");
+const verletzungenContainer = document.getElementById("verletzungenID");
+const wochenplanContainer = document.getElementById("wochenplanID");
 
 function startQuestions() {
     console.log("Test");
@@ -113,6 +116,24 @@ function checkQuestionIndex(questionIndex) {
     }
     if (currentQuestionIndex != 2) {
         sliderContainer.style.display = "none";
+    }  
+    if (currentQuestionIndex == 3) {
+        fitnessLevelContainer.style.display = "block";
+    }
+    if (currentQuestionIndex != 3) {
+        fitnessLevelContainer.style.display = "none";
+    }  
+    if (currentQuestionIndex == 4) {
+        verletzungenContainer.style.display = "block";
+    }
+    if (currentQuestionIndex != 4) {
+        verletzungenContainer.style.display = "none";
+    }  
+    if (currentQuestionIndex == 8) {
+        wochenplanContainer.style.display = "block";
+    }
+    if (currentQuestionIndex != 8) {
+        wochenplanContainer.style.display = "none";
     }  
 }
 

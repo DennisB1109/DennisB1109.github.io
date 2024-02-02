@@ -98,12 +98,106 @@
             </div>
         </div>
     </div>
-    
+
     <div class="slideContainer" id="slideContainerID">
         <p>Alter: <span id="alter"></span></p>
         <input type="range" min="1" max="100" value="1" id="myRange" class="slider">
     </div>
 
+    <div class="container" id="fitnessLevelID">
+        <div class="radio-tile-group">
+            <div class="input-container">
+                <input id="lauch" type="radio" name="radio">
+                <div class="radio-tile">
+                    <img src="Lauch.png" alt="Lauch">
+                    <label for="lauch">Lauch</label>
+                </div>
+            </div>
+            <div class="input-container">
+                <input id="erfahren" type="radio" name="radio">
+                <div class="radio-tile">
+                    <img src="Fortgeschritten.png" alt="Erfahren">
+                    <label for="erfahren">Erfahren</label>
+                </div>
+            </div>
+            <div class="input-container">
+                <input id="profi" type="radio" name="radio">
+                <div class="radio-tile">
+                    <img src="Profi.png" alt="Profi">
+                    <label for="profi">Profi</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="verletzungenID">
+        <div class="checkbox-group">
+            <div class="input-container">
+                <input id="kneeCheckbox" type="checkbox" name="injuries">
+                <div class="checkbox-tile">
+                    <img src="Knie.png" alt="Knie">
+                    <label for="kneeCheckbox">Knee</label>
+                </div>
+            </div>
+            <div class="input-container">
+                <input id="hipCheckbox" type="checkbox" name="injuries">
+                <div class="checkbox-tile">
+                    <img src="Huefte.png" alt="Huefte">
+                    <label for="hipCheckbox">Hip</label>
+                </div>
+            </div>
+            <div class="input-container">
+                <input id="shoulderCheckbox" type="checkbox" name="injuries">
+                <div class="checkbox-tile">
+                    <img src="Schulter.png" alt="Schulter">
+                    <label for="shoulderCheckbox">Shoulder</label>
+                </div>
+            </div>
+            <div class="input-container">
+                <input id="backCheckbox" type="checkbox" name="injuries">
+                <div class="checkbox-tile">
+                    <img src="Ruecken.png" alt="Ruecken">
+                    <label for="backCheckbox">Back</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="wochenplanID">
+        <table>
+            <tr>
+                <td class="checkbox-cell">
+                    <input id="mondayCheckbox" type="checkbox" name="weeklySchedule">
+                    <label for="mondayCheckbox">Montag</label>
+                </td>
+                <td class="checkbox-cell">
+                    <input id="tuesdayCheckbox" type="checkbox" name="weeklySchedule">
+                    <label for="tuesdayCheckbox">Dienstag</label>
+                </td>
+                <td class="checkbox-cell">
+                    <input id="wednesdayCheckbox" type="checkbox" name="weeklySchedule">
+                    <label for="wednesdayCheckbox">Mittwoch</label>
+                </td>
+                <td class="checkbox-cell">
+                    <input id="thursdayCheckbox" type="checkbox" name="weeklySchedule">
+                    <label for="thursdayCheckbox">Donnerstag</label>
+                </td>
+                <td class="checkbox-cell">
+                    <input id="fridayCheckbox" type="checkbox" name="weeklySchedule">
+                    <label for="fridayCheckbox">Freitag</label>
+                </td>
+                <td class="checkbox-cell">
+                    <input id="saturdayCheckbox" type="checkbox" name="weeklySchedule">
+                    <label for="saturdayCheckbox">Samstag</label>
+                </td>
+                <td class="checkbox-cell">
+                    <input id="sundayCheckbox" type="checkbox" name="weeklySchedule">
+                    <label for="sundayCheckbox">Sonntag</label>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
     <div class="button-container">
         <button class="waves" onclick="showPrevQuestions()" id="prevButton">Zurück</button>
         <div class="spacer">&nbsp</div>
