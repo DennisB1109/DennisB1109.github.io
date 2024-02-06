@@ -73,6 +73,7 @@ const fitnessLevelContainer = document.getElementById("fitnessLevelID");
 const verletzungenContainer = document.getElementById("verletzungenID");
 const wochenplanContainer = document.getElementById("wochenplanID");
 const trainingsZieleContainer = document.getElementById("trainingsZieleID");
+const trainingLocationContainer = document.getElementById("trainingLocationID");
 
 function startQuestions() {
     console.log("Test");
@@ -135,6 +136,12 @@ function checkQuestionIndex(questionIndex) {
     }
     if (currentQuestionIndex != 5) {
         trainingsZieleContainer.style.display = "none";
+    }
+    if (currentQuestionIndex == 6) {
+        trainingLocationContainer.style.display = "block";
+    }
+    if (currentQuestionIndex != 6) {
+        trainingLocationContainer.style.display = "none";
     }  
     if (currentQuestionIndex == 8) {
         wochenplanContainer.style.display = "block";

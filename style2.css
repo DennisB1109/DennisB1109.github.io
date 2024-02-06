@@ -180,6 +180,51 @@
     text-transform:  uppercase;
     letter-spacing: 1px;
 }
+/* Training Location Container */
+.containerTrainingLocation {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;   /* ggf. anpassen */
+}
+.radioTileGroupTrainingLocation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.inputContainerTrainingLocation {
+    position: relative;
+    height: 6rem;
+    width: 6rem;
+    margin: 0.5rem;
+}
+.inputContainerTrainingLocation input {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    cursor: pointer;
+    z-index: 2;
+    opacity: 0;
+}
+.inputContainerTrainingLocation .radio-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    border: 2px solid var(--primary-color);
+    border-radius: 6px;
+    transition: all 300ms ease;
+}
+.inputContainerTrainingLocation label {
+    color: var(--primary-color);
+    font-size: 0.60rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
 /* Weekly Schedule Container */
 .containerSchedule {
     display: none;
