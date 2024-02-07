@@ -150,8 +150,8 @@ function checkQuestionIndex(questionIndex) {
     }  
 }
 
-var slider = document.gerElementById("myRange");
-var output = document.gerElementById("alter");
+var slider = document.getElementById("myRange");
+var output = document.getElementById("alter");
 
 output.innerHTML = slider.value;
 
