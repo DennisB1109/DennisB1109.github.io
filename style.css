@@ -1,14 +1,38 @@
+/* Night Mode Button Styling */
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
   background-color: #f8f8f8;
+  color: #2f2f2f;     /* Standard font color */
   transition: 0.5s;
 }
 
 body.active {
   background-color: #2b2b2b;
+}
+
+body.active .hello-world,
+body.active .containerGender,
+body.active .slideContainer,
+body.active .containerFitnessLevel,
+body.active .containerInjuries,
+body.active .containerTrainingGoals,
+body.active .containerTrainingLocation,
+body.active .checkboxCellWeeklySchedule, 
+body.active label {
+  color: white;
+  border-color: white;
+}
+
+body.active h1,
+body.active h2,
+body.active h3,
+body.active p,
+body.active a {
+  color: white;
 }
 
 #toggle {
@@ -48,6 +72,8 @@ body.active {
   background: linear-gradient(to bottom, #eaeaea, #f9f9f9);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgb(255, 255, 255), inset 0 -1px 1px rgb(255, 255, 255);
 }
+
+/* Button Styling */
 
 .waves {
   padding: 1rem 1.5rem;
