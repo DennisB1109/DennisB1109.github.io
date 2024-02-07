@@ -270,29 +270,50 @@ table {
     .checkboxCellWeeklySchedule label[for="mondayCheckbox"]::after {
         content: "Mon";
     }
+    .checkboxCellWeeklySchedule label[for="mondayCheckbox"] {
+        display: none;
+    }
     
     .checkboxCellWeeklySchedule label[for="tuesdayCheckbox"]::after {
         content: "Tue";
+    }
+    .checkboxCellWeeklySchedule label[for="tuesdayCheckbox"] {
+        display: none;
     }
     
     .checkboxCellWeeklySchedule label[for="wednesdayCheckbox"]::after {
         content: "Wed";
     }
+    .checkboxCellWeeklySchedule label[for="wednesdayCheckbox"] {
+        display: none;
+    }
     
     .checkboxCellWeeklySchedule label[for="thursdayCheckbox"]::after {
         content: "Thu";
+    }
+    .checkboxCellWeeklySchedule label[for="thursdayCheckbox"] {
+        display: none;
     }
     
     .checkboxCellWeeklySchedule label[for="fridayCheckbox"]::after {
         content: "Fri";
     }
+    .checkboxCellWeeklySchedule label[for="fridayCheckbox"] {
+        display: none;
+    }
     
     .checkboxCellWeeklySchedule label[for="saturdayCheckbox"]::after {
         content: "Sat";
     }
+    .checkboxCellWeeklySchedule label[for="saturdayCheckbox"] {
+        display: none;
+    }
     
     .checkboxCellWeeklySchedule label[for="sundayCheckbox"]::after {
         content: "Sun";
+    }
+    .checkboxCellWeeklySchedule label[for="sundayCheckbox"] {
+        display: none;
     }
 }
 

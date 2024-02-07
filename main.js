@@ -60,8 +60,7 @@ const questions = [
     "Frage 4: Hast du aktuell Verletzungen?",
     "Frage 5: Was sind deine Trainingsziele?",
     "Frage 6: Wo willst du in Zukunft trainieren?",
-    "Frage 7: Welche Trainingsausrüstung steht dir zur Verfügung?",
-    "Frage 8: An welchen Tagen in der Woche möchtest du trainieren?"
+    "Frage 7: An welchen Tagen in der Woche möchtest du trainieren?"
 ]
 
 const startButton = document.getElementById('test');
@@ -143,10 +142,10 @@ function checkQuestionIndex(questionIndex) {
     if (currentQuestionIndex != 6) {
         trainingLocationContainer.style.display = "none";
     }  
-    if (currentQuestionIndex == 8) {
+    if (currentQuestionIndex == 7) {
         wochenplanContainer.style.display = "block";
     }
-    if (currentQuestionIndex != 8) {
+    if (currentQuestionIndex != 7) {
         wochenplanContainer.style.display = "none";
     }  
 }
