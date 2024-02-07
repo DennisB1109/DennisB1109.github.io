@@ -266,6 +266,34 @@ table {
     .checkboxCellWeeklySchedule label {
         font-size: 0.4rem;
     }
+
+    .checkboxCellWeeklySchedule label[for="mondayCheckbox"]::after {
+        content: "Mon";
+    }
+    
+    .checkboxCellWeeklySchedule label[for="tuesdayCheckbox"]::after {
+        content: "Tue";
+    }
+    
+    .checkboxCellWeeklySchedule label[for="wednesdayCheckbox"]::after {
+        content: "Wed";
+    }
+    
+    .checkboxCellWeeklySchedule label[for="thursdayCheckbox"]::after {
+        content: "Thu";
+    }
+    
+    .checkboxCellWeeklySchedule label[for="fridayCheckbox"]::after {
+        content: "Fri";
+    }
+    
+    .checkboxCellWeeklySchedule label[for="saturdayCheckbox"]::after {
+        content: "Sat";
+    }
+    
+    .checkboxCellWeeklySchedule label[for="sundayCheckbox"]::after {
+        content: "Sun";
+    }
 }
 
 .checkboxCellWeeklySchedule label {
