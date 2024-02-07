@@ -230,11 +230,13 @@
     display: none;
     justify-content: center;
     align-items: center;
-    height: 20vh;   /* ggf. anpassen */
+    height: auto;
 }
 table {
     width: 100%;
     border-collapse: collapse;
+    max-width: 600px;
+    margin: 0 auto;
 }
 .checkboxCellWeeklySchedule {
     width: 14.2857%; /* Setze die Breite auf 100% / 7 Spalten */
@@ -254,6 +256,14 @@ table {
     z-index: 2;
     opacity: 0;
 }
+
+@media (max-width: 600px) {
+    .checkboxCellWeeklySchedule {
+        width: 20%;     /* Change Width of cells for smaller screen*/
+        width: 5rem;     /* Change Height of cells for smaller screen*/
+    }
+}
+
 .checkboxCellWeeklySchedule label {
     display: block;
     color: var(--primary-color);
