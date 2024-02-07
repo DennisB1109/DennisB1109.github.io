@@ -63,6 +63,16 @@ const questions = [
     "Frage 7: An welchen Tagen in der Woche möchtest du trainieren?"
 ]
 
+const results = [
+    [0,0,0],            // Entries for Gender
+    [0],                // Entries for Age
+    [0,0,0],            // Entries for Gender
+    [0,0,0,0],          // Entries for Injuries
+    [0,0,0],            // Entries for Goals
+    [0,0,0],            // Entries for Location
+    [0,0,0,0,0,0,0]     // Entries for TrainingDays
+]
+
 const startButton = document.getElementById('test');
 const prevButton = document.getElementById('prevButton');
 const nextButton = document.getElementById('nextButton');
@@ -100,6 +110,14 @@ function showNextQuestions() {
         currentQuestionIndex++;
         questionContainer.innerHTML = questions[currentQuestionIndex];
     } else {
+        // ToDo
+        for (let i = 0; i < results.length; i++) {
+            // Iteriere über die Spalten der aktuellen Zeile
+            for (let j = 0; j < results[i].length; j++) {
+                // Gib den Wert des aktuellen Elements im 2D-Array aus
+                console.log(`results[${i}][${j}] = ${results[i][j]}`);
+            }
+        }
         alert("Alle Frage beantwortet");
     }
     checkQuestionIndex(currentQuestionIndex); 
@@ -164,3 +182,40 @@ slider.addEventListener("mouseover", function(){
     var color = 'linear-gradient(90deg, rgb(117,252,117))' + x + '%, rgb(214,214,214)' + x + '%)';
     slider.style.background = color;
 })
+
+// Event Listener for the Gender Section ------------
+// Male Button
+document.getElementById('male').addEventListener('change', function() {
+    results[0] = [1, 0, 0]; // Setze Male auf 1, Female und Diverse auf 0
+});
+
+// Female Button
+document.getElementById('female').addEventListener('change', function() {
+    results[0] = [0, 1, 0]; // Setze Female auf 1, Male und Diverse auf 0
+});
+
+// Diverse Button
+document.getElementById('diverse').addEventListener('change', function() {
+    results[2] = [0, 0, 1]; // Setze Diverse auf 1, Male und Female auf 0
+});
+
+// Event Listener for the Age Section ------------
+// Event Listener for the Fitness Level Section ------------
+// lauch Button
+document.getElementById('lauch').addEventListener('change', function() {
+    results[2] = [1, 0, 0]; // Setze lauch auf 1, erfahren und profi auf 0
+});
+
+// erfahren Button
+document.getElementById('erfahren').addEventListener('change', function() {
+    results[2] = [0, 1, 0]; // Setze erfahren auf 1, lauch und profi auf 0
+});
+
+// profi Button
+document.getElementById('profi').addEventListener('change', function() {
+    results[2] = [0, 0, 1]; // Setze profi auf 1, lauch und erfahren auf 0
+});
+// Event Listener for the Injuries Section ------------
+// Event Listener for the Training Goals Section ------------
+// Event Listener for the Training Locations Section ------------
+// Event Listener for the Week Schedule Section ------------
