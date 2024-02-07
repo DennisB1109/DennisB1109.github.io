@@ -262,6 +262,10 @@ table {
         width: 20%;     /* Change Width of cells for smaller screen*/
         width: 5rem;     /* Change Height of cells for smaller screen*/
     }
+
+    .checkboxCellWeeklySchedule label {
+        font-size: 0.4rem;
+    }
 }
 
 .checkboxCellWeeklySchedule label {
