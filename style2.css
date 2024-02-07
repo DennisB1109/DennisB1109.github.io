@@ -257,63 +257,42 @@ table {
     opacity: 0;
 }
 
-@media (max-width: 600px) {
+@media (min-width: 600px) {
     .checkboxCellWeeklySchedule {
         width: 20%;     /* Change Width of cells for smaller screen*/
         width: 5rem;     /* Change Height of cells for smaller screen*/
     }
 
     .checkboxCellWeeklySchedule label {
-        font-size: 0.4rem;
+        font-size: 0.1%;
     }
 
     .checkboxCellWeeklySchedule label[for="mondayCheckbox"]::after {
-        content: "Mon";
-    }
-    .checkboxCellWeeklySchedule label[for="mondayCheckbox"] {
-        display: none;
+        content: "tag";
     }
     
     .checkboxCellWeeklySchedule label[for="tuesdayCheckbox"]::after {
-        content: "Tue";
-    }
-    .checkboxCellWeeklySchedule label[for="tuesdayCheckbox"] {
-        display: none;
+        content: "enstag";
     }
     
     .checkboxCellWeeklySchedule label[for="wednesdayCheckbox"]::after {
-        content: "Wed";
-    }
-    .checkboxCellWeeklySchedule label[for="wednesdayCheckbox"] {
-        display: none;
+        content: "twoch";
     }
     
     .checkboxCellWeeklySchedule label[for="thursdayCheckbox"]::after {
-        content: "Thu";
-    }
-    .checkboxCellWeeklySchedule label[for="thursdayCheckbox"] {
-        display: none;
+        content: "nnerstag";
     }
     
     .checkboxCellWeeklySchedule label[for="fridayCheckbox"]::after {
-        content: "Fri";
-    }
-    .checkboxCellWeeklySchedule label[for="fridayCheckbox"] {
-        display: none;
+        content: "eitag";
     }
     
     .checkboxCellWeeklySchedule label[for="saturdayCheckbox"]::after {
-        content: "Sat";
-    }
-    .checkboxCellWeeklySchedule label[for="saturdayCheckbox"] {
-        display: none;
+        content: "mstag";
     }
     
     .checkboxCellWeeklySchedule label[for="sundayCheckbox"]::after {
-        content: "Sun";
-    }
-    .checkboxCellWeeklySchedule label[for="sundayCheckbox"] {
-        display: none;
+        content: "nntag";
     }
 }
 
