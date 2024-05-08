@@ -7,6 +7,22 @@
     font-family: sans-serif;
 }
 
+/* General Format Classes */
+.formatTitle {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #2f2f2f;
+    margin-bottom: 20px;
+}
+
+.formatText {
+    font-size: 18px;
+    text-align: center;
+    color: #2f2f2f;
+    margin-bottom: 20px;
+}
+
 /* Gender Container */
 .containerGender {
     display: none;
