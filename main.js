@@ -80,24 +80,53 @@ class Exercise {
     }
 }
 
-let exercises = [];
-exercises.push(new Exercise("Squats", "Beine", 3));
-exercises.push(new Exercise("Lunges", "Beine", 2));
-exercises.push(new Exercise("Leg Press", "Beine", 1));
+const exercises = [
+    new Exercise("Bankdrücken", "Brust", 3),
+    new Exercise("Butterfly", "Brust", 3),
+    new Exercise("Fliegende mit Kurzhanteln", "Brust", 3),
+    new Exercise("Schrägbankdrücken", "Brust", 3),
+    new Exercise("Negativbankdrücken", "Brust", 3),
+    new Exercise("Cable Fly", "Brust", 3),
+    new Exercise("Brustpresse", "Brust", 3),
+    
+    new Exercise("Latzug", "Rücken", 3),
+    new Exercise("Kreuzheben", "Rücken", 3),
+    new Exercise("Rudern", "Rücken", 3),
 
-exercises.push(new Exercise("Bench Press", "Brust", 2));
-exercises.push(new Exercise("Push-ups", "Brust", 1));
+    new Exercise("Shrugs", "Nacken", 3),
+    
+    new Exercise("Schulterdrücken", "Schultern", 3),
+    
+    new Exercise("Ausfallschritte", "Beine", 3),
+    new Exercise("Kniebeugen", "Beine", 3),
+    new Exercise("Schrägbeinpresse", "Beine", 3),
+    new Exercise("Beinpresse", "Beine", 3),
+    new Exercise("Bulgarian Split Squats", "Beine", 3),
+    
+    new Exercise("Beinstecker", "Quadtrizeps", 3),
 
-exercises.push(new Exercise("Pull-ups", "Rücken", 3));
-exercises.push(new Exercise("Deadlifts", "Rücken", 3));
-exercises.push(new Exercise("Dumbbell Rows", "Rücken", 2));
+    new Exercise("Beinbeuger", "Beinbeuger", 3),
 
-exercises.push(new Exercise("Schulter Drücken", "Schultern", 2));
+    new Exercise("Wadenheben sitzend", "Waden", 3),
+    new Exercise("Wadenheben stehend", "Waden", 3),
+    
+    new Exercise("Trizepsdrücken", "Trizeps", 3),
+    new Exercise("Arnold Dips", "Trizeps", 3),
+    new Exercise("Dips", "Trizeps", 3),
+    new Exercise("French Press", "Trizeps", 3),
+    new Exercise("Enges Bankdrücken", "Trizeps", 3),
+    new Exercise("Trizeps Kickbacks", "Trizeps", 3),
 
-exercises.push(new Exercise("Tricep Extensions", "Trizeps", 2));
+    new Exercise("Bizepscurls", "Bizeps", 3)
+];
 
-exercises.push(new Exercise("Plank", "Bauchmuskeln", 1));
-exercises.push(new Exercise("Crunches", "Bauchmuskeln", 1));
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
 
 const startButton = document.getElementById('test');
 const prevButton = document.getElementById('prevButton');
@@ -340,61 +369,85 @@ document.getElementById('sundayCheckbox').addEventListener('change', function() 
     results[6][6] = 1; // Setze Sonntag auf 1
 });
 
-function createFullBodyWorkout(level) {
-    var createdPlan = "";
-    
-    let filteredExercises = [];
-    // Bein Übungen
-    for(let i = 0; i < exercises.length-1; i++){
-        console.log(exercises[i].muscleGroup)
-        if (exercises[i].muscleGroup == "Beine" && exercises[i].difficultyLevel <= level){
-            filteredExercises.push(exercises[i].name);
+function createFullBodyWorkout(fitnesslevel) {
+    let trainingsplan = [];
+
+    const muskelGruppenReihenfolge = ["Beine", "Brust", "Rücken", "Schultern", "Trizeps", "Bizeps"];
+
+    muskelGruppenReihenfolge.forEach(muskelgruppe => {
+        let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
+            exercise.muscleGroup === muskelgruppe &&
+            exercise.difficultyLevel === fitnesslevel &&
+            !trainingsplan.map(e => e.muscleGroup).includes(muskelgruppe)
+        ));
+        
+        if (verfuegbareUebungen.length > 0) {
+            trainingsplan.push(verfuegbareUebungen[0]);
         }
-    }
-    createdPlan = "- " + filteredExercises[Math.floor(Math.random() * filteredExercises.length)] + " (Beine)\n";
-    filteredExercises = [];
-    
-    // Brust Übungen
-    for(let i = 0; i < exercises.length-1; i++){
-        if (exercises[i].muscleGroup == "Brust" && exercises[i].difficultyLevel <= level){
-            filteredExercises.push(exercises[i].name);
+    });
+
+    // Rückgabe des Trainingsplans als String
+    return trainingsplan.map(exercise => `${exercise.name} (${exercise.muscleGroup})`).join('\n\n');
+}
+
+function createPushWorkout(fitnesslevel) {
+    let trainingsplan = [];
+
+    const push = ["Brust", "Brust", "Brust", "Schultern", "Schultern", "Schultern", "Trizeps", "Trizeps"];
+
+    push.forEach(muskelgruppe => {
+        let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
+            exercise.muscleGroup === muskelgruppe &&
+            exercise.difficultyLevel === fitnesslevel
+        ));
+        
+        if (verfuegbareUebungen.length > 0) {
+            trainingsplan.push(verfuegbareUebungen[0]);
         }
-    }
-    createdPlan = createdPlan + "\n- " + filteredExercises[Math.floor(Math.random() * filteredExercises.length)] + " (Brust)\n";
-    filteredExercises = [];
-    // Rücken Übungen
-    for(let i = 0; i < exercises.length-1; i++){
-        if (exercises[i].muscleGroup == "Rücken" && exercises[i].difficultyLevel <= level){
-            filteredExercises.push(exercises[i].name);
+    });
+
+    // Rückgabe des Trainingsplans als String
+    return trainingsplan.map(exercise => `${exercise.name} (${exercise.muscleGroup})`).join('\n\n');
+}
+
+function createPullWorkout(fitnesslevel) {
+    let trainingsplan = [];
+
+    const pull = ["Rücken", "Rücken", "Rücken", "Nacken", "Bizeps", "Bizeps"];
+
+    pull.forEach(muskelgruppe => {
+        let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
+            exercise.muscleGroup === muskelgruppe &&
+            exercise.difficultyLevel === fitnesslevel
+        ));
+        
+        if (verfuegbareUebungen.length > 0) {
+            trainingsplan.push(verfuegbareUebungen[0]);
         }
-    }
-    createdPlan = createdPlan + "\n- " + filteredExercises[Math.floor(Math.random() * filteredExercises.length)] + " (Rücken)\n";
-    filteredExercises = [];
-    // Schulter Übungen
-    for(let i = 0; i < exercises.length-1; i++){
-        if (exercises[i].muscleGroup == "Schultern" && exercises[i].difficultyLevel <= level){
-            filteredExercises.push(exercises[i].name);
+    });
+
+    // Rückgabe des Trainingsplans als String
+    return trainingsplan.map(exercise => `${exercise.name} (${exercise.muscleGroup})`).join('\n\n');
+}
+
+function createLegsWorkout(fitnesslevel) {
+    let trainingsplan = [];
+
+    const legs = ["Beine", "Beine", "Quadtrizeps", "Beinbeuger", "Waden", "Waden"];
+
+    legs.forEach(muskelgruppe => {
+        let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
+            exercise.muscleGroup === muskelgruppe &&
+            exercise.difficultyLevel === fitnesslevel
+        ));
+        
+        if (verfuegbareUebungen.length > 0) {
+            trainingsplan.push(verfuegbareUebungen[0]);
         }
-    }
-    createdPlan = createdPlan + "\n- " + filteredExercises[Math.floor(Math.random() * filteredExercises.length)] + " (Schultern)\n";
-    filteredExercises = [];
-    // Trizeps Übungen
-    for(let i = 0; i < exercises.length-1; i++){
-        if (exercises[i].muscleGroup == "Trizeps" && exercises[i].difficultyLevel <= level){
-            filteredExercises.push(exercises[i].name);
-        }
-    }
-    createdPlan = createdPlan + "\n- " + filteredExercises[Math.floor(Math.random() * filteredExercises.length)] + " (Trizeps)\n";
-    filteredExercises = [];
-    // Bauch Übungen
-    for(let i = 0; i < exercises.length-1; i++){
-        if (exercises[i].muscleGroup == "Bauchmuskeln" && exercises[i].difficultyLevel <= level){
-            filteredExercises.push(exercises[i].name);
-        }
-    }
-    createdPlan = createdPlan + "\n- " + filteredExercises[Math.floor(Math.random() * filteredExercises.length)] + " (Bauchmuskeln)\n";
-    filteredExercises = [];
-    return createdPlan;
+    });
+
+    // Rückgabe des Trainingsplans als String
+    return trainingsplan.map(exercise => `${exercise.name} (${exercise.muscleGroup})`).join('\n\n');
 }
 
 function displayPlan(){
@@ -424,6 +477,7 @@ function displayPlan(){
         var zeilen = tabelle.getElementsByTagName("tr");
         
         var zellen = zeilen[1].getElementsByTagName("td");
+        let counterForPushPullLegs = 1;
         for (var j = 0; j < zellen.length; j++) {
             if(results[6][j] == 1){
                 if (weekdays == 1){
@@ -434,12 +488,31 @@ function displayPlan(){
                     zellen[j].innerText = createFullBodyWorkout(3);
                 } else if(weekdays == 3){
                     // Push, Pull, Legs
-                    zellen[j].innerText = "Test3";
+                    if(counterForPushPullLegs == 1){
+                        zellen[j].innerText = createPushWorkout(3);
+                        counterForPushPullLegs++;
+                    } else if(counterForPushPullLegs == 2){
+                        zellen[j].innerText = createPullWorkout(3);
+                        counterForPushPullLegs++;
+                    } else if(counterForPushPullLegs == 3){
+                        zellen[j].innerText = createLegsWorkout(3);
+                        counterForPushPullLegs++;
+                    }
                 } else if(weekdays == 6){
                     // Push, Pull, Legs, Push, Pull, Legs
-                    zellen[j].innerText = "Test4";
+                    if(counterForPushPullLegs == 1 || counterForPushPullLegs == 4){
+                        zellen[j].innerText = createPushWorkout(3);
+                        counterForPushPullLegs++;
+                    } else if(counterForPushPullLegs == 2 || counterForPushPullLegs == 5){
+                        zellen[j].innerText = createPullWorkout(3);
+                        counterForPushPullLegs++;
+                    }else if(counterForPushPullLegs == 3 || counterForPushPullLegs == 6){
+                        zellen[j].innerText = createLegsWorkout(3);
+                        counterForPushPullLegs++;
+                    }
                 }
             }
         }
     }
 }
+
