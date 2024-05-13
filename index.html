@@ -17,7 +17,7 @@
             /* background-color: #f4f4f4; */
         }
 
-        .hello-world {
+        .format {
             font-size: 24px;
             font-weight: bold;
             text-align: center;
@@ -71,7 +71,7 @@
         <i class="indicator"></i>
     </div>
     
-    <div class="hello-world" id="questionContainer">
+    <div class="formatTitle" id="TitleTextContainer">
         Hi!<br>Diese Website soll dir dabei helfen einen Trainingsplan zu erstellen<br> 
         Zum starten, drücke auf den unten stehenden Button
     </div>
@@ -141,28 +141,28 @@
                 <input id="kneeCheckbox" type="checkbox" name="injuries">
                 <div class="checkbox-tile">
                     <img src="Images/Knie.png" alt="Knie">
-                    <label for="kneeCheckbox">Knee</label>
+                    <label for="kneeCheckbox">Knie</label>
                 </div>
             </div>
             <div class="inputContainerInjuries">
                 <input id="hipCheckbox" type="checkbox" name="injuries">
                 <div class="checkbox-tile">
                     <img src="Images/Huefte.png" alt="Huefte">
-                    <label for="hipCheckbox">Hip</label>
+                    <label for="hipCheckbox">Hüfte</label>
                 </div>
             </div>
             <div class="inputContainerInjuries">
                 <input id="shoulderCheckbox" type="checkbox" name="injuries">
                 <div class="checkbox-tile">
                     <img src="Images/Schulter.png" alt="Schulter">
-                    <label for="shoulderCheckbox">Shoulder</label>
+                    <label for="shoulderCheckbox">Schulter</label>
                 </div>
             </div>
             <div class="inputContainerInjuries">
                 <input id="backCheckbox" type="checkbox" name="injuries">
                 <div class="checkbox-tile">
                     <img src="Images/Ruecken.png" alt="Ruecken">
-                    <label for="backCheckbox">Back</label>
+                    <label for="backCheckbox">Rücken</label>
                 </div>
             </div>
         </div>
@@ -260,7 +260,75 @@
         <div class="spacer">&nbsp</div>
         <button class="waves" onclick="showNextQuestions()" id="nextButton">Weiter</button>
     </div>
-        
+    
+    <div class="formatText" id="weeklyID">
+        <table border = "1">
+            <tr>
+                <th>Montag</th>
+                <th>Dienstag</th>
+                <th>Mittwoch</th>
+                <th>Donnerstag</th>
+                <th>Freitag</th>
+                <th>Samstag</th>
+                <th>Sonntag</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+        </table>
+    </div>
+
+    <div class="formatText" id="triweeklyID">
+        <table border = "1">
+            <tr>
+                <th></th>
+                <th>Montag</th>
+                <th>Dienstag</th>
+                <th>Mittwoch</th>
+                <th>Donnerstag</th>
+                <th>Freitag</th>
+                <th>Samstag</th>
+                <th>Sonntag</th>
+            </tr>
+            <tr>
+                <th>Woche 1</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Woche 2</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Woche 3</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
     <script src="main.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
