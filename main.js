@@ -376,9 +376,26 @@ function shuffleArray(array) {
 
 
 // Lade die JSON-Datei welche die Übungen enthält und greife auf Übungen zu
-const response = await fetch("ExerciseDB.json");
-const data = await response.json();
-const exercises = Object.values(data.exercises);
+let exercises = []; // Globale Variable für die Übungen
+// Funktion, um die JSON-Datei zu laden und Übungen global zu speichern
+async function loadExercises() {
+    try {
+        const response = await fetch('ExerciseDB.json');
+        if (!response.ok) {
+            throw new Error('Network response was not ok: ' + response.statusText);
+        }
+        const data = await response.json();
+        exercises = Object.values(data.exercises); // Speichere die Übungen global
+    } catch (error) {
+        console.error('Fehler beim Laden der Übungen:', error);
+    }
+}
+
+// Diese Funktion sollte beim Laden der Seite aufgerufen werden
+window.onload = async function() {
+    await loadExercises(); // Lade die Übungen einmalig
+    // Du kannst hier weitere Initialisierungen vornehmen
+};
 
 async function createFullBodyWorkout(fitnesslevel) {
     let trainingsplan = [];
@@ -403,12 +420,6 @@ async function createFullBodyWorkout(fitnesslevel) {
 async function createPushWorkout(fitnesslevel) {
     let trainingsplan = [];
 
-    // Lade die JSON-Datei
-    const response = await fetch("ExerciseDB.json");
-    const data = await response.json();
-    // Zugriff auf Übungen
-    const exercises = Object.values(data.exercises);
-
     const push = ["Brust", "Brust", "Brust", "Schultern", "Schultern", "Schultern", "Trizeps", "Trizeps"];
 
     push.forEach(muskelgruppe => {
@@ -428,12 +439,6 @@ async function createPushWorkout(fitnesslevel) {
 
 async function createPullWorkout(fitnesslevel) {
     let trainingsplan = [];
-    
-    // Lade die JSON-Datei
-    const response = await fetch("ExerciseDB.json");
-    const data = await response.json();
-    // Zugriff auf Übungen
-    const exercises = Object.values(data.exercises);
 
     const pull = ["Rücken", "Rücken", "Rücken", "Nacken", "Bizeps", "Bizeps"];
 
@@ -454,12 +459,6 @@ async function createPullWorkout(fitnesslevel) {
 
 async function createLegsWorkout(fitnesslevel) {
     let trainingsplan = [];
-    
-    // Lade die JSON-Datei
-    const response = await fetch("ExerciseDB.json");
-    const data = await response.json();
-    // Zugriff auf Übungen
-    const exercises = Object.values(data.exercises);
 
     const legs = ["Beine", "Beine", "Quadtrizeps", "Beinbeuger", "Waden", "Waden"];
 
@@ -477,7 +476,6 @@ async function createLegsWorkout(fitnesslevel) {
     // Rückgabe des Trainingsplans als String
     return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n');
 }
-
 
 async function displayPlan(){
     wochenplanContainer.style.display = "none";
