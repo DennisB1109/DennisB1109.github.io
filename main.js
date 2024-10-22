@@ -369,23 +369,33 @@ document.getElementById('sundayCheckbox').addEventListener('change', function() 
     results[6][6] = 1; // Setze Sonntag auf 1
 });
 
-function createFullBodyWorkout(fitnesslevel) {
+// Funktion zum Mischen eines Arrays (für zufällige Auswahl)
+function shuffleArray(array) {
+    return array.sort(() => Math.random() - 0.5);
+}
+
+async function createFullBodyWorkout(fitnesslevel) {
     let trainingsplan = [];
+
+    // Lade die JSON-Datei
+    const response = await fetch("ExerciseDB.json");
+    const data = await response.json();
+    // Zugriff auf Übungen
+    const exercises = Object.values(data.exercises);
 
     const muskelGruppenReihenfolge = ["Beine", "Brust", "Rücken", "Schultern", "Trizeps", "Bizeps"];
 
     muskelGruppenReihenfolge.forEach(muskelgruppe => {
         let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
-            exercise.muscleGroup === muskelgruppe &&
-            exercise.difficultyLevel === fitnesslevel &&
-            !trainingsplan.map(e => e.muscleGroup).includes(muskelgruppe)
+            exercise.muscle_group.includes(muskelgruppe) && 
+            exercise.difficulty === fitnesslevel
         ));
         
         if (verfuegbareUebungen.length > 0) {
             trainingsplan.push(verfuegbareUebungen[0]);
         }
     });
-
+    
     // Rückgabe des Trainingsplans als String
     return trainingsplan.map(exercise => `${exercise.name} (${exercise.muscleGroup})`).join('\n\n');
 }
@@ -450,7 +460,7 @@ function createLegsWorkout(fitnesslevel) {
     return trainingsplan.map(exercise => `${exercise.name} (${exercise.muscleGroup})`).join('\n\n');
 }
 
-function displayPlan(){
+async function displayPlan(){
     wochenplanContainer.style.display = "none";
     TitleTextContainer.style.display = "none";
     prevButton.style.display = "none";
@@ -482,10 +492,10 @@ function displayPlan(){
             if(results[6][j] == 1){
                 if (weekdays == 1){
                     // Ganzkörper
-                    zellen[j].innerText = createFullBodyWorkout(3);
+                    zellen[j].innerText = await createFullBodyWorkout(3);
                 } else if(weekdays == 2){
                     // Ganzkörper
-                    zellen[j].innerText = createFullBodyWorkout(3);
+                    zellen[j].innerText = await createFullBodyWorkout(3);
                 } else if(weekdays == 3){
                     // Push, Pull, Legs
                     if(counterForPushPullLegs == 1){
