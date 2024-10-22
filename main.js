@@ -401,13 +401,12 @@ async function createFullBodyWorkout(fitnesslevel) {
 }
 
 async function createPushWorkout(fitnesslevel) {
-    const response = await fetch('https://dennisb1109.github.io/ExerciseDB.json'); // Stelle sicher, dass die URL korrekt ist
-    if (!response.ok) {
-        throw new Error('Network response was not ok: ' + response.statusText);
-    }
-    const data = await response.json();
-    
     let trainingsplan = [];
+
+    // Lade die JSON-Datei
+    const response = await fetch("ExerciseDB.json");
+    const data = await response.json();
+
     const push = ["Brust", "Brust", "Brust", "Schultern", "Schultern", "Schultern", "Trizeps", "Trizeps"];
 
     push.forEach(muskelgruppe => {
@@ -426,7 +425,7 @@ async function createPushWorkout(fitnesslevel) {
 }
 
 async function createPullWorkout(fitnesslevel) {
-    const response = await fetch('https://dennisb1109.github.io/ExerciseDB.json');
+    const response = await fetch("ExerciseDB.json");
     if (!response.ok) {
         throw new Error('Network response was not ok: ' + response.statusText);
     }
@@ -451,7 +450,7 @@ async function createPullWorkout(fitnesslevel) {
 }
 
 async function createLegsWorkout(fitnesslevel) {
-    const response = await fetch('https://dennisb1109.github.io/ExerciseDB.json');
+    const response = await fetch("ExerciseDB.json");
     if (!response.ok) {
         throw new Error('Network response was not ok: ' + response.statusText);
     }
