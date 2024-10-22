@@ -403,6 +403,12 @@ async function createFullBodyWorkout(fitnesslevel) {
 async function createPushWorkout(fitnesslevel) {
     let trainingsplan = [];
 
+    // Lade die JSON-Datei
+    const response = await fetch("ExerciseDB.json");
+    const data = await response.json();
+    // Zugriff auf Übungen
+    const exercises = Object.values(data.exercises);
+
     const push = ["Brust", "Brust", "Brust", "Schultern", "Schultern", "Schultern", "Trizeps", "Trizeps"];
 
     push.forEach(muskelgruppe => {
@@ -422,6 +428,12 @@ async function createPushWorkout(fitnesslevel) {
 
 async function createPullWorkout(fitnesslevel) {
     let trainingsplan = [];
+    
+    // Lade die JSON-Datei
+    const response = await fetch("ExerciseDB.json");
+    const data = await response.json();
+    // Zugriff auf Übungen
+    const exercises = Object.values(data.exercises);
 
     const pull = ["Rücken", "Rücken", "Rücken", "Nacken", "Bizeps", "Bizeps"];
 
@@ -442,6 +454,12 @@ async function createPullWorkout(fitnesslevel) {
 
 async function createLegsWorkout(fitnesslevel) {
     let trainingsplan = [];
+    
+    // Lade die JSON-Datei
+    const response = await fetch("ExerciseDB.json");
+    const data = await response.json();
+    // Zugriff auf Übungen
+    const exercises = Object.values(data.exercises);
 
     const legs = ["Beine", "Beine", "Quadtrizeps", "Beinbeuger", "Waden", "Waden"];
 
