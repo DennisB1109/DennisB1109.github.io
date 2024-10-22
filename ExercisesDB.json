@@ -1,0 +1,228 @@
+{
+	"exercises": {
+		"1" : {
+			"name" : ["Bankdrücken"],
+			"difficulty" : 3,
+			"muscle_group" : ["Brust"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"2" : {
+			"name" : ["Butterfly"],
+			"difficulty" : 3,
+			"muscle_group" : ["Brust"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"3" : {
+			"name" : ["Fliegende mit Kurzhanteln"],
+			"difficulty" : 3,
+			"muscle_group" : ["Brust"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"4" : {
+			"name" : ["Schrägbankdrücken"],
+			"difficulty" : 3,
+			"muscle_group" : ["Brust"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"5" : {
+			"name" : ["Negativbankdrücken"],
+			"difficulty" : 3,
+			"muscle_group" : ["Brust"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"6" : {
+			"name" : ["Cable Fly"],
+			"difficulty" : 3,
+			"muscle_group" : ["Brust"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"7" : {
+			"name" : ["Brustpresse"],
+			"difficulty" : 3,
+			"muscle_group" : ["Brust"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"8" : {
+			"name" : ["Latzug"],
+			"difficulty" : 3,
+			"muscle_group" : ["Rücken"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"9" : {
+			"name" : ["Kreuzheben"],
+			"difficulty" : 3,
+			"muscle_group" : ["Rücken"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"10" : {
+			"name" : ["Rudern"],
+			"difficulty" : 3,
+			"muscle_group" : ["Rücken"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"11" : {
+			"name" : ["Shrugs"],
+			"difficulty" : 3,
+			"muscle_group" : ["Nacken"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"12" : {
+			"name" : ["Schulterdrücken"],
+			"difficulty" : 3,
+			"muscle_group" : ["Schultern"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"13" : {
+			"name" : ["Ausfallschritte"],
+			"difficulty" : 3,
+			"muscle_group" : ["Beine"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"14" : {
+			"name" : ["Kniebeugen"],
+			"difficulty" : 3,
+			"muscle_group" : ["Beine"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"15" : {
+			"name" : ["Schrägbeinpresse"],
+			"difficulty" : 3,
+			"muscle_group" : ["Beine"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"16" : {
+			"name" : ["Beinpresse"],
+			"difficulty" : 3,
+			"muscle_group" : ["Beine"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"17" : {
+			"name" : ["Bulgarian Split Squats"],
+			"difficulty" : 3,
+			"muscle_group" : ["Beine"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"18" : {
+			"name" : ["Beinstecker"],
+			"difficulty" : 3,
+			"muscle_group" : ["Beine", "Quadtrizeps"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"19" : {
+			"name" : ["Beinbeuger"],
+			"difficulty" : 3,
+			"muscle_group" : ["Beine", "Beinbeuger"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"20" : {
+			"name" : ["Wadenheben sitzend"],
+			"difficulty" : 3,
+			"muscle_group" : ["Beine", "Waden"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"21" : {
+			"name" : ["Wadenheben stehend"],
+			"difficulty" : 3,
+			"muscle_group" : ["Beine", "Waden"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"22" : {
+			"name" : ["Trizepsdrücken"],
+			"difficulty" : 3,
+			"muscle_group" : ["Arme", "Trizeps"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"23" : {
+			"name" : ["Arnold Dips"],
+			"difficulty" : 3,
+			"muscle_group" : ["Arme", "Trizeps"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"24" : {
+			"name" : ["Dips"],
+			"difficulty" : 3,
+			"muscle_group" : ["Arme", "Trizeps"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"25" : {
+			"name" : ["French Press"],
+			"difficulty" : 3,
+			"muscle_group" : ["Arme", "Trizeps"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"26" : {
+			"name" : ["Enges Bankdrücken"],
+			"difficulty" : 3,
+			"muscle_group" : ["Arme", "Trizeps"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"27" : {
+			"name" : ["Trizeps Kickbacks"],
+			"difficulty" : 3,
+			"muscle_group" : ["Arme", "Trizeps"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"28" : {
+			"name" : ["Bizepscurls"],
+			"difficulty" : 3,
+			"muscle_group" : ["Arme", "Bizeps"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		}
+	}
+}
