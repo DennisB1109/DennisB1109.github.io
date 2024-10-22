@@ -395,70 +395,86 @@ async function createFullBodyWorkout(fitnesslevel) {
             trainingsplan.push(verfuegbareUebungen[0]);
         }
     });
-    
+
     // Rückgabe des Trainingsplans als String
     return trainingsplan.map(exercise => `${exercise.name} (${exercise.muscleGroup})`).join('\n\n');
 }
 
-function createPushWorkout(fitnesslevel) {
+async function createPushWorkout(fitnesslevel) {
+    const response = await fetch('https://dennisb1109.github.io/ExerciseDB.json'); // Stelle sicher, dass die URL korrekt ist
+    if (!response.ok) {
+        throw new Error('Network response was not ok: ' + response.statusText);
+    }
+    const data = await response.json();
+    
     let trainingsplan = [];
-
     const push = ["Brust", "Brust", "Brust", "Schultern", "Schultern", "Schultern", "Trizeps", "Trizeps"];
 
     push.forEach(muskelgruppe => {
-        let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
-            exercise.muscleGroup === muskelgruppe &&
-            exercise.difficultyLevel === fitnesslevel
+        let verfuegbareUebungen = shuffleArray(data.exercises.filter(exercise =>
+            exercise.muscle_group.includes(muskelgruppe) && // Ändere 'muscleGroup' auf 'muscle_group'
+            exercise.difficulty === fitnesslevel // Ändere 'difficultyLevel' auf 'difficulty'
         ));
-        
+
         if (verfuegbareUebungen.length > 0) {
             trainingsplan.push(verfuegbareUebungen[0]);
         }
     });
 
     // Rückgabe des Trainingsplans als String
-    return trainingsplan.map(exercise => `${exercise.name} (${exercise.muscleGroup})`).join('\n\n');
+    return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n'); // Verwende den ersten Namen
 }
 
-function createPullWorkout(fitnesslevel) {
-    let trainingsplan = [];
+async function createPullWorkout(fitnesslevel) {
+    const response = await fetch('https://dennisb1109.github.io/ExerciseDB.json');
+    if (!response.ok) {
+        throw new Error('Network response was not ok: ' + response.statusText);
+    }
+    const data = await response.json();
 
+    let trainingsplan = [];
     const pull = ["Rücken", "Rücken", "Rücken", "Nacken", "Bizeps", "Bizeps"];
 
     pull.forEach(muskelgruppe => {
-        let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
-            exercise.muscleGroup === muskelgruppe &&
-            exercise.difficultyLevel === fitnesslevel
+        let verfuegbareUebungen = shuffleArray(data.exercises.filter(exercise =>
+            exercise.muscle_group.includes(muskelgruppe) && // Ändere 'muscleGroup' auf 'muscle_group'
+            exercise.difficulty === fitnesslevel // Ändere 'difficultyLevel' auf 'difficulty'
         ));
-        
+
         if (verfuegbareUebungen.length > 0) {
             trainingsplan.push(verfuegbareUebungen[0]);
         }
     });
 
     // Rückgabe des Trainingsplans als String
-    return trainingsplan.map(exercise => `${exercise.name} (${exercise.muscleGroup})`).join('\n\n');
+    return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n');
 }
 
-function createLegsWorkout(fitnesslevel) {
-    let trainingsplan = [];
+async function createLegsWorkout(fitnesslevel) {
+    const response = await fetch('https://dennisb1109.github.io/ExerciseDB.json');
+    if (!response.ok) {
+        throw new Error('Network response was not ok: ' + response.statusText);
+    }
+    const data = await response.json();
 
+    let trainingsplan = [];
     const legs = ["Beine", "Beine", "Quadtrizeps", "Beinbeuger", "Waden", "Waden"];
 
     legs.forEach(muskelgruppe => {
-        let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
-            exercise.muscleGroup === muskelgruppe &&
-            exercise.difficultyLevel === fitnesslevel
+        let verfuegbareUebungen = shuffleArray(data.exercises.filter(exercise =>
+            exercise.muscle_group.includes(muskelgruppe) && // Ändere 'muscleGroup' auf 'muscle_group'
+            exercise.difficulty === fitnesslevel // Ändere 'difficultyLevel' auf 'difficulty'
         ));
-        
+
         if (verfuegbareUebungen.length > 0) {
             trainingsplan.push(verfuegbareUebungen[0]);
         }
     });
 
     // Rückgabe des Trainingsplans als String
-    return trainingsplan.map(exercise => `${exercise.name} (${exercise.muscleGroup})`).join('\n\n');
+    return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n');
 }
+
 
 async function displayPlan(){
     wochenplanContainer.style.display = "none";
@@ -499,25 +515,25 @@ async function displayPlan(){
                 } else if(weekdays == 3){
                     // Push, Pull, Legs
                     if(counterForPushPullLegs == 1){
-                        zellen[j].innerText = createPushWorkout(3);
+                        zellen[j].innerText = await createPushWorkout(3);
                         counterForPushPullLegs++;
                     } else if(counterForPushPullLegs == 2){
-                        zellen[j].innerText = createPullWorkout(3);
+                        zellen[j].innerText = await createPullWorkout(3);
                         counterForPushPullLegs++;
                     } else if(counterForPushPullLegs == 3){
-                        zellen[j].innerText = createLegsWorkout(3);
+                        zellen[j].innerText = await createLegsWorkout(3);
                         counterForPushPullLegs++;
                     }
                 } else if(weekdays == 6){
                     // Push, Pull, Legs, Push, Pull, Legs
                     if(counterForPushPullLegs == 1 || counterForPushPullLegs == 4){
-                        zellen[j].innerText = createPushWorkout(3);
+                        zellen[j].innerText = await createPushWorkout(3);
                         counterForPushPullLegs++;
                     } else if(counterForPushPullLegs == 2 || counterForPushPullLegs == 5){
-                        zellen[j].innerText = createPullWorkout(3);
+                        zellen[j].innerText = await createPullWorkout(3);
                         counterForPushPullLegs++;
                     }else if(counterForPushPullLegs == 3 || counterForPushPullLegs == 6){
-                        zellen[j].innerText = createLegsWorkout(3);
+                        zellen[j].innerText = await createLegsWorkout(3);
                         counterForPushPullLegs++;
                     }
                 }
