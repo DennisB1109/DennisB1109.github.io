@@ -80,45 +80,45 @@ class Exercise {
     }
 }
 
-const exercises = [
-    new Exercise("Bankdrücken", "Brust", 3),
-    new Exercise("Butterfly", "Brust", 3),
-    new Exercise("Fliegende mit Kurzhanteln", "Brust", 3),
-    new Exercise("Schrägbankdrücken", "Brust", 3),
-    new Exercise("Negativbankdrücken", "Brust", 3),
-    new Exercise("Cable Fly", "Brust", 3),
-    new Exercise("Brustpresse", "Brust", 3),
+// const exercises = [
+//     new Exercise("Bankdrücken", "Brust", 3),
+//     new Exercise("Butterfly", "Brust", 3),
+//     new Exercise("Fliegende mit Kurzhanteln", "Brust", 3),
+//     new Exercise("Schrägbankdrücken", "Brust", 3),
+//     new Exercise("Negativbankdrücken", "Brust", 3),
+//     new Exercise("Cable Fly", "Brust", 3),
+//     new Exercise("Brustpresse", "Brust", 3),
     
-    new Exercise("Latzug", "Rücken", 3),
-    new Exercise("Kreuzheben", "Rücken", 3),
-    new Exercise("Rudern", "Rücken", 3),
+//     new Exercise("Latzug", "Rücken", 3),
+//     new Exercise("Kreuzheben", "Rücken", 3),
+//     new Exercise("Rudern", "Rücken", 3),
 
-    new Exercise("Shrugs", "Nacken", 3),
+//     new Exercise("Shrugs", "Nacken", 3),
     
-    new Exercise("Schulterdrücken", "Schultern", 3),
+//     new Exercise("Schulterdrücken", "Schultern", 3),
     
-    new Exercise("Ausfallschritte", "Beine", 3),
-    new Exercise("Kniebeugen", "Beine", 3),
-    new Exercise("Schrägbeinpresse", "Beine", 3),
-    new Exercise("Beinpresse", "Beine", 3),
-    new Exercise("Bulgarian Split Squats", "Beine", 3),
+//     new Exercise("Ausfallschritte", "Beine", 3),
+//     new Exercise("Kniebeugen", "Beine", 3),
+//     new Exercise("Schrägbeinpresse", "Beine", 3),
+//     new Exercise("Beinpresse", "Beine", 3),
+//     new Exercise("Bulgarian Split Squats", "Beine", 3),
     
-    new Exercise("Beinstecker", "Quadtrizeps", 3),
+//     new Exercise("Beinstecker", "Quadtrizeps", 3),
 
-    new Exercise("Beinbeuger", "Beinbeuger", 3),
+//     new Exercise("Beinbeuger", "Beinbeuger", 3),
 
-    new Exercise("Wadenheben sitzend", "Waden", 3),
-    new Exercise("Wadenheben stehend", "Waden", 3),
+//     new Exercise("Wadenheben sitzend", "Waden", 3),
+//     new Exercise("Wadenheben stehend", "Waden", 3),
     
-    new Exercise("Trizepsdrücken", "Trizeps", 3),
-    new Exercise("Arnold Dips", "Trizeps", 3),
-    new Exercise("Dips", "Trizeps", 3),
-    new Exercise("French Press", "Trizeps", 3),
-    new Exercise("Enges Bankdrücken", "Trizeps", 3),
-    new Exercise("Trizeps Kickbacks", "Trizeps", 3),
+//     new Exercise("Trizepsdrücken", "Trizeps", 3),
+//     new Exercise("Arnold Dips", "Trizeps", 3),
+//     new Exercise("Dips", "Trizeps", 3),
+//     new Exercise("French Press", "Trizeps", 3),
+//     new Exercise("Enges Bankdrücken", "Trizeps", 3),
+//     new Exercise("Trizeps Kickbacks", "Trizeps", 3),
 
-    new Exercise("Bizepscurls", "Bizeps", 3)
-];
+//     new Exercise("Bizepscurls", "Bizeps", 3)
+// ];
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -374,14 +374,14 @@ function shuffleArray(array) {
     return array.sort(() => Math.random() - 0.5);
 }
 
+
+// Lade die JSON-Datei welche die Übungen enthält und greife auf Übungen zu
+const response = await fetch("ExerciseDB.json");
+const data = await response.json();
+const exercises = Object.values(data.exercises);
+
 async function createFullBodyWorkout(fitnesslevel) {
     let trainingsplan = [];
-
-    // Lade die JSON-Datei
-    const response = await fetch("ExerciseDB.json");
-    const data = await response.json();
-    // Zugriff auf Übungen
-    const exercises = Object.values(data.exercises);
 
     const muskelGruppenReihenfolge = ["Beine", "Brust", "Rücken", "Schultern", "Trizeps", "Bizeps"];
 
@@ -403,12 +403,6 @@ async function createFullBodyWorkout(fitnesslevel) {
 async function createPushWorkout(fitnesslevel) {
     let trainingsplan = [];
 
-    // Lade die JSON-Datei
-    const response = await fetch("ExerciseDB.json");
-    const data = await response.json();
-    // Zugriff auf Übungen
-    const exercises = Object.values(data.exercises);
-
     const push = ["Brust", "Brust", "Brust", "Schultern", "Schultern", "Schultern", "Trizeps", "Trizeps"];
 
     push.forEach(muskelgruppe => {
@@ -428,12 +422,6 @@ async function createPushWorkout(fitnesslevel) {
 
 async function createPullWorkout(fitnesslevel) {
     let trainingsplan = [];
-    
-    // Lade die JSON-Datei
-    const response = await fetch("ExerciseDB.json");
-    const data = await response.json();
-    // Zugriff auf Übungen
-    const exercises = Object.values(data.exercises);
 
     const pull = ["Rücken", "Rücken", "Rücken", "Nacken", "Bizeps", "Bizeps"];
 
@@ -454,12 +442,6 @@ async function createPullWorkout(fitnesslevel) {
 
 async function createLegsWorkout(fitnesslevel) {
     let trainingsplan = [];
-    
-    // Lade die JSON-Datei
-    const response = await fetch("ExerciseDB.json");
-    const data = await response.json();
-    // Zugriff auf Übungen
-    const exercises = Object.values(data.exercises);
 
     const legs = ["Beine", "Beine", "Quadtrizeps", "Beinbeuger", "Waden", "Waden"];
 
