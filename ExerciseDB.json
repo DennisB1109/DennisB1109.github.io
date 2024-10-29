@@ -59,7 +59,7 @@
 		"8" : {
 			"name" : ["Latzug"],
 			"difficulty" : 3,
-			"muscle_group" : ["Rücken"],
+			"muscle_group" : ["Rücken", "Latissimus", "Teres Major"],
 			"training_location" : ["Gym"],
 			"age" : [1, 100],
 			"goal" : "Muskelaufbau"
@@ -67,31 +67,31 @@
 		"9" : {
 			"name" : ["Kreuzheben"],
 			"difficulty" : 3,
-			"muscle_group" : ["Rücken"],
+			"muscle_group" : ["Rücken", "Unterer Rücken"],
 			"training_location" : ["Gym"],
 			"age" : [1, 100],
 			"goal" : "Muskelaufbau"
 		},
 		"10" : {
-			"name" : ["Rudern"],
+			"name" : ["Kurzhantel Rudern", "Dumbbell Bent-Over Rows"],
 			"difficulty" : 3,
-			"muscle_group" : ["Rücken"],
+			"muscle_group" : ["Rücken", "Latissimus", "Teres Major"],
 			"training_location" : ["Gym"],
 			"age" : [1, 100],
 			"goal" : "Muskelaufbau"
 		},
 		"11" : {
-			"name" : ["Shrugs"],
+			"name" : ["Shrugs mit Kurzhanteln"],
 			"difficulty" : 3,
-			"muscle_group" : ["Nacken"],
+			"muscle_group" : ["Nacken", "Oberer Trapezius"],
 			"training_location" : ["Gym"],
 			"age" : [1, 100],
 			"goal" : "Muskelaufbau"
 		},
 		"12" : {
-			"name" : ["Schulterdrücken"],
+			"name" : ["Schulterdrücken", "Shoulder Press"],
 			"difficulty" : 3,
-			"muscle_group" : ["Schultern"],
+			"muscle_group" : ["Schultern", "Vordere Schulter"],
 			"training_location" : ["Gym"],
 			"age" : [1, 100],
 			"goal" : "Muskelaufbau"
@@ -187,7 +187,7 @@
 		"24" : {
 			"name" : ["Dips"],
 			"difficulty" : 3,
-			"muscle_group" : ["Arme", "Trizeps"],
+			"muscle_group" : ["Arme", "Trizeps", "Vordere Schulter"],
 			"training_location" : ["Gym"],
 			"age" : [1, 100],
 			"goal" : "Muskelaufbau"
@@ -220,6 +220,150 @@
 			"name" : ["Bizepscurls"],
 			"difficulty" : 3,
 			"muscle_group" : ["Arme", "Bizeps"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"29" : {
+			"name" : ["Langhantel Rudern", "Barbell Bent-Over Rows"],
+			"difficulty" : 3,
+			"muscle_group" : ["Rücken", "Latissimus", "Teres Major"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"30" : {
+			"name" : ["Aufrechtes Rudern", "Cable Upright Row"],
+			"difficulty" : 3,
+			"muscle_group" : ["Rücken", "Oberer Trapezius"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"31" : {
+			"name" : ["Face Pulls"],
+			"difficulty" : 3,
+			"muscle_group" : ["Rücken", "Unterer Trapezius", "Rotatorenmanschette", "Hintere Schulter"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"32" : {
+			"name" : ["Reverse Flys"],
+			"difficulty" : 3,
+			"muscle_group" : ["Rücken", "Unterer Trapezius", "Hintere Schulter"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"33" : {
+			"name" : ["Prone Y-Raises"],
+			"difficulty" : 3,
+			"muscle_group" : ["Rücken", "Unterer Trapezius"],
+			"training_location" : ["Gym", "Zuhause"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"34" : {
+			"name" : ["Prone Y-Raises"],
+			"difficulty" : 3,
+			"muscle_group" : ["Rücken", "Unterer Trapezius"],
+			"training_location" : ["Gym", "Zuhause"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"35" : {
+			"name" : ["Klimmzüge", "Pull-Ups"],
+			"difficulty" : 3,
+			"muscle_group" : ["Rücken", "Unterer Trapezius", "Oberer Trapezius", "Latissimus", "Teres Major"],
+			"training_location" : ["Gym", "Cali-Park"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"36" : {
+			"name" : ["Kabelaußenrotation", "Außenrotation am Kabelzug"],
+			"difficulty" : 3,
+			"muscle_group" : ["Rücken", "Rotatorenmanschette"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"37" : {
+			"name" : ["Frontheben mit Kurzhanteln", "Dumbbell Front Raise"],
+			"difficulty" : 3,
+			"muscle_group" : ["Schulter", "Vordere Schulter"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"38" : {
+			"name" : ["Frontheben mit Langhantel", "Barbell Front Raise"],
+			"difficulty" : 3,
+			"muscle_group" : ["Schulter", "Vordere Schulter"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"39" : {
+			"name" : ["Arnold Presse", "Arnold Press"],
+			"difficulty" : 3,
+			"muscle_group" : ["Schulter", "Vordere Schulter"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"40" : {
+			"name" : ["Arnold Presse", "Arnold Press"],
+			"difficulty" : 3,
+			"muscle_group" : ["Schulter", "Vordere Schulter"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"41" : {
+			"name" : ["Frontheben am Kabelturm", "Cable Front Raise"],
+			"difficulty" : 3,
+			"muscle_group" : ["Schulter", "Vordere Schulter"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"42" : {
+			"name" : ["Rear Delt Flys am Kabelzug", "Cable Front Raise"],
+			"difficulty" : 3,
+			"muscle_group" : ["Schulter", "Hintere Schulter"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"43" : {
+			"name" : ["Bent-Over Reverse Flys"],
+			"difficulty" : 3,
+			"muscle_group" : ["Schulter", "Hintere Schulter"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"44" : {
+			"name" : ["Seitheben", "Lateral Raise"],
+			"difficulty" : 3,
+			"muscle_group" : ["Schulter", "Seitliche Schulter"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"45" : {
+			"name" : ["Seitheben am Kabelzug", "Cable Lateral Raise"],
+			"difficulty" : 3,
+			"muscle_group" : ["Schulter", "Seitliche Schulter"],
+			"training_location" : ["Gym"],
+			"age" : [1, 100],
+			"goal" : "Muskelaufbau"
+		},
+		"46" : {
+			"name" : ["Seitheben an der Maschine", "Machine Lateral Raise"],
+			"difficulty" : 3,
+			"muscle_group" : ["Schulter", "Seitliche Schulter"],
 			"training_location" : ["Gym"],
 			"age" : [1, 100],
 			"goal" : "Muskelaufbau"

@@ -326,6 +326,7 @@ function shuffleArray(array) {
     return array.sort(() => Math.random() - 0.5);
 }
 
+// Code Block einkommentieren um die JSON Datei als Datenbank für die Übungen zu verwenden
 
 // Lade die JSON-Datei welche die Übungen enthält und greife auf Übungen zu
 let exercises = []; // Globale Variable für die Übungen
@@ -349,6 +350,363 @@ window.onload = async function() {
     // Du kannst hier weitere Initialisierungen vornehmen
 };
 
+// Code Block einkommentieren um lokal mit den Übungen zu arbeiten
+/*
+let exercises = [
+    {
+        "name": ["Bankdrücken"],
+        "difficulty": 3,
+        "muscle_group": ["Brust"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Butterfly"],
+        "difficulty": 3,
+        "muscle_group": ["Brust"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Fliegende mit Kurzhanteln"],
+        "difficulty": 3,
+        "muscle_group": ["Brust"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Schrägbankdrücken"],
+        "difficulty": 3,
+        "muscle_group": ["Brust"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Negativbankdrücken"],
+        "difficulty": 3,
+        "muscle_group": ["Brust"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Cable Fly"],
+        "difficulty": 3,
+        "muscle_group": ["Brust"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Brustpresse"],
+        "difficulty": 3,
+        "muscle_group": ["Brust"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Latzug"],
+        "difficulty": 3,
+        "muscle_group": ["Rücken", "Latissimus", "Teres Major"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Kreuzheben"],
+        "difficulty": 3,
+        "muscle_group": ["Rücken", "Unterer Rücken"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Kurzhantel Rudern", "Dumbbell Bent-Over Rows"],
+        "difficulty": 3,
+        "muscle_group": ["Rücken", "Latissimus", "Teres Major"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Langhantel Rudern", "Barbell Bent-Over Rows"],
+        "difficulty": 3,
+        "muscle_group": ["Rücken", "Latissimus", "Teres Major"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Shrugs mit Kurzhanteln"],
+        "difficulty": 3,
+        "muscle_group": ["Nacken", "Oberer Trapezius"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Schulterdrücken", "Shoulder Press"],
+        "difficulty": 3,
+        "muscle_group": ["Schultern", "Vordere Schulter"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Ausfallschritte"],
+        "difficulty": 3,
+        "muscle_group": ["Beine"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Kniebeugen"],
+        "difficulty": 3,
+        "muscle_group": ["Beine"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Schrägbeinpresse"],
+        "difficulty": 3,
+        "muscle_group": ["Beine"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Beinpresse"],
+        "difficulty": 3,
+        "muscle_group": ["Beine"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Bulgarian Split Squats"],
+        "difficulty": 3,
+        "muscle_group": ["Beine"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Beinstecker"],
+        "difficulty": 3,
+        "muscle_group": ["Beine", "Quadtrizeps"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Beinbeuger"],
+        "difficulty": 3,
+        "muscle_group": ["Beine", "Beinbeuger"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Wadenheben sitzend"],
+        "difficulty": 3,
+        "muscle_group": ["Beine", "Waden"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Wadenheben stehend"],
+        "difficulty": 3,
+        "muscle_group": ["Beine", "Waden"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Trizepsdrücken"],
+        "difficulty": 3,
+        "muscle_group": ["Arme", "Trizeps"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Arnold Dips"],
+        "difficulty": 3,
+        "muscle_group": ["Arme", "Trizeps"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Dips"],
+        "difficulty": 3,
+        "muscle_group": ["Arme", "Trizeps", "Vordere Schulter"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["French Press"],
+        "difficulty": 3,
+        "muscle_group": ["Arme", "Trizeps"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Enges Bankdrücken"],
+        "difficulty": 3,
+        "muscle_group": ["Arme", "Trizeps"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Trizeps Kickbacks"],
+        "difficulty": 3,
+        "muscle_group": ["Arme", "Trizeps"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Bizepscurls"],
+        "difficulty": 3,
+        "muscle_group": ["Arme", "Bizeps"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Aufrechtes Rudern", "Cable Upright Row"],
+        "difficulty": 3,
+        "muscle_group": ["Rücken", "Oberer Trapezius"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Face Pulls"],
+        "difficulty": 3,
+        "muscle_group": ["Rücken", "Unterer Trapezius", "Rotatorenmanschette", "Hintere Schulter"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Reverse Flys"],
+        "difficulty": 3,
+        "muscle_group": ["Rücken", "Unterer Trapezius", "Hintere Schulter"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Prone Y-Raises"],
+        "difficulty": 3,
+        "muscle_group": ["Rücken", "Unterer Trapezius"],
+        "training_location": ["Gym", "Zuhause"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Klimmzüge", "Pull-Ups"],
+        "difficulty": 3,
+        "muscle_group": ["Rücken", "Unterer Trapezius", "Oberer Trapezius", "Latissimus", "Teres Major"],
+        "training_location": ["Gym", "Cali-Park"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Kabelaußenrotation", "Außenrotation am Kabelzug"],
+        "difficulty": 3,
+        "muscle_group": ["Rücken", "Rotatorenmanschette"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Frontheben mit Kurzhanteln", "Dumbbell Front Raise"],
+        "difficulty": 3,
+        "muscle_group": ["Schulter", "Vordere Schulter"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Frontheben mit Langhantel", "Barbell Front Raise"],
+        "difficulty": 3,
+        "muscle_group": ["Schulter", "Vordere Schulter"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Arnold Presse", "Arnold Press"],
+        "difficulty": 3,
+        "muscle_group": ["Schulter", "Vordere Schulter"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Frontheben am Kabelturm", "Cable Front Raise"],
+        "difficulty": 3,
+        "muscle_group": ["Schulter", "Vordere Schulter"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Rear Delt Flys am Kabelzug", "Cable Front Raise"],
+        "difficulty": 3,
+        "muscle_group": ["Schulter", "Hintere Schulter"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Bent-Over Reverse Flys"],
+        "difficulty": 3,
+        "muscle_group": ["Schulter", "Hintere Schulter"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Seitheben", "Lateral Raise"],
+        "difficulty": 3,
+        "muscle_group": ["Schulter", "Seitliche Schulter"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Seitheben am Kabelzug", "Lateral Raise"],
+        "difficulty": 3,
+        "muscle_group": ["Schulter", "Seitliche Schulter"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Seitheben an der Maschine", "Lateral Raise"],
+        "difficulty": 3,
+        "muscle_group": ["Schulter", "Seitliche Schulter"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    }
+];
+*/
 async function createFullBodyWorkout(fitnesslevel) {
     let trainingsplan = [];
 
@@ -376,8 +734,8 @@ async function createPushWorkout(fitnesslevel) {
 
     push.forEach(muskelgruppe => {
         let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
-            exercise.muscle_group.includes(muskelgruppe) && // Ändere 'muscleGroup' auf 'muscle_group'
-            exercise.difficulty === fitnesslevel // Ändere 'difficultyLevel' auf 'difficulty'
+            exercise.muscle_group.includes(muskelgruppe) &&
+            exercise.difficulty === fitnesslevel
         ));
 
         if (verfuegbareUebungen.length > 0) {
@@ -386,7 +744,7 @@ async function createPushWorkout(fitnesslevel) {
     });
 
     // Rückgabe des Trainingsplans als String
-    return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n'); // Verwende den ersten Namen
+    return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n');
 }
 
 async function createPullWorkout(fitnesslevel) {
@@ -396,8 +754,8 @@ async function createPullWorkout(fitnesslevel) {
 
     pull.forEach(muskelgruppe => {
         let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
-            exercise.muscle_group.includes(muskelgruppe) && // Ändere 'muscleGroup' auf 'muscle_group'
-            exercise.difficulty === fitnesslevel // Ändere 'difficultyLevel' auf 'difficulty'
+            exercise.muscle_group.includes(muskelgruppe) &&
+            exercise.difficulty === fitnesslevel
         ));
 
         if (verfuegbareUebungen.length > 0) {
@@ -413,6 +771,46 @@ async function createLegsWorkout(fitnesslevel) {
     let trainingsplan = [];
 
     const legs = ["Beine", "Beine", "Quadtrizeps", "Beinbeuger", "Waden", "Waden"];
+
+    legs.forEach(muskelgruppe => {
+        let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
+            exercise.muscle_group.includes(muskelgruppe) &&
+            exercise.difficulty === fitnesslevel
+        ));
+
+        if (verfuegbareUebungen.length > 0) {
+            trainingsplan.push(verfuegbareUebungen[0]);
+        }
+    });
+
+    // Rückgabe des Trainingsplans als String
+    return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n');
+}
+
+async function createBackWorkout(fitnesslevel) {
+    let trainingsplan = [];
+
+    const legs = ["Latissimus", "Oberer Trapezius", "Unterer Trapezius", "Unterer Rücken", "Rotatorenmanschette", "Teres Major"];
+
+    legs.forEach(muskelgruppe => {
+        let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
+            exercise.muscle_group.includes(muskelgruppe) &&
+            exercise.difficulty === fitnesslevel
+        ));
+
+        if (verfuegbareUebungen.length > 0) {
+            trainingsplan.push(verfuegbareUebungen[0]);
+        }
+    });
+
+    // Rückgabe des Trainingsplans als String
+    return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n');
+}
+
+async function createShoulderNeckWorkout(fitnesslevel) {
+    let trainingsplan = [];
+
+    const legs = ["Vordere Schulter", "Vordere Schulter", "Seitliche Schulter", "Seitliche Schulter", "Hintere Schulter", "Hintere Schulter", "Nacken", "Nacken"];
 
     legs.forEach(muskelgruppe => {
         let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
@@ -455,72 +853,71 @@ async function displayPlan(){
         triweeklyTableContainer.style.display = "block";
         var tabelle = document.getElementById("triweeklyID").getElementsByTagName("table")[0];
         var zeilen = tabelle.getElementsByTagName("tr");
-        let counterForPushPullLegs = 1;
-        let counterWeek = 1;
-        for (var i = 0; i < zeilen.length; i++) {
-            var zellen = zeilen[i].getElementsByTagName("td");
-            for (var j = 0; j < zellen.length; j++) {
-                if(results[6][j] == 1){
-                    // Push, Pull, Legs, Push
-                    if(counterWeek == 1){
-                        if(counterForPushPullLegs == 1){
-                            zellen[j].innerText = await createPushWorkout(3);
-                            counterForPushPullLegs++;
-                        } else if(counterForPushPullLegs == 2){
-                            zellen[j].innerText = await createPullWorkout(3);
-                            counterForPushPullLegs++;
-                        } else if(counterForPushPullLegs == 3){
-                            zellen[j].innerText = await createLegsWorkout(3);
-                            counterForPushPullLegs++;
-                        } else if(counterForPushPullLegs == 4){
-                            zellen[j].innerText = await createPushWorkout(3);
-                            counterForPushPullLegs++;
-                        }
-                    } 
-                    // Pull, Legs, Push, Pull
-                    else if(counterWeek == 1){
-                        if(counterForPushPullLegs == 1){
-                            zellen[j].innerText = await createPullWorkout(3);
-                            counterForPushPullLegs++;
-                        } else if(counterForPushPullLegs == 2){
-                            zellen[j].innerText = await createLegsWorkout(3);
-                            counterForPushPullLegs++;
-                        } else if(counterForPushPullLegs == 3){
-                            zellen[j].innerText = await createPushWorkout(3);
-                            counterForPushPullLegs++;
-                        } else if(counterForPushPullLegs == 4){
-                            zellen[j].innerText = await createPullWorkout(3);
-                            counterForPushPullLegs++;
-                        }
-                    } 
-                    // Legs, Push, Pull, Legs
-                    else if(counterWeek == 1){
-                        if(counterForPushPullLegs == 1){
-                            zellen[j].innerText = await createLegsWorkout(3);
-                            counterForPushPullLegs++;
-                        } else if(counterForPushPullLegs == 2){
-                            zellen[j].innerText = await createPushWorkout(3);
-                            counterForPushPullLegs++;
-                        } else if(counterForPushPullLegs == 3){
-                            zellen[j].innerText = await createPullWorkout(3);
-                            counterForPushPullLegs++;
-                        } else if(counterForPushPullLegs == 4){
-                            zellen[j].innerText = await createLegsWorkout(3);
-                            counterForPushPullLegs++;
-                        }
-                    }
+        var zellenWocheEins = zeilen[1].getElementsByTagName("td");
+        var zellenWocheZwei = zeilen[2].getElementsByTagName("td");
+        var zellenWocheDrei = zeilen[3].getElementsByTagName("td");
+        let counterForTrainingOrder = 1;
+        for (var j = 0; j < zellenWocheEins.length; j++) {
+            if(results[6][j] == 1){
+                if(counterForTrainingOrder == 1){
+                    zellenWocheEins[j].innerText = await createPushWorkout(3);
+                    counterForTrainingOrder++;
+                } else if(counterForTrainingOrder == 2){
+                    zellenWocheEins[j].innerText = await createPullWorkout(3);
+                    counterForTrainingOrder++;
+                } else if(counterForTrainingOrder == 3){
+                    zellenWocheEins[j].innerText = await createLegsWorkout(3);
+                    counterForTrainingOrder++;
+                } else if(counterForTrainingOrder == 4){
+                    zellenWocheEins[j].innerText = await createPushWorkout(3);
+                    counterForTrainingOrder++;
                 }
             }
-            counterWeek++;
-            counterForPushPullLegs = 1;
         }
-    } else {
+        counterForTrainingOrder = 1;
+        for (var j = 0; j < zellenWocheZwei.length; j++) {
+            if(results[6][j] == 1){
+                if(counterForTrainingOrder == 1){
+                    zellenWocheZwei[j].innerText = await createPullWorkout(3);
+                    counterForTrainingOrder++;
+                } else if(counterForTrainingOrder == 2){
+                    zellenWocheZwei[j].innerText = await createLegsWorkout(3);
+                    counterForTrainingOrder++;
+                } else if(counterForTrainingOrder == 3){
+                    zellenWocheZwei[j].innerText = await createPushWorkout(3);
+                    counterForTrainingOrder++;
+                } else if(counterForTrainingOrder == 4){
+                    zellenWocheZwei[j].innerText = await createPullWorkout(3);
+                    counterForTrainingOrder++;
+                }
+            }
+        }
+        counterForTrainingOrder = 1;
+        for (var j = 0; j < zellenWocheDrei.length; j++) {
+            if(results[6][j] == 1){
+                if(counterForTrainingOrder == 1){
+                    zellenWocheDrei[j].innerText = await createLegsWorkout(3);
+                    counterForTrainingOrder++;
+                } else if(counterForTrainingOrder == 2){
+                    zellenWocheDrei[j].innerText = await createPushWorkout(3);
+                    counterForTrainingOrder++;
+                } else if(counterForTrainingOrder == 3){
+                    zellenWocheDrei[j].innerText = await createPullWorkout(3);
+                    counterForTrainingOrder++;
+                } else if(counterForTrainingOrder == 4){
+                    zellenWocheDrei[j].innerText = await createLegsWorkout(3);
+                    counterForTrainingOrder++;
+                }
+            }
+        }
+    } 
+    else {
         // Zeige 1-wöchige Tabelle
         weeklyTableContainer.style.display = "block";
         var tabelle = document.getElementById("weeklyID").getElementsByTagName("table")[0];
         var zeilen = tabelle.getElementsByTagName("tr");
         var zellen = zeilen[1].getElementsByTagName("td");
-        let counterForPushPullLegs = 1;
+        let counterForTrainingOrder = 1;
         for (var j = 0; j < zellen.length; j++) {
             if(results[6][j] == 1){
                 if (weekdays == 1){
@@ -531,27 +928,45 @@ async function displayPlan(){
                     zellen[j].innerText = await createFullBodyWorkout(3);
                 } else if(weekdays == 3){
                     // Push, Pull, Legs
-                    if(counterForPushPullLegs == 1){
+                    if(counterForTrainingOrder == 1){
                         zellen[j].innerText = await createPushWorkout(3);
-                        counterForPushPullLegs++;
-                    } else if(counterForPushPullLegs == 2){
+                        counterForTrainingOrder++;
+                    } else if(counterForTrainingOrder == 2){
                         zellen[j].innerText = await createPullWorkout(3);
-                        counterForPushPullLegs++;
-                    } else if(counterForPushPullLegs == 3){
+                        counterForTrainingOrder++;
+                    } else if(counterForTrainingOrder == 3){
                         zellen[j].innerText = await createLegsWorkout(3);
-                        counterForPushPullLegs++;
+                        counterForTrainingOrder++;
+                    }
+                } else if(weekdays == 5){
+                    // Push, Pull, Legs, Push, Pull, Legs
+                    if(counterForTrainingOrder == 1){
+                        zellen[j].innerText = await createPushWorkout(3);
+                        counterForTrainingOrder++;
+                    } else if(counterForTrainingOrder == 2){
+                        zellen[j].innerText = await createLegsWorkout(3);
+                        counterForTrainingOrder++;
+                    }else if(counterForTrainingOrder == 3){
+                        zellen[j].innerText = await createBackWorkout(3);
+                        counterForTrainingOrder++;
+                    } else if(counterForTrainingOrder == 4){
+                        zellen[j].innerText = await createShoulderNeckWorkout(3);
+                        counterForTrainingOrder++;
+                    } else if(counterForTrainingOrder == 5){
+                        zellen[j].innerText = await createLegsWorkout(3); // Replace with createArmWorkout()
+                        counterForTrainingOrder++;
                     }
                 } else if(weekdays == 6){
                     // Push, Pull, Legs, Push, Pull, Legs
-                    if(counterForPushPullLegs == 1 || counterForPushPullLegs == 4){
+                    if(counterForTrainingOrder == 1 || counterForTrainingOrder == 4){
                         zellen[j].innerText = await createPushWorkout(3);
-                        counterForPushPullLegs++;
-                    } else if(counterForPushPullLegs == 2 || counterForPushPullLegs == 5){
+                        counterForTrainingOrder++;
+                    } else if(counterForTrainingOrder == 2 || counterForTrainingOrder == 5){
                         zellen[j].innerText = await createPullWorkout(3);
-                        counterForPushPullLegs++;
-                    }else if(counterForPushPullLegs == 3 || counterForPushPullLegs == 6){
+                        counterForTrainingOrder++;
+                    }else if(counterForTrainingOrder == 3 || counterForTrainingOrder == 6){
                         zellen[j].innerText = await createLegsWorkout(3);
-                        counterForPushPullLegs++;
+                        counterForTrainingOrder++;
                     }
                 }
             }

@@ -45,6 +45,18 @@ body {
     margin-bottom: 20px;
 }
 
+
+/* Format for triweekly training table */
+.table-container {
+    max-height: 80vh; /* Höhe auf maximal 80% der Bildschirmhöhe beschränken */
+    overflow-y: auto; /* Vertikales Scrollen erlauben */
+    top: 10vh; /* Abstand von oben, damit der Container nicht den oberen Rand berührt */
+    left: 0;
+    right: 0;
+    margin: 0 auto; /* Zentriert den Container horizontal */
+}
+
+
 /* Navigation Button Container */
 #prevButton{
     display: none;
@@ -383,8 +395,6 @@ table {
     align-items: center;
     justify-content: center;
 }
-
-/* -------------- ToDo -------------- */
 
 /* 'On Click' behavior for when only a single button can be selected */
 input:checked + .radio-tile {
