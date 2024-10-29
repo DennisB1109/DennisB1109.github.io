@@ -416,8 +416,8 @@ async function createLegsWorkout(fitnesslevel) {
 
     legs.forEach(muskelgruppe => {
         let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
-            exercise.muscle_group.includes(muskelgruppe) && // Ändere 'muscleGroup' auf 'muscle_group'
-            exercise.difficulty === fitnesslevel // Ändere 'difficultyLevel' auf 'difficulty'
+            exercise.muscle_group.includes(muskelgruppe) &&
+            exercise.difficulty === fitnesslevel
         ));
 
         if (verfuegbareUebungen.length > 0) {
@@ -453,12 +453,72 @@ async function displayPlan(){
     if(weekdays == 4 && trainingGoal == "Muskelaufbau"){
         // Zeige 3-wöchige Tabelle
         triweeklyTableContainer.style.display = "block";
+        var tabelle = document.getElementById("triweeklyID").getElementsByTagName("table")[0];
+        var zeilen = tabelle.getElementsByTagName("tr");
+        let counterForPushPullLegs = 1;
+        let counterWeek = 1;
+        for (var i = 0; i < zeilen.length; i++) {
+            var zellen = zeilen[i].getElementsByTagName("td");
+            for (var j = 0; j < zellen.length; j++) {
+                if(results[6][j] == 1){
+                    // Push, Pull, Legs, Push
+                    if(counterWeek == 1){
+                        if(counterForPushPullLegs == 1){
+                            zellen[j].innerText = await createPushWorkout(3);
+                            counterForPushPullLegs++;
+                        } else if(counterForPushPullLegs == 2){
+                            zellen[j].innerText = await createPullWorkout(3);
+                            counterForPushPullLegs++;
+                        } else if(counterForPushPullLegs == 3){
+                            zellen[j].innerText = await createLegsWorkout(3);
+                            counterForPushPullLegs++;
+                        } else if(counterForPushPullLegs == 4){
+                            zellen[j].innerText = await createPushWorkout(3);
+                            counterForPushPullLegs++;
+                        }
+                    } 
+                    // Pull, Legs, Push, Pull
+                    else if(counterWeek == 1){
+                        if(counterForPushPullLegs == 1){
+                            zellen[j].innerText = await createPullWorkout(3);
+                            counterForPushPullLegs++;
+                        } else if(counterForPushPullLegs == 2){
+                            zellen[j].innerText = await createLegsWorkout(3);
+                            counterForPushPullLegs++;
+                        } else if(counterForPushPullLegs == 3){
+                            zellen[j].innerText = await createPushWorkout(3);
+                            counterForPushPullLegs++;
+                        } else if(counterForPushPullLegs == 4){
+                            zellen[j].innerText = await createPullWorkout(3);
+                            counterForPushPullLegs++;
+                        }
+                    } 
+                    // Legs, Push, Pull, Legs
+                    else if(counterWeek == 1){
+                        if(counterForPushPullLegs == 1){
+                            zellen[j].innerText = await createLegsWorkout(3);
+                            counterForPushPullLegs++;
+                        } else if(counterForPushPullLegs == 2){
+                            zellen[j].innerText = await createPushWorkout(3);
+                            counterForPushPullLegs++;
+                        } else if(counterForPushPullLegs == 3){
+                            zellen[j].innerText = await createPullWorkout(3);
+                            counterForPushPullLegs++;
+                        } else if(counterForPushPullLegs == 4){
+                            zellen[j].innerText = await createLegsWorkout(3);
+                            counterForPushPullLegs++;
+                        }
+                    }
+                }
+            }
+            counterWeek++;
+            counterForPushPullLegs = 1;
+        }
     } else {
         // Zeige 1-wöchige Tabelle
         weeklyTableContainer.style.display = "block";
         var tabelle = document.getElementById("weeklyID").getElementsByTagName("table")[0];
         var zeilen = tabelle.getElementsByTagName("tr");
-        
         var zellen = zeilen[1].getElementsByTagName("td");
         let counterForPushPullLegs = 1;
         for (var j = 0; j < zellen.length; j++) {
