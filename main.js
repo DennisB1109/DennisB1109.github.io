@@ -827,6 +827,26 @@ async function createShoulderNeckWorkout(fitnesslevel) {
     return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n');
 }
 
+async function createArmWorkout(fitnesslevel) {
+    let trainingsplan = [];
+
+    const legs = ["Bizeps", "Bizeps", "Bizeps", "Bizeps", "Trizeps", "Trizeps", "Trizeps"];
+
+    legs.forEach(muskelgruppe => {
+        let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
+            exercise.muscle_group.includes(muskelgruppe) &&
+            exercise.difficulty === fitnesslevel
+        ));
+
+        if (verfuegbareUebungen.length > 0) {
+            trainingsplan.push(verfuegbareUebungen[0]);
+        }
+    });
+
+    // Rückgabe des Trainingsplans als String
+    return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n');
+}
+
 async function displayPlan(){
     wochenplanContainer.style.display = "none";
     TitleTextContainer.style.display = "none";
@@ -953,7 +973,7 @@ async function displayPlan(){
                         zellen[j].innerText = await createShoulderNeckWorkout(3);
                         counterForTrainingOrder++;
                     } else if(counterForTrainingOrder == 5){
-                        zellen[j].innerText = await createLegsWorkout(3); // Replace with createArmWorkout()
+                        zellen[j].innerText = await createArmWorkout(3);
                         counterForTrainingOrder++;
                     }
                 } else if(weekdays == 6){
