@@ -291,7 +291,7 @@
 		"37" : {
 			"name" : ["Frontheben mit Kurzhanteln", "Dumbbell Front Raise"],
 			"difficulty" : 3,
-			"muscle_group" : ["Schulter", "Vordere Schulter"],
+			"muscle_group" : ["Schultern", "Vordere Schulter"],
 			"training_location" : ["Gym"],
 			"age" : [1, 100],
 			"goal" : "Muskelaufbau"
@@ -299,7 +299,7 @@
 		"38" : {
 			"name" : ["Frontheben mit Langhantel", "Barbell Front Raise"],
 			"difficulty" : 3,
-			"muscle_group" : ["Schulter", "Vordere Schulter"],
+			"muscle_group" : ["Schultern", "Vordere Schulter"],
 			"training_location" : ["Gym"],
 			"age" : [1, 100],
 			"goal" : "Muskelaufbau"
@@ -307,7 +307,7 @@
 		"39" : {
 			"name" : ["Arnold Presse", "Arnold Press"],
 			"difficulty" : 3,
-			"muscle_group" : ["Schulter", "Vordere Schulter"],
+			"muscle_group" : ["Schultern", "Vordere Schulter"],
 			"training_location" : ["Gym"],
 			"age" : [1, 100],
 			"goal" : "Muskelaufbau"
@@ -315,7 +315,7 @@
 		"40" : {
 			"name" : ["Arnold Presse", "Arnold Press"],
 			"difficulty" : 3,
-			"muscle_group" : ["Schulter", "Vordere Schulter"],
+			"muscle_group" : ["Schultern", "Vordere Schulter"],
 			"training_location" : ["Gym"],
 			"age" : [1, 100],
 			"goal" : "Muskelaufbau"
@@ -323,7 +323,7 @@
 		"41" : {
 			"name" : ["Frontheben am Kabelturm", "Cable Front Raise"],
 			"difficulty" : 3,
-			"muscle_group" : ["Schulter", "Vordere Schulter"],
+			"muscle_group" : ["Schultern", "Vordere Schulter"],
 			"training_location" : ["Gym"],
 			"age" : [1, 100],
 			"goal" : "Muskelaufbau"
@@ -331,7 +331,7 @@
 		"42" : {
 			"name" : ["Rear Delt Flys am Kabelzug", "Cable Front Raise"],
 			"difficulty" : 3,
-			"muscle_group" : ["Schulter", "Hintere Schulter"],
+			"muscle_group" : ["Schultern", "Hintere Schulter"],
 			"training_location" : ["Gym"],
 			"age" : [1, 100],
 			"goal" : "Muskelaufbau"
@@ -339,7 +339,7 @@
 		"43" : {
 			"name" : ["Bent-Over Reverse Flys"],
 			"difficulty" : 3,
-			"muscle_group" : ["Schulter", "Hintere Schulter"],
+			"muscle_group" : ["Schultern", "Hintere Schulter"],
 			"training_location" : ["Gym"],
 			"age" : [1, 100],
 			"goal" : "Muskelaufbau"
@@ -347,7 +347,7 @@
 		"44" : {
 			"name" : ["Seitheben", "Lateral Raise"],
 			"difficulty" : 3,
-			"muscle_group" : ["Schulter", "Seitliche Schulter"],
+			"muscle_group" : ["Schultern", "Seitliche Schulter"],
 			"training_location" : ["Gym"],
 			"age" : [1, 100],
 			"goal" : "Muskelaufbau"
@@ -355,7 +355,7 @@
 		"45" : {
 			"name" : ["Seitheben am Kabelzug", "Cable Lateral Raise"],
 			"difficulty" : 3,
-			"muscle_group" : ["Schulter", "Seitliche Schulter"],
+			"muscle_group" : ["Schultern", "Seitliche Schulter"],
 			"training_location" : ["Gym"],
 			"age" : [1, 100],
 			"goal" : "Muskelaufbau"
@@ -363,7 +363,7 @@
 		"46" : {
 			"name" : ["Seitheben an der Maschine", "Machine Lateral Raise"],
 			"difficulty" : 3,
-			"muscle_group" : ["Schulter", "Seitliche Schulter"],
+			"muscle_group" : ["Schultern", "Seitliche Schulter"],
 			"training_location" : ["Gym"],
 			"age" : [1, 100],
 			"goal" : "Muskelaufbau"

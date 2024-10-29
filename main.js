@@ -636,7 +636,7 @@ let exercises = [
     {
         "name": ["Frontheben mit Kurzhanteln", "Dumbbell Front Raise"],
         "difficulty": 3,
-        "muscle_group": ["Schulter", "Vordere Schulter"],
+        "muscle_group": ["Schultern", "Vordere Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
         "goal": "Muskelaufbau"
@@ -644,7 +644,7 @@ let exercises = [
     {
         "name": ["Frontheben mit Langhantel", "Barbell Front Raise"],
         "difficulty": 3,
-        "muscle_group": ["Schulter", "Vordere Schulter"],
+        "muscle_group": ["Schultern", "Vordere Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
         "goal": "Muskelaufbau"
@@ -652,7 +652,7 @@ let exercises = [
     {
         "name": ["Arnold Presse", "Arnold Press"],
         "difficulty": 3,
-        "muscle_group": ["Schulter", "Vordere Schulter"],
+        "muscle_group": ["Schultern", "Vordere Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
         "goal": "Muskelaufbau"
@@ -660,7 +660,7 @@ let exercises = [
     {
         "name": ["Frontheben am Kabelturm", "Cable Front Raise"],
         "difficulty": 3,
-        "muscle_group": ["Schulter", "Vordere Schulter"],
+        "muscle_group": ["Schultern", "Vordere Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
         "goal": "Muskelaufbau"
@@ -668,7 +668,7 @@ let exercises = [
     {
         "name": ["Rear Delt Flys am Kabelzug", "Cable Front Raise"],
         "difficulty": 3,
-        "muscle_group": ["Schulter", "Hintere Schulter"],
+        "muscle_group": ["Schultern", "Hintere Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
         "goal": "Muskelaufbau"
@@ -676,7 +676,7 @@ let exercises = [
     {
         "name": ["Bent-Over Reverse Flys"],
         "difficulty": 3,
-        "muscle_group": ["Schulter", "Hintere Schulter"],
+        "muscle_group": ["Schultern", "Hintere Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
         "goal": "Muskelaufbau"
@@ -684,7 +684,7 @@ let exercises = [
     {
         "name": ["Seitheben", "Lateral Raise"],
         "difficulty": 3,
-        "muscle_group": ["Schulter", "Seitliche Schulter"],
+        "muscle_group": ["Schultern", "Seitliche Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
         "goal": "Muskelaufbau"
@@ -692,7 +692,7 @@ let exercises = [
     {
         "name": ["Seitheben am Kabelzug", "Lateral Raise"],
         "difficulty": 3,
-        "muscle_group": ["Schulter", "Seitliche Schulter"],
+        "muscle_group": ["Schultern", "Seitliche Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
         "goal": "Muskelaufbau"
@@ -700,7 +700,7 @@ let exercises = [
     {
         "name": ["Seitheben an der Maschine", "Lateral Raise"],
         "difficulty": 3,
-        "muscle_group": ["Schulter", "Seitliche Schulter"],
+        "muscle_group": ["Schultern", "Seitliche Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
         "goal": "Muskelaufbau"
