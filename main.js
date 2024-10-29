@@ -72,54 +72,6 @@ const results = [
     [0,0,0,0,0,0,0]     // Entries for TrainingDays
 ]
 
-class Exercise {
-    constructor(name, muscleGroup, difficultyLevel){
-        this.name = name;
-        this.muscleGroup = muscleGroup;
-        this.difficultyLevel = difficultyLevel;
-    }
-}
-
-// const exercises = [
-//     new Exercise("Bankdrücken", "Brust", 3),
-//     new Exercise("Butterfly", "Brust", 3),
-//     new Exercise("Fliegende mit Kurzhanteln", "Brust", 3),
-//     new Exercise("Schrägbankdrücken", "Brust", 3),
-//     new Exercise("Negativbankdrücken", "Brust", 3),
-//     new Exercise("Cable Fly", "Brust", 3),
-//     new Exercise("Brustpresse", "Brust", 3),
-    
-//     new Exercise("Latzug", "Rücken", 3),
-//     new Exercise("Kreuzheben", "Rücken", 3),
-//     new Exercise("Rudern", "Rücken", 3),
-
-//     new Exercise("Shrugs", "Nacken", 3),
-    
-//     new Exercise("Schulterdrücken", "Schultern", 3),
-    
-//     new Exercise("Ausfallschritte", "Beine", 3),
-//     new Exercise("Kniebeugen", "Beine", 3),
-//     new Exercise("Schrägbeinpresse", "Beine", 3),
-//     new Exercise("Beinpresse", "Beine", 3),
-//     new Exercise("Bulgarian Split Squats", "Beine", 3),
-    
-//     new Exercise("Beinstecker", "Quadtrizeps", 3),
-
-//     new Exercise("Beinbeuger", "Beinbeuger", 3),
-
-//     new Exercise("Wadenheben sitzend", "Waden", 3),
-//     new Exercise("Wadenheben stehend", "Waden", 3),
-    
-//     new Exercise("Trizepsdrücken", "Trizeps", 3),
-//     new Exercise("Arnold Dips", "Trizeps", 3),
-//     new Exercise("Dips", "Trizeps", 3),
-//     new Exercise("French Press", "Trizeps", 3),
-//     new Exercise("Enges Bankdrücken", "Trizeps", 3),
-//     new Exercise("Trizeps Kickbacks", "Trizeps", 3),
-
-//     new Exercise("Bizepscurls", "Bizeps", 3)
-// ];
-
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -490,11 +442,15 @@ async function displayPlan(){
             weekdays++;
         }
     }
+    // Prüfen welches Trainingsziel (Muskelaufbau, Abnehmen, Reha)
+    const trainingGoals = ["Muskelaufbau", "Abnehmen", "Reha"];
+    const goalIndex = results[4].findIndex(value => value === 1);
+    const trainingGoal = goalIndex !== -1 ? trainingGoals[goalIndex] : "";
 
     const showText = document.getElementById("TitleTextContainer");
     showText.innerHTML = "Basierend auf deinen Angaben wurde für dich folgender Trainingsplan erstellt";
     showText.style.display = "block";
-    if(weekdays == 4){
+    if(weekdays == 4 && trainingGoal == "Muskelaufbau"){
         // Zeige 3-wöchige Tabelle
         triweeklyTableContainer.style.display = "block";
     } else {
