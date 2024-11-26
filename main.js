@@ -327,7 +327,7 @@ function shuffleArray(array) {
 }
 
 // Code Block einkommentieren um die JSON Datei als Datenbank für die Übungen zu verwenden
-
+/*
 // Lade die JSON-Datei welche die Übungen enthält und greife auf Übungen zu
 let exercises = []; // Globale Variable für die Übungen
 // Funktion, um die JSON-Datei zu laden und Übungen global zu speichern
@@ -349,28 +349,36 @@ window.onload = async function() {
     await loadExercises(); // Lade die Übungen einmalig
     // Du kannst hier weitere Initialisierungen vornehmen
 };
-
+*/
 // Code Block einkommentieren um lokal mit den Übungen zu arbeiten
-/*
+
 let exercises = [
     {
         "name": ["Bankdrücken"],
         "difficulty": 3,
-        "muscle_group": ["Brust"],
+        "muscle_group": ["Brust", "Mittlere Brust"],
         "training_location": ["Gym"],
         "age": [1, 100],
         "goal": "Muskelaufbau"
     },
     {
-        "name": ["Butterfly"],
+        "name": ["Butterfly-Maschine"],
         "difficulty": 3,
-        "muscle_group": ["Brust"],
+        "muscle_group": ["Brust", "Innere Brust"],
         "training_location": ["Gym"],
         "age": [1, 100],
         "goal": "Muskelaufbau"
     },
     {
         "name": ["Fliegende mit Kurzhanteln"],
+        "difficulty": 1,
+        "muscle_group": ["Brust", "Innere Brust"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Schrägbankdrücken", "Obere Brust"],
         "difficulty": 3,
         "muscle_group": ["Brust"],
         "training_location": ["Gym"],
@@ -378,15 +386,7 @@ let exercises = [
         "goal": "Muskelaufbau"
     },
     {
-        "name": ["Schrägbankdrücken"],
-        "difficulty": 3,
-        "muscle_group": ["Brust"],
-        "training_location": ["Gym"],
-        "age": [1, 100],
-        "goal": "Muskelaufbau"
-    },
-    {
-        "name": ["Negativbankdrücken"],
+        "name": ["Negativbankdrücken", "Untere Brust"],
         "difficulty": 3,
         "muscle_group": ["Brust"],
         "training_location": ["Gym"],
@@ -396,15 +396,15 @@ let exercises = [
     {
         "name": ["Cable Fly"],
         "difficulty": 3,
-        "muscle_group": ["Brust"],
+        "muscle_group": ["Brust", "Innere Brust"],
         "training_location": ["Gym"],
         "age": [1, 100],
         "goal": "Muskelaufbau"
     },
     {
-        "name": ["Brustpresse"],
+        "name": ["Brustpresse Maschine"],
         "difficulty": 3,
-        "muscle_group": ["Brust"],
+        "muscle_group": ["Brust", "Mittlere Brust"],
         "training_location": ["Gym"],
         "age": [1, 100],
         "goal": "Muskelaufbau"
@@ -498,7 +498,7 @@ let exercises = [
         "goal": "Muskelaufbau"
     },
     {
-        "name": ["Beinstecker"],
+        "name": ["Beinstrecker"],
         "difficulty": 3,
         "muscle_group": ["Beine", "Quadtrizeps"],
         "training_location": ["Gym"],
@@ -699,153 +699,527 @@ let exercises = [
     },
     {
         "name": ["Seitheben an der Maschine", "Lateral Raise"],
-        "difficulty": 3,
+        "difficulty": 3,    // Schwer
         "muscle_group": ["Schultern", "Seitliche Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
         "goal": "Muskelaufbau"
-    }
+    },
+    {
+        "name": ["Brustpresse mit Kurzhanteln", "Dumbbell Bench Press"],
+        "difficulty": 1,    // Leicht
+        "muscle_group": ["Brust", "Mittlere Brust"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Kurzhantel Überzüge", "Dumbbell Pullover"],
+        "difficulty": 2,    // Mittel
+        "muscle_group": ["Brust", "Untere Brust"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Liegestütze", "Push Ups"],
+        "difficulty": 1,
+        "muscle_group": ["Brust", "Mittlere Brust"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Negativ Liegestütze (Füße auf Bank)", "Decline Push Up (Feet on Bench)"],
+        "difficulty": 1,
+        "muscle_group": ["Brust", "Obere Brust"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Positiv Liegestütze (Hände auf Bank)", "Incline Push Up (Hands on Bench)"],
+        "difficulty": 1,
+        "muscle_group": ["Brust", "Untere Brust"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Positiv Bankdrücken (Smith Machine)", "Smith Machine Incline Bench Press"],
+        "difficulty": 1,
+        "muscle_group": ["Brust", "Obere Brust"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Bankdrücken (Smith Machine)", "Smith Machine Bench Press"],
+        "difficulty": 1,
+        "muscle_group": ["Brust", "Mittlere Brust"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Reverse Curls"],
+        "difficulty": 1,
+        "muscle_group": ["Arme", "Bizeps"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Konzentrations Curl", "Concentration Curl"],
+        "difficulty": 1,
+        "muscle_group": ["Arme", "Bizeps"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Hammer Curl"],
+        "difficulty": 1,
+        "muscle_group": ["Arme", "Bizeps"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Preacher Curl (Maschine)", "Preacher Curl (Machine)"],
+        "difficulty": 1,
+        "muscle_group": ["Arme", "Bizeps"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Kabel Curl", "Kabel Curl"],
+        "difficulty": 1,
+        "muscle_group": ["Arme", "Bizeps"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Curls mit SZ-Stange"],
+        "difficulty": 1,
+        "muscle_group": ["Arme", "Bizeps"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau"
+    },
+    {
+        "name": ["Aktive Erholung", "Active Rest"],
+        "difficulty": 1,
+        "muscle_group": ["Erholung"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Erholung"
+    },
 ];
-*/
-async function createFullBodyWorkout(fitnesslevel) {
-    let trainingsplan = [];
+// async function createFullBodyWorkout(fitnesslevel) {
+//     let trainingsplan = [];
 
-    const muskelGruppenReihenfolge = ["Beine", "Brust", "Rücken", "Schultern", "Trizeps", "Bizeps"];
+//     const muskelGruppenReihenfolge = ["Beine", "Brust", "Rücken", "Schultern", "Trizeps", "Bizeps"];
 
-    muskelGruppenReihenfolge.forEach(muskelgruppe => {
-        let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
-            exercise.muscle_group.includes(muskelgruppe) && 
-            exercise.difficulty === fitnesslevel
-        ));
+//     muskelGruppenReihenfolge.forEach(muskelgruppe => {
+//         let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
+//             exercise.muscle_group.includes(muskelgruppe) && 
+//             exercise.difficulty <= fitnesslevel
+//         ));
         
+//         if (verfuegbareUebungen.length > 0) {
+//             trainingsplan.push(verfuegbareUebungen[0]);
+//         }
+//     });
+
+//     // Rückgabe des Trainingsplans als String
+//     return trainingsplan.map(exercise => `${exercise.name} (${exercise.muscleGroup})`).join('\n\n');
+// }
+
+async function createFullBodyWorkout(fitnesslevel) {
+    const fullBody = ["Beine", "Brust", "Rücken", "Schultern", "Trizeps", "Bizeps"];
+    const trainingsplan = [];
+
+    // Filtere und wähle Übungen aus
+    fullBody.forEach(muskelgruppe => {
+        const verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
+            exercise.muscle_group.includes(muskelgruppe) &&
+            exercise.difficulty <= fitnesslevel
+        ));
+
         if (verfuegbareUebungen.length > 0) {
-            trainingsplan.push(verfuegbareUebungen[0]);
+            trainingsplan.push(verfuegbareUebungen[0].name[0]); // Name der Übung
         }
     });
 
-    // Rückgabe des Trainingsplans als String
-    return trainingsplan.map(exercise => `${exercise.name} (${exercise.muscleGroup})`).join('\n\n');
+    // Buttons erstellen
+    const buttonContainer = document.createElement('div');
+    buttonContainer.style.display = 'flex';
+    buttonContainer.style.flexWrap = 'wrap';
+    buttonContainer.style.gap = '5px';
+
+    trainingsplan.slice(0, 6).forEach(exerciseName => { // Maximal 6 Buttons
+        const button = document.createElement('button');
+        button.innerText = exerciseName;
+        button.classList.add('exercise-button'); // Optional für Styling
+        buttonContainer.appendChild(button);
+    });
+
+    return buttonContainer; // Rückgabe des Containers mit Buttons
 }
 
 async function createPushWorkout(fitnesslevel) {
-    let trainingsplan = [];
-
     const push = ["Brust", "Brust", "Brust", "Schultern", "Schultern", "Schultern", "Trizeps", "Trizeps"];
+    const trainingsplan = [];
 
+    // Filtere und wähle Übungen aus
     push.forEach(muskelgruppe => {
-        let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
+        const verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
             exercise.muscle_group.includes(muskelgruppe) &&
-            exercise.difficulty === fitnesslevel
+            exercise.difficulty <= fitnesslevel
         ));
 
         if (verfuegbareUebungen.length > 0) {
-            trainingsplan.push(verfuegbareUebungen[0]);
+            trainingsplan.push(verfuegbareUebungen[0].name[0]); // Name der Übung
         }
     });
 
-    // Rückgabe des Trainingsplans als String
-    return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n');
+    // Buttons erstellen
+    const buttonContainer = document.createElement('div');
+    buttonContainer.style.display = 'flex';
+    buttonContainer.style.flexWrap = 'wrap';
+    buttonContainer.style.gap = '5px';
+
+    trainingsplan.slice(0, 6).forEach(exerciseName => { // Maximal 6 Buttons
+        const button = document.createElement('button');
+        button.innerText = exerciseName;
+        button.classList.add('exercise-button'); // Optional für Styling
+        buttonContainer.appendChild(button);
+    });
+
+    return buttonContainer; // Rückgabe des Containers mit Buttons
 }
+
 
 async function createPullWorkout(fitnesslevel) {
-    let trainingsplan = [];
-
     const pull = ["Rücken", "Rücken", "Rücken", "Nacken", "Bizeps", "Bizeps"];
+    const trainingsplan = [];
 
+    // Filtere und wähle Übungen aus
     pull.forEach(muskelgruppe => {
-        let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
+        const verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
             exercise.muscle_group.includes(muskelgruppe) &&
-            exercise.difficulty === fitnesslevel
+            exercise.difficulty <= fitnesslevel
         ));
 
         if (verfuegbareUebungen.length > 0) {
-            trainingsplan.push(verfuegbareUebungen[0]);
+            trainingsplan.push(verfuegbareUebungen[0].name[0]); // Name der Übung
         }
     });
 
-    // Rückgabe des Trainingsplans als String
-    return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n');
+    // Buttons erstellen
+    const buttonContainer = document.createElement('div');
+    buttonContainer.style.display = 'flex';
+    buttonContainer.style.flexWrap = 'wrap';
+    buttonContainer.style.gap = '5px';
+
+    trainingsplan.slice(0, 6).forEach(exerciseName => { // Maximal 6 Buttons
+        const button = document.createElement('button');
+        button.innerText = exerciseName;
+        button.classList.add('exercise-button'); // Optional für Styling
+        buttonContainer.appendChild(button);
+    });
+
+    return buttonContainer; // Rückgabe des Containers mit Buttons
 }
+
 
 async function createLegsWorkout(fitnesslevel) {
-    let trainingsplan = [];
-
     const legs = ["Beine", "Beine", "Quadtrizeps", "Beinbeuger", "Waden", "Waden"];
+    const trainingsplan = [];
+    const hinzugefuegteUebungen = new Set(); // Doppelte Übungen vermeiden
 
+    // Filtere und wähle Übungen aus
     legs.forEach(muskelgruppe => {
-        let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
+        const verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
             exercise.muscle_group.includes(muskelgruppe) &&
-            exercise.difficulty === fitnesslevel
+            exercise.difficulty <= fitnesslevel &&
+            !hinzugefuegteUebungen.has(exercise.name)
         ));
 
         if (verfuegbareUebungen.length > 0) {
-            trainingsplan.push(verfuegbareUebungen[0]);
+            trainingsplan.push(verfuegbareUebungen[0].name[0]); // Name der Übung
+            hinzugefuegteUebungen.add(verfuegbareUebungen[0].name);
         }
     });
 
-    // Rückgabe des Trainingsplans als String
-    return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n');
+    // Buttons erstellen
+    const buttonContainer = document.createElement('div');
+    buttonContainer.style.display = 'flex';
+    buttonContainer.style.flexWrap = 'wrap';
+    buttonContainer.style.gap = '5px';
+
+    trainingsplan.slice(0, 6).forEach(exerciseName => { // Maximal 6 Buttons
+        const button = document.createElement('button');
+        button.innerText = exerciseName;
+        button.classList.add('exercise-button'); // Optional für Styling
+        buttonContainer.appendChild(button);
+    });
+
+    return buttonContainer; // Rückgabe des Containers mit Buttons
 }
+
+
+// async function createBackWorkout(fitnesslevel) {
+//     let trainingsplan = [];
+//     let hinzugefuegteUebungen = new Set();
+
+//     const legs = ["Latissimus", "Oberer Trapezius", "Unterer Trapezius", "Unterer Rücken", "Rotatorenmanschette", "Teres Major"];
+
+//     legs.forEach(muskelgruppe => {
+//         let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
+//             exercise.muscle_group.includes(muskelgruppe) &&
+//             exercise.difficulty <= fitnesslevel &&
+//             !hinzugefuegteUebungen.has(exercise.name)
+//         ));
+
+//         if (verfuegbareUebungen.length > 0) {
+//             trainingsplan.push(verfuegbareUebungen[0]);
+//             hinzugefuegteUebungen.add(verfuegbareUebungen[0].name);
+//         }
+//     });
+
+//     // Rückgabe des Trainingsplans als String
+//     return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n');
+// }
 
 async function createBackWorkout(fitnesslevel) {
-    let trainingsplan = [];
+    const back = ["Latissimus", "Oberer Trapezius", "Unterer Trapezius", "Unterer Rücken", "Rotatorenmanschette", "Teres Major"];
+    const trainingsplan = [];
+    const hinzugefuegteUebungen = new Set(); // Doppelte Übungen vermeiden
 
-    const legs = ["Latissimus", "Oberer Trapezius", "Unterer Trapezius", "Unterer Rücken", "Rotatorenmanschette", "Teres Major"];
-
-    legs.forEach(muskelgruppe => {
-        let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
+    // Filtere und wähle Übungen aus
+    back.forEach(muskelgruppe => {
+        const verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
             exercise.muscle_group.includes(muskelgruppe) &&
-            exercise.difficulty === fitnesslevel
+            exercise.difficulty <= fitnesslevel &&
+            !hinzugefuegteUebungen.has(exercise.name)
         ));
 
         if (verfuegbareUebungen.length > 0) {
-            trainingsplan.push(verfuegbareUebungen[0]);
+            trainingsplan.push(verfuegbareUebungen[0].name[0]); // Name der Übung
+            hinzugefuegteUebungen.add(verfuegbareUebungen[0].name);
         }
     });
 
-    // Rückgabe des Trainingsplans als String
-    return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n');
+    // Buttons erstellen
+    const buttonContainer = document.createElement('div');
+    buttonContainer.style.display = 'flex';
+    buttonContainer.style.flexWrap = 'wrap';
+    buttonContainer.style.gap = '5px';
+
+    trainingsplan.slice(0, 6).forEach(exerciseName => { // Maximal 6 Buttons
+        const button = document.createElement('button');
+        button.innerText = exerciseName;
+        button.classList.add('exercise-button'); // Optional für Styling
+        buttonContainer.appendChild(button);
+    });
+
+    return buttonContainer; // Rückgabe des Containers mit Buttons
 }
+
+// async function createShoulderNeckWorkout(fitnesslevel) {
+//     let trainingsplan = [];
+//     let hinzugefuegteUebungen = new Set();
+
+//     const legs = ["Vordere Schulter", "Vordere Schulter", "Seitliche Schulter", "Seitliche Schulter", "Hintere Schulter", "Hintere Schulter", "Nacken", "Nacken"];
+
+//     legs.forEach(muskelgruppe => {
+//         let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
+//             exercise.muscle_group.includes(muskelgruppe) &&
+//             exercise.difficulty <= fitnesslevel &&
+//             !hinzugefuegteUebungen.has(exercise.name)
+//         ));
+
+//         if (verfuegbareUebungen.length > 0) {
+//             trainingsplan.push(verfuegbareUebungen[0]);
+//             hinzugefuegteUebungen.add(verfuegbareUebungen[0].name);
+//         }
+//     });
+
+//     // Rückgabe des Trainingsplans als String
+//     return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n');
+// }
 
 async function createShoulderNeckWorkout(fitnesslevel) {
-    let trainingsplan = [];
+    const shoulderNeck = ["Vordere Schulter", "Vordere Schulter", "Seitliche Schulter", "Seitliche Schulter", "Hintere Schulter", "Hintere Schulter", "Nacken", "Nacken"];
+    const trainingsplan = [];
+    const hinzugefuegteUebungen = new Set(); // Doppelte Übungen vermeiden
 
-    const legs = ["Vordere Schulter", "Vordere Schulter", "Seitliche Schulter", "Seitliche Schulter", "Hintere Schulter", "Hintere Schulter", "Nacken", "Nacken"];
-
-    legs.forEach(muskelgruppe => {
-        let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
+    // Filtere und wähle Übungen aus
+    shoulderNeck.forEach(muskelgruppe => {
+        const verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
             exercise.muscle_group.includes(muskelgruppe) &&
-            exercise.difficulty === fitnesslevel
+            exercise.difficulty <= fitnesslevel &&
+            !hinzugefuegteUebungen.has(exercise.name)
         ));
 
         if (verfuegbareUebungen.length > 0) {
-            trainingsplan.push(verfuegbareUebungen[0]);
+            trainingsplan.push(verfuegbareUebungen[0].name[0]); // Name der Übung
+            hinzugefuegteUebungen.add(verfuegbareUebungen[0].name);
         }
     });
 
-    // Rückgabe des Trainingsplans als String
-    return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n');
+    // Buttons erstellen
+    const buttonContainer = document.createElement('div');
+    buttonContainer.style.display = 'flex';
+    buttonContainer.style.flexWrap = 'wrap';
+    buttonContainer.style.gap = '5px';
+
+    trainingsplan.slice(0, 6).forEach(exerciseName => { // Maximal 6 Buttons
+        const button = document.createElement('button');
+        button.innerText = exerciseName;
+        button.classList.add('exercise-button'); // Optional für Styling
+        buttonContainer.appendChild(button);
+    });
+
+    return buttonContainer; // Rückgabe des Containers mit Buttons
 }
+
+// async function createArmWorkout(fitnesslevel) {
+//     let trainingsplan = [];
+//     let hinzugefuegteUebungen = new Set();
+
+//     const legs = ["Bizeps", "Bizeps", "Bizeps", "Bizeps", "Trizeps", "Trizeps", "Trizeps"];
+
+//     legs.forEach(muskelgruppe => {
+//         let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
+//             exercise.muscle_group.includes(muskelgruppe) &&
+//             exercise.difficulty <= fitnesslevel &&
+//             !hinzugefuegteUebungen.has(exercise.name)
+//         ));
+
+//         if (verfuegbareUebungen.length > 0) {
+//             trainingsplan.push(verfuegbareUebungen[0]);
+//             hinzugefuegteUebungen.add(verfuegbareUebungen[0].name);
+//         }
+//     });
+
+//     // Rückgabe des Trainingsplans als String
+//     return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n');
+// }
 
 async function createArmWorkout(fitnesslevel) {
-    let trainingsplan = [];
+    const arms = ["Bizeps", "Bizeps", "Bizeps", "Bizeps", "Trizeps", "Trizeps", "Trizeps"];
+    const trainingsplan = [];
+    const hinzugefuegteUebungen = new Set(); // Doppelte Übungen vermeiden
 
-    const legs = ["Bizeps", "Bizeps", "Bizeps", "Bizeps", "Trizeps", "Trizeps", "Trizeps"];
-
-    legs.forEach(muskelgruppe => {
-        let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
+    // Filtere und wähle Übungen aus
+    arms.forEach(muskelgruppe => {
+        const verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
             exercise.muscle_group.includes(muskelgruppe) &&
-            exercise.difficulty === fitnesslevel
+            exercise.difficulty <= fitnesslevel &&
+            !hinzugefuegteUebungen.has(exercise.name)
         ));
 
         if (verfuegbareUebungen.length > 0) {
-            trainingsplan.push(verfuegbareUebungen[0]);
+            trainingsplan.push(verfuegbareUebungen[0].name[0]); // Name der Übung
+            hinzugefuegteUebungen.add(verfuegbareUebungen[0].name);
         }
     });
 
-    // Rückgabe des Trainingsplans als String
-    return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n');
+    // Buttons erstellen
+    const buttonContainer = document.createElement('div');
+    buttonContainer.style.display = 'flex';
+    buttonContainer.style.flexWrap = 'wrap';
+    buttonContainer.style.gap = '5px';
+
+    trainingsplan.slice(0, 6).forEach(exerciseName => { // Maximal 6 Buttons
+        const button = document.createElement('button');
+        button.innerText = exerciseName;
+        button.classList.add('exercise-button'); // Optional für Styling
+        buttonContainer.appendChild(button);
+    });
+
+    return buttonContainer; // Rückgabe des Containers mit Buttons
 }
+
+// async function createChestWorkout(fitnesslevel) {
+//     let trainingsplan = [];
+//     let hinzugefuegteUebungen = new Set(); // Set, um doppelte Einträge zu vermeiden
+
+//     const legs = ["Mittlere Brust", "Mittlere Brust", "Obere Brust", "Obere Brust", "Untere Brust", "Innere Brust"];
+
+//     legs.forEach(muskelgruppe => {
+//         let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
+//             exercise.muscle_group.includes(muskelgruppe) &&
+//             exercise.difficulty <= fitnesslevel &&
+//             !hinzugefuegteUebungen.has(exercise.name) // Überprüfen, ob die Übung bereits verwendet wurde
+//         ));
+
+//         if (verfuegbareUebungen.length > 0) {
+//             trainingsplan.push(verfuegbareUebungen[0]);
+//             hinzugefuegteUebungen.add(verfuegbareUebungen[0].name); // Übung dem Set hinzufügen
+//         }
+//     });
+
+//     // Rückgabe des Trainingsplans als String
+//     return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n');
+// }
+
+async function createChestWorkout(fitnesslevel) {
+    const arms = ["Mittlere Brust", "Mittlere Brust", "Obere Brust", "Obere Brust", "Untere Brust", "Innere Brust"];
+    const trainingsplan = [];
+    const hinzugefuegteUebungen = new Set(); // Doppelte Übungen vermeiden
+
+    // Filtere und wähle Übungen aus
+    arms.forEach(muskelgruppe => {
+        const verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
+            exercise.muscle_group.includes(muskelgruppe) &&
+            exercise.difficulty <= fitnesslevel &&
+            !hinzugefuegteUebungen.has(exercise.name)
+        ));
+
+        if (verfuegbareUebungen.length > 0) {
+            trainingsplan.push(verfuegbareUebungen[0].name[0]); // Name der Übung
+            hinzugefuegteUebungen.add(verfuegbareUebungen[0].name);
+        }
+    });
+
+    // Buttons erstellen
+    const buttonContainer = document.createElement('div');
+    buttonContainer.style.display = 'flex';
+    buttonContainer.style.flexWrap = 'wrap';
+    buttonContainer.style.gap = '5px';
+
+    trainingsplan.slice(0, 6).forEach(exerciseName => { // Maximal 6 Buttons
+        const button = document.createElement('button');
+        button.innerText = exerciseName;
+        button.classList.add('exercise-button'); // Optional für Styling
+        buttonContainer.appendChild(button);
+    });
+
+    return buttonContainer; // Rückgabe des Containers mit Buttons
+}
+
+function createRecoveryButton() {
+    // Erstelle den Container
+    const buttonContainer = document.createElement('div');
+    buttonContainer.style.display = 'flex';
+    buttonContainer.style.justifyContent = 'center';
+    buttonContainer.style.alignItems = 'center';
+
+    // Erstelle den Button
+    const button = document.createElement('button');
+    button.innerText = "Aktive Erholung";
+    button.classList.add('exercise-button'); // Optional für Styling
+    buttonContainer.appendChild(button);
+
+    return buttonContainer; // Rückgabe des Containers mit dem Button
+}
+
 
 async function displayPlan(){
     wochenplanContainer.style.display = "none";
@@ -880,16 +1254,16 @@ async function displayPlan(){
         for (var j = 0; j < zellenWocheEins.length; j++) {
             if(results[6][j] == 1){
                 if(counterForTrainingOrder == 1){
-                    zellenWocheEins[j].innerText = await createPushWorkout(3);
+                    zellenWocheEins[j].appendChild(await createPushWorkout(3));
                     counterForTrainingOrder++;
                 } else if(counterForTrainingOrder == 2){
-                    zellenWocheEins[j].innerText = await createPullWorkout(3);
+                    zellenWocheEins[j].appendChild(await createPullWorkout(3));
                     counterForTrainingOrder++;
                 } else if(counterForTrainingOrder == 3){
-                    zellenWocheEins[j].innerText = await createLegsWorkout(3);
+                    zellenWocheEins[j].appendChild(await createLegsWorkout(3));
                     counterForTrainingOrder++;
                 } else if(counterForTrainingOrder == 4){
-                    zellenWocheEins[j].innerText = await createPushWorkout(3);
+                    zellenWocheEins[j].appendChild(await createPushWorkout(3));
                     counterForTrainingOrder++;
                 }
             }
@@ -898,16 +1272,16 @@ async function displayPlan(){
         for (var j = 0; j < zellenWocheZwei.length; j++) {
             if(results[6][j] == 1){
                 if(counterForTrainingOrder == 1){
-                    zellenWocheZwei[j].innerText = await createPullWorkout(3);
+                    zellenWocheZwei[j].appendChild(await createPullWorkout(3));
                     counterForTrainingOrder++;
                 } else if(counterForTrainingOrder == 2){
-                    zellenWocheZwei[j].innerText = await createLegsWorkout(3);
+                    zellenWocheZwei[j].appendChild(await createLegsWorkout(3));
                     counterForTrainingOrder++;
                 } else if(counterForTrainingOrder == 3){
-                    zellenWocheZwei[j].innerText = await createPushWorkout(3);
+                    zellenWocheZwei[j].appendChild(await createPushWorkout(3));
                     counterForTrainingOrder++;
                 } else if(counterForTrainingOrder == 4){
-                    zellenWocheZwei[j].innerText = await createPullWorkout(3);
+                    zellenWocheZwei[j].appendChild(await createPullWorkout(3));
                     counterForTrainingOrder++;
                 }
             }
@@ -916,16 +1290,16 @@ async function displayPlan(){
         for (var j = 0; j < zellenWocheDrei.length; j++) {
             if(results[6][j] == 1){
                 if(counterForTrainingOrder == 1){
-                    zellenWocheDrei[j].innerText = await createLegsWorkout(3);
+                    zellenWocheDrei[j].appendChild(await createLegsWorkout(3));
                     counterForTrainingOrder++;
                 } else if(counterForTrainingOrder == 2){
-                    zellenWocheDrei[j].innerText = await createPushWorkout(3);
+                    zellenWocheDrei[j].appendChild(await createPushWorkout(3));
                     counterForTrainingOrder++;
                 } else if(counterForTrainingOrder == 3){
-                    zellenWocheDrei[j].innerText = await createPullWorkout(3);
+                    zellenWocheDrei[j].appendChild(await createPullWorkout(3));
                     counterForTrainingOrder++;
                 } else if(counterForTrainingOrder == 4){
-                    zellenWocheDrei[j].innerText = await createLegsWorkout(3);
+                    zellenWocheDrei[j].appendChild(await createLegsWorkout(3));
                     counterForTrainingOrder++;
                 }
             }
@@ -942,50 +1316,78 @@ async function displayPlan(){
             if(results[6][j] == 1){
                 if (weekdays == 1){
                     // Ganzkörper
-                    zellen[j].innerText = await createFullBodyWorkout(3);
+                    zellen[j].appendChild(await createFullBodyWorkout(3));
                 } else if(weekdays == 2){
                     // Ganzkörper
-                    zellen[j].innerText = await createFullBodyWorkout(3);
+                    zellen[j].appendChild(await createFullBodyWorkout(3));
                 } else if(weekdays == 3){
                     // Push, Pull, Legs
                     if(counterForTrainingOrder == 1){
-                        zellen[j].innerText = await createPushWorkout(3);
+                        zellen[j].appendChild(await createPushWorkout(3));
                         counterForTrainingOrder++;
                     } else if(counterForTrainingOrder == 2){
-                        zellen[j].innerText = await createPullWorkout(3);
+                        zellen[j].appendChild(await createPullWorkout(3));
                         counterForTrainingOrder++;
                     } else if(counterForTrainingOrder == 3){
-                        zellen[j].innerText = await createLegsWorkout(3);
+                        zellen[j].appendChild(await createLegsWorkout(3));
                         counterForTrainingOrder++;
                     }
                 } else if(weekdays == 5){
-                    // Push, Pull, Legs, Push, Pull, Legs
+                    // Push, Pull, Legs, Push, Pull, Legs (Bro Split)
                     if(counterForTrainingOrder == 1){
-                        zellen[j].innerText = await createPushWorkout(3);
+                        // zellen[j].innerText = await createChestWorkout(3);
+                        zellen[j].appendChild(await createChestWorkout(3));
                         counterForTrainingOrder++;
                     } else if(counterForTrainingOrder == 2){
-                        zellen[j].innerText = await createLegsWorkout(3);
+                        zellen[j].appendChild(await createLegsWorkout(3));
                         counterForTrainingOrder++;
                     }else if(counterForTrainingOrder == 3){
-                        zellen[j].innerText = await createBackWorkout(3);
+                        // zellen[j].innerText = await createBackWorkout(3);
+                        zellen[j].appendChild(await createBackWorkout(3));
                         counterForTrainingOrder++;
                     } else if(counterForTrainingOrder == 4){
-                        zellen[j].innerText = await createShoulderNeckWorkout(3);
+                        // zellen[j].innerText = await createShoulderNeckWorkout(3);
+                        zellen[j].appendChild(await createShoulderNeckWorkout(3));
                         counterForTrainingOrder++;
                     } else if(counterForTrainingOrder == 5){
-                        zellen[j].innerText = await createArmWorkout(3);
+                        // zellen[j].innerText = await createArmWorkout(3);
+                        zellen[j].appendChild(await createShoulderNeckWorkout(3));
                         counterForTrainingOrder++;
                     }
                 } else if(weekdays == 6){
                     // Push, Pull, Legs, Push, Pull, Legs
                     if(counterForTrainingOrder == 1 || counterForTrainingOrder == 4){
-                        zellen[j].innerText = await createPushWorkout(3);
+                        zellen[j].appendChild(await createPushWorkout(3));
                         counterForTrainingOrder++;
                     } else if(counterForTrainingOrder == 2 || counterForTrainingOrder == 5){
-                        zellen[j].innerText = await createPullWorkout(3);
+                        zellen[j].appendChild(await createPullWorkout(3));
                         counterForTrainingOrder++;
                     }else if(counterForTrainingOrder == 3 || counterForTrainingOrder == 6){
-                        zellen[j].innerText = await createLegsWorkout(3);
+                        zellen[j].appendChild(await createLegsWorkout(3));
+                        counterForTrainingOrder++;
+                    }
+                } else if(weekdays == 7){
+                    // Push, Pull, Legs, Recovery, Push, Pull, Legs
+                    if(counterForTrainingOrder == 1){
+                        zellen[j].appendChild(await createPushWorkout(3));
+                        counterForTrainingOrder++;
+                    } else if(counterForTrainingOrder == 2){
+                        zellen[j].appendChild(await createPullWorkout(3));
+                        counterForTrainingOrder++;
+                    } else if(counterForTrainingOrder == 3){
+                        zellen[j].appendChild(await createLegsWorkout(3));
+                        counterForTrainingOrder++;
+                    } else if(counterForTrainingOrder == 4){
+                        zellen[j].appendChild(await createPushWorkout(3));
+                        counterForTrainingOrder++;
+                    } else if(counterForTrainingOrder == 5){
+                        zellen[j].appendChild(await createPullWorkout(3));
+                        counterForTrainingOrder++;
+                    } else if(counterForTrainingOrder == 6){
+                        zellen[j].appendChild(await createLegsWorkout(3));
+                        counterForTrainingOrder++;
+                    } else if(counterForTrainingOrder == 7){
+                        zellen[j].appendChild(await createRecoveryButton());
                         counterForTrainingOrder++;
                     }
                 }

@@ -498,4 +498,17 @@ p {
     cursor: pointer;
 }
 
+/* Trainings Übungen Buttons */
+.exercise-button {
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+.exercise-button:hover {
+    background-color: #ddd;
+}
 
