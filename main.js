@@ -378,17 +378,17 @@ let exercises = [
         "goal": "Muskelaufbau"
     },
     {
-        "name": ["Schrägbankdrücken", "Obere Brust"],
+        "name": ["Schrägbankdrücken"],
         "difficulty": 3,
-        "muscle_group": ["Brust"],
+        "muscle_group": ["Brust", "Obere Brust"],
         "training_location": ["Gym"],
         "age": [1, 100],
         "goal": "Muskelaufbau"
     },
     {
-        "name": ["Negativbankdrücken", "Untere Brust"],
+        "name": ["Negativbankdrücken"],
         "difficulty": 3,
-        "muscle_group": ["Brust"],
+        "muscle_group": ["Brust", "Untere Brust"],
         "training_location": ["Gym"],
         "age": [1, 100],
         "goal": "Muskelaufbau"
@@ -818,25 +818,39 @@ let exercises = [
         "goal": "Erholung"
     },
 ];
-// async function createFullBodyWorkout(fitnesslevel) {
-//     let trainingsplan = [];
 
-//     const muskelGruppenReihenfolge = ["Beine", "Brust", "Rücken", "Schultern", "Trizeps", "Bizeps"];
+/* Funktion zum erstellen eines Fensters das beim drücken eines Knopfes geöffnet wird */
+function openImageModal(imageSrc) {
+    // Erstelle das Modal-Overlay
+    const modalOverlay = document.createElement('div');
+    modalOverlay.style.position = 'fixed';
+    modalOverlay.style.top = '0';
+    modalOverlay.style.left = '0';
+    modalOverlay.style.width = '100%';
+    modalOverlay.style.height = '100%';
+    modalOverlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    modalOverlay.style.display = 'flex';
+    modalOverlay.style.justifyContent = 'center';
+    modalOverlay.style.alignItems = 'center';
+    modalOverlay.style.zIndex = '1000';
 
-//     muskelGruppenReihenfolge.forEach(muskelgruppe => {
-//         let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
-//             exercise.muscle_group.includes(muskelgruppe) && 
-//             exercise.difficulty <= fitnesslevel
-//         ));
-        
-//         if (verfuegbareUebungen.length > 0) {
-//             trainingsplan.push(verfuegbareUebungen[0]);
-//         }
-//     });
+    // Erstelle das Bild
+    const image = document.createElement('img');
+    image.src = imageSrc;
+    image.style.maxWidth = '80%';
+    image.style.maxHeight = '80%';
+    image.style.border = '2px solid white';
+    modalOverlay.appendChild(image);
 
-//     // Rückgabe des Trainingsplans als String
-//     return trainingsplan.map(exercise => `${exercise.name} (${exercise.muscleGroup})`).join('\n\n');
-// }
+    // Füge eine Schließfunktion hinzu
+    modalOverlay.addEventListener('click', () => {
+        document.body.removeChild(modalOverlay);
+    });
+
+    // Füge das Modal dem Body hinzu
+    document.body.appendChild(modalOverlay);
+}
+
 
 async function createFullBodyWorkout(fitnesslevel) {
     const fullBody = ["Beine", "Brust", "Rücken", "Schultern", "Trizeps", "Bizeps"];
@@ -864,6 +878,13 @@ async function createFullBodyWorkout(fitnesslevel) {
         const button = document.createElement('button');
         button.innerText = exerciseName;
         button.classList.add('exercise-button'); // Optional für Styling
+
+        // Event-Listener für das Öffnen des Modals hinzufügen
+        button.addEventListener('click', () => {
+            const imagePath = ("Images/Exercises/" + exerciseName + ".png").replace(/\s+/g, "_"); // Passe den Pfad an
+            openImageModal(imagePath);
+        });
+
         buttonContainer.appendChild(button);
     });
 
@@ -896,6 +917,13 @@ async function createPushWorkout(fitnesslevel) {
         const button = document.createElement('button');
         button.innerText = exerciseName;
         button.classList.add('exercise-button'); // Optional für Styling
+
+        // Event-Listener für das Öffnen des Modals hinzufügen
+        button.addEventListener('click', () => {
+            const imagePath = ("Images/Exercises/" + exerciseName + ".png").replace(/\s+/g, "_"); // Passe den Pfad an
+            openImageModal(imagePath);
+        });
+
         buttonContainer.appendChild(button);
     });
 
@@ -929,12 +957,18 @@ async function createPullWorkout(fitnesslevel) {
         const button = document.createElement('button');
         button.innerText = exerciseName;
         button.classList.add('exercise-button'); // Optional für Styling
+
+        // Event-Listener für das Öffnen des Modals hinzufügen
+        button.addEventListener('click', () => {
+            const imagePath = ("Images/Exercises/" + exerciseName + ".png").replace(/\s+/g, "_"); // Passe den Pfad an
+            openImageModal(imagePath);
+        });
+
         buttonContainer.appendChild(button);
     });
 
     return buttonContainer; // Rückgabe des Containers mit Buttons
 }
-
 
 async function createLegsWorkout(fitnesslevel) {
     const legs = ["Beine", "Beine", "Quadtrizeps", "Beinbeuger", "Waden", "Waden"];
@@ -965,35 +999,18 @@ async function createLegsWorkout(fitnesslevel) {
         const button = document.createElement('button');
         button.innerText = exerciseName;
         button.classList.add('exercise-button'); // Optional für Styling
+
+        // Event-Listener für das Öffnen des Modals hinzufügen
+        button.addEventListener('click', () => {
+            const imagePath = ("Images/Exercises/" + exerciseName + ".png").replace(/\s+/g, "_"); // Passe den Pfad an
+            openImageModal(imagePath);
+        });
+
         buttonContainer.appendChild(button);
     });
 
     return buttonContainer; // Rückgabe des Containers mit Buttons
 }
-
-
-// async function createBackWorkout(fitnesslevel) {
-//     let trainingsplan = [];
-//     let hinzugefuegteUebungen = new Set();
-
-//     const legs = ["Latissimus", "Oberer Trapezius", "Unterer Trapezius", "Unterer Rücken", "Rotatorenmanschette", "Teres Major"];
-
-//     legs.forEach(muskelgruppe => {
-//         let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
-//             exercise.muscle_group.includes(muskelgruppe) &&
-//             exercise.difficulty <= fitnesslevel &&
-//             !hinzugefuegteUebungen.has(exercise.name)
-//         ));
-
-//         if (verfuegbareUebungen.length > 0) {
-//             trainingsplan.push(verfuegbareUebungen[0]);
-//             hinzugefuegteUebungen.add(verfuegbareUebungen[0].name);
-//         }
-//     });
-
-//     // Rückgabe des Trainingsplans als String
-//     return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n');
-// }
 
 async function createBackWorkout(fitnesslevel) {
     const back = ["Latissimus", "Oberer Trapezius", "Unterer Trapezius", "Unterer Rücken", "Rotatorenmanschette", "Teres Major"];
@@ -1024,34 +1041,18 @@ async function createBackWorkout(fitnesslevel) {
         const button = document.createElement('button');
         button.innerText = exerciseName;
         button.classList.add('exercise-button'); // Optional für Styling
+
+        // Event-Listener für das Öffnen des Modals hinzufügen
+        button.addEventListener('click', () => {
+            const imagePath = ("Images/Exercises/" + exerciseName + ".png").replace(/\s+/g, "_"); // Passe den Pfad an
+            openImageModal(imagePath);
+        });
+
         buttonContainer.appendChild(button);
     });
 
     return buttonContainer; // Rückgabe des Containers mit Buttons
 }
-
-// async function createShoulderNeckWorkout(fitnesslevel) {
-//     let trainingsplan = [];
-//     let hinzugefuegteUebungen = new Set();
-
-//     const legs = ["Vordere Schulter", "Vordere Schulter", "Seitliche Schulter", "Seitliche Schulter", "Hintere Schulter", "Hintere Schulter", "Nacken", "Nacken"];
-
-//     legs.forEach(muskelgruppe => {
-//         let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
-//             exercise.muscle_group.includes(muskelgruppe) &&
-//             exercise.difficulty <= fitnesslevel &&
-//             !hinzugefuegteUebungen.has(exercise.name)
-//         ));
-
-//         if (verfuegbareUebungen.length > 0) {
-//             trainingsplan.push(verfuegbareUebungen[0]);
-//             hinzugefuegteUebungen.add(verfuegbareUebungen[0].name);
-//         }
-//     });
-
-//     // Rückgabe des Trainingsplans als String
-//     return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n');
-// }
 
 async function createShoulderNeckWorkout(fitnesslevel) {
     const shoulderNeck = ["Vordere Schulter", "Vordere Schulter", "Seitliche Schulter", "Seitliche Schulter", "Hintere Schulter", "Hintere Schulter", "Nacken", "Nacken"];
@@ -1082,34 +1083,18 @@ async function createShoulderNeckWorkout(fitnesslevel) {
         const button = document.createElement('button');
         button.innerText = exerciseName;
         button.classList.add('exercise-button'); // Optional für Styling
+
+        // Event-Listener für das Öffnen des Modals hinzufügen
+        button.addEventListener('click', () => {
+            const imagePath = ("Images/Exercises/" + exerciseName + ".png").replace(/\s+/g, "_"); // Passe den Pfad an
+            openImageModal(imagePath);
+        });
+
         buttonContainer.appendChild(button);
     });
 
     return buttonContainer; // Rückgabe des Containers mit Buttons
 }
-
-// async function createArmWorkout(fitnesslevel) {
-//     let trainingsplan = [];
-//     let hinzugefuegteUebungen = new Set();
-
-//     const legs = ["Bizeps", "Bizeps", "Bizeps", "Bizeps", "Trizeps", "Trizeps", "Trizeps"];
-
-//     legs.forEach(muskelgruppe => {
-//         let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
-//             exercise.muscle_group.includes(muskelgruppe) &&
-//             exercise.difficulty <= fitnesslevel &&
-//             !hinzugefuegteUebungen.has(exercise.name)
-//         ));
-
-//         if (verfuegbareUebungen.length > 0) {
-//             trainingsplan.push(verfuegbareUebungen[0]);
-//             hinzugefuegteUebungen.add(verfuegbareUebungen[0].name);
-//         }
-//     });
-
-//     // Rückgabe des Trainingsplans als String
-//     return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n');
-// }
 
 async function createArmWorkout(fitnesslevel) {
     const arms = ["Bizeps", "Bizeps", "Bizeps", "Bizeps", "Trizeps", "Trizeps", "Trizeps"];
@@ -1140,34 +1125,18 @@ async function createArmWorkout(fitnesslevel) {
         const button = document.createElement('button');
         button.innerText = exerciseName;
         button.classList.add('exercise-button'); // Optional für Styling
+
+        // Event-Listener für das Öffnen des Modals hinzufügen
+        button.addEventListener('click', () => {
+            const imagePath = ("Images/Exercises/" + exerciseName + ".png").replace(/\s+/g, "_"); // Passe den Pfad an
+            openImageModal(imagePath);
+        });
+
         buttonContainer.appendChild(button);
     });
 
     return buttonContainer; // Rückgabe des Containers mit Buttons
 }
-
-// async function createChestWorkout(fitnesslevel) {
-//     let trainingsplan = [];
-//     let hinzugefuegteUebungen = new Set(); // Set, um doppelte Einträge zu vermeiden
-
-//     const legs = ["Mittlere Brust", "Mittlere Brust", "Obere Brust", "Obere Brust", "Untere Brust", "Innere Brust"];
-
-//     legs.forEach(muskelgruppe => {
-//         let verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
-//             exercise.muscle_group.includes(muskelgruppe) &&
-//             exercise.difficulty <= fitnesslevel &&
-//             !hinzugefuegteUebungen.has(exercise.name) // Überprüfen, ob die Übung bereits verwendet wurde
-//         ));
-
-//         if (verfuegbareUebungen.length > 0) {
-//             trainingsplan.push(verfuegbareUebungen[0]);
-//             hinzugefuegteUebungen.add(verfuegbareUebungen[0].name); // Übung dem Set hinzufügen
-//         }
-//     });
-
-//     // Rückgabe des Trainingsplans als String
-//     return trainingsplan.map(exercise => `${exercise.name[0]} (${exercise.muscle_group[0]})`).join('\n\n');
-// }
 
 async function createChestWorkout(fitnesslevel) {
     const arms = ["Mittlere Brust", "Mittlere Brust", "Obere Brust", "Obere Brust", "Untere Brust", "Innere Brust"];
@@ -1198,6 +1167,13 @@ async function createChestWorkout(fitnesslevel) {
         const button = document.createElement('button');
         button.innerText = exerciseName;
         button.classList.add('exercise-button'); // Optional für Styling
+
+        // Event-Listener für das Öffnen des Modals hinzufügen
+        button.addEventListener('click', () => {
+            const imagePath = ("Images/Exercises/" + exerciseName + ".png").replace(/\s+/g, "_"); // Passe den Pfad an
+            openImageModal(imagePath);
+        });
+
         buttonContainer.appendChild(button);
     });
 
@@ -1215,6 +1191,12 @@ function createRecoveryButton() {
     const button = document.createElement('button');
     button.innerText = "Aktive Erholung";
     button.classList.add('exercise-button'); // Optional für Styling
+    
+    // Klick-Event-Listener
+    button.addEventListener('click', () => {
+        openImageModal('Images/rest_day_image.png');
+    });
+    
     buttonContainer.appendChild(button);
 
     return buttonContainer; // Rückgabe des Containers mit dem Button
