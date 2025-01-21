@@ -124,7 +124,6 @@ function showNextQuestions() {
         }
         checkQuestionIndex(currentQuestionIndex); 
     } else {
-        // ToDo
         for (let i = 0; i < results.length; i++) {
             // Iteriere über die Spalten der aktuellen Zeile
             for (let j = 0; j < results[i].length; j++) {
@@ -961,8 +960,16 @@ async function displayPlan(){
     TitleTextContainer.style.display = "none";
     prevButton.style.display = "none";
     nextButton.style.display = "none";
+    
+    // Prüfen des Geschlechts des Users
+    const genders = ["Male", "Female", "Diverse"];
+    const userGenderIndex = results[0].findIndex(value => value === 1);
+    const userGender = userGenderIndex !== -1 ? genders[userGenderIndex] : "";
 
-    // Zuerst checken wir wie viele Wochentage der User trainieren möchte
+    // Prüfen wie alt der User ist
+    const userAge = results[1][0];
+
+    // Prüfen wie viele Wochentage der User trainieren möchte
     var weekdays = 0;
     for(let i = 0; i < 7; i++){
         if (results[6][i] == 1){
@@ -977,157 +984,179 @@ async function displayPlan(){
     const showText = document.getElementById("TitleTextContainer");
     showText.innerHTML = "Basierend auf deinen Angaben wurde für dich folgender Trainingsplan erstellt";
     showText.style.display = "block";
-    if(weekdays == 4 && trainingGoal == "Muskelaufbau"){
-        // Zeige 3-wöchige Tabelle
-        triweeklyTableContainer.style.display = "block";
-        var tabelle = document.getElementById("triweeklyID").getElementsByTagName("table")[0];
-        var zeilen = tabelle.getElementsByTagName("tr");
-        var zellenWocheEins = zeilen[1].getElementsByTagName("td");
-        var zellenWocheZwei = zeilen[2].getElementsByTagName("td");
-        var zellenWocheDrei = zeilen[3].getElementsByTagName("td");
-        let counterForTrainingOrder = 1;
-        for (var j = 0; j < zellenWocheEins.length; j++) {
-            if(results[6][j] == 1){
-                if(counterForTrainingOrder == 1){
-                    zellenWocheEins[j].appendChild(await createPushWorkout(3));
-                    counterForTrainingOrder++;
-                } else if(counterForTrainingOrder == 2){
-                    zellenWocheEins[j].appendChild(await createPullWorkout(3));
-                    counterForTrainingOrder++;
-                } else if(counterForTrainingOrder == 3){
-                    zellenWocheEins[j].appendChild(await createLegsWorkout(3));
-                    counterForTrainingOrder++;
-                } else if(counterForTrainingOrder == 4){
-                    zellenWocheEins[j].appendChild(await createPushWorkout(3));
-                    counterForTrainingOrder++;
-                }
-            }
+    if(userGender = "Male"){
+        if(userAge < 16) {
+            showText.innerHTML = "Trainingspläne für Männer unter 16 Jahren sind bisher noch nicht verfügbar."
         }
-        counterForTrainingOrder = 1;
-        for (var j = 0; j < zellenWocheZwei.length; j++) {
-            if(results[6][j] == 1){
-                if(counterForTrainingOrder == 1){
-                    zellenWocheZwei[j].appendChild(await createPullWorkout(3));
-                    counterForTrainingOrder++;
-                } else if(counterForTrainingOrder == 2){
-                    zellenWocheZwei[j].appendChild(await createLegsWorkout(3));
-                    counterForTrainingOrder++;
-                } else if(counterForTrainingOrder == 3){
-                    zellenWocheZwei[j].appendChild(await createPushWorkout(3));
-                    counterForTrainingOrder++;
-                } else if(counterForTrainingOrder == 4){
-                    zellenWocheZwei[j].appendChild(await createPullWorkout(3));
-                    counterForTrainingOrder++;
-                }
-            }
+        else if(userAge >= 60) {
+            showText.innerHTML = "Trainingspläne für Senioren ab 60 Jahren sind bisher noch nicht verfügbar."
         }
-        counterForTrainingOrder = 1;
-        for (var j = 0; j < zellenWocheDrei.length; j++) {
-            if(results[6][j] == 1){
-                if(counterForTrainingOrder == 1){
-                    zellenWocheDrei[j].appendChild(await createLegsWorkout(3));
-                    counterForTrainingOrder++;
-                } else if(counterForTrainingOrder == 2){
-                    zellenWocheDrei[j].appendChild(await createPushWorkout(3));
-                    counterForTrainingOrder++;
-                } else if(counterForTrainingOrder == 3){
-                    zellenWocheDrei[j].appendChild(await createPullWorkout(3));
-                    counterForTrainingOrder++;
-                } else if(counterForTrainingOrder == 4){
-                    zellenWocheDrei[j].appendChild(await createLegsWorkout(3));
-                    counterForTrainingOrder++;
-                }
-            }
-        }
-    } 
-    else {
-        // Zeige 1-wöchige Tabelle
-        weeklyTableContainer.style.display = "block";
-        var tabelle = document.getElementById("weeklyID").getElementsByTagName("table")[0];
-        var zeilen = tabelle.getElementsByTagName("tr");
-        var zellen = zeilen[1].getElementsByTagName("td");
-        let counterForTrainingOrder = 1;
-        for (var j = 0; j < zellen.length; j++) {
-            if(results[6][j] == 1){
-                if (weekdays == 1){
-                    // Ganzkörper
-                    zellen[j].appendChild(await createFullBodyWorkout(3));
-                } else if(weekdays == 2){
-                    // Ganzkörper
-                    zellen[j].appendChild(await createFullBodyWorkout(3));
-                } else if(weekdays == 3){
-                    // Push, Pull, Legs
+        else if(userAge => 16 && userAge < 60 && weekdays == 4 && trainingGoal == "Muskelaufbau"){
+            // Zeige 3-wöchige Tabelle
+            triweeklyTableContainer.style.display = "block";
+            var tabelle = document.getElementById("triweeklyID").getElementsByTagName("table")[0];
+            var zeilen = tabelle.getElementsByTagName("tr");
+            var zellenWocheEins = zeilen[1].getElementsByTagName("td");
+            var zellenWocheZwei = zeilen[2].getElementsByTagName("td");
+            var zellenWocheDrei = zeilen[3].getElementsByTagName("td");
+            let counterForTrainingOrder = 1;
+            for (var j = 0; j < zellenWocheEins.length; j++) {
+                if(results[6][j] == 1){
                     if(counterForTrainingOrder == 1){
-                        zellen[j].appendChild(await createPushWorkout(3));
+                        zellenWocheEins[j].appendChild(await createPushWorkout(3));
                         counterForTrainingOrder++;
                     } else if(counterForTrainingOrder == 2){
-                        zellen[j].appendChild(await createPullWorkout(3));
+                        zellenWocheEins[j].appendChild(await createPullWorkout(3));
                         counterForTrainingOrder++;
                     } else if(counterForTrainingOrder == 3){
-                        zellen[j].appendChild(await createLegsWorkout(3));
-                        counterForTrainingOrder++;
-                    }
-                } else if(weekdays == 5){
-                    // Push, Pull, Legs, Push, Pull, Legs (Bro Split)
-                    if(counterForTrainingOrder == 1){
-                        // zellen[j].innerText = await createChestWorkout(3);
-                        zellen[j].appendChild(await createChestWorkout(3));
-                        counterForTrainingOrder++;
-                    } else if(counterForTrainingOrder == 2){
-                        zellen[j].appendChild(await createLegsWorkout(3));
-                        counterForTrainingOrder++;
-                    }else if(counterForTrainingOrder == 3){
-                        // zellen[j].innerText = await createBackWorkout(3);
-                        zellen[j].appendChild(await createBackWorkout(3));
+                        zellenWocheEins[j].appendChild(await createLegsWorkout(3));
                         counterForTrainingOrder++;
                     } else if(counterForTrainingOrder == 4){
-                        // zellen[j].innerText = await createShoulderNeckWorkout(3);
-                        zellen[j].appendChild(await createShoulderNeckWorkout(3));
-                        counterForTrainingOrder++;
-                    } else if(counterForTrainingOrder == 5){
-                        // zellen[j].innerText = await createArmWorkout(3);
-                        zellen[j].appendChild(await createShoulderNeckWorkout(3));
-                        counterForTrainingOrder++;
-                    }
-                } else if(weekdays == 6){
-                    // Push, Pull, Legs, Push, Pull, Legs
-                    if(counterForTrainingOrder == 1 || counterForTrainingOrder == 4){
-                        zellen[j].appendChild(await createPushWorkout(3));
-                        counterForTrainingOrder++;
-                    } else if(counterForTrainingOrder == 2 || counterForTrainingOrder == 5){
-                        zellen[j].appendChild(await createPullWorkout(3));
-                        counterForTrainingOrder++;
-                    }else if(counterForTrainingOrder == 3 || counterForTrainingOrder == 6){
-                        zellen[j].appendChild(await createLegsWorkout(3));
-                        counterForTrainingOrder++;
-                    }
-                } else if(weekdays == 7){
-                    // Push, Pull, Legs, Recovery, Push, Pull, Legs
-                    if(counterForTrainingOrder == 1){
-                        zellen[j].appendChild(await createPushWorkout(3));
-                        counterForTrainingOrder++;
-                    } else if(counterForTrainingOrder == 2){
-                        zellen[j].appendChild(await createPullWorkout(3));
-                        counterForTrainingOrder++;
-                    } else if(counterForTrainingOrder == 3){
-                        zellen[j].appendChild(await createLegsWorkout(3));
-                        counterForTrainingOrder++;
-                    } else if(counterForTrainingOrder == 4){
-                        zellen[j].appendChild(await createPushWorkout(3));
-                        counterForTrainingOrder++;
-                    } else if(counterForTrainingOrder == 5){
-                        zellen[j].appendChild(await createPullWorkout(3));
-                        counterForTrainingOrder++;
-                    } else if(counterForTrainingOrder == 6){
-                        zellen[j].appendChild(await createLegsWorkout(3));
-                        counterForTrainingOrder++;
-                    } else if(counterForTrainingOrder == 7){
-                        zellen[j].appendChild(await createRecoveryButton());
+                        zellenWocheEins[j].appendChild(await createPushWorkout(3));
                         counterForTrainingOrder++;
                     }
                 }
             }
+            counterForTrainingOrder = 1;
+            for (var j = 0; j < zellenWocheZwei.length; j++) {
+                if(results[6][j] == 1){
+                    if(counterForTrainingOrder == 1){
+                        zellenWocheZwei[j].appendChild(await createPullWorkout(3));
+                        counterForTrainingOrder++;
+                    } else if(counterForTrainingOrder == 2){
+                        zellenWocheZwei[j].appendChild(await createLegsWorkout(3));
+                        counterForTrainingOrder++;
+                    } else if(counterForTrainingOrder == 3){
+                        zellenWocheZwei[j].appendChild(await createPushWorkout(3));
+                        counterForTrainingOrder++;
+                    } else if(counterForTrainingOrder == 4){
+                        zellenWocheZwei[j].appendChild(await createPullWorkout(3));
+                        counterForTrainingOrder++;
+                    }
+                }
+            }
+            counterForTrainingOrder = 1;
+            for (var j = 0; j < zellenWocheDrei.length; j++) {
+                if(results[6][j] == 1){
+                    if(counterForTrainingOrder == 1){
+                        zellenWocheDrei[j].appendChild(await createLegsWorkout(3));
+                        counterForTrainingOrder++;
+                    } else if(counterForTrainingOrder == 2){
+                        zellenWocheDrei[j].appendChild(await createPushWorkout(3));
+                        counterForTrainingOrder++;
+                    } else if(counterForTrainingOrder == 3){
+                        zellenWocheDrei[j].appendChild(await createPullWorkout(3));
+                        counterForTrainingOrder++;
+                    } else if(counterForTrainingOrder == 4){
+                        zellenWocheDrei[j].appendChild(await createLegsWorkout(3));
+                        counterForTrainingOrder++;
+                    }
+                }
+            }
+        } 
+        else if(userAge => 16 && userAge < 60 && weekdays != 4 && trainingGoal == "Muskelaufbau"){
+            // Zeige 1-wöchige Tabelle
+            weeklyTableContainer.style.display = "block";
+            var tabelle = document.getElementById("weeklyID").getElementsByTagName("table")[0];
+            var zeilen = tabelle.getElementsByTagName("tr");
+            var zellen = zeilen[1].getElementsByTagName("td");
+            let counterForTrainingOrder = 1;
+            for (var j = 0; j < zellen.length; j++) {
+                if(results[6][j] == 1){
+                    if (weekdays == 1){
+                        // Ganzkörper
+                        zellen[j].appendChild(await createFullBodyWorkout(3));
+                    } else if(weekdays == 2){
+                        // Ganzkörper
+                        zellen[j].appendChild(await createFullBodyWorkout(3));
+                    } else if(weekdays == 3){
+                        // Push, Pull, Legs
+                        if(counterForTrainingOrder == 1){
+                            zellen[j].appendChild(await createPushWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 2){
+                            zellen[j].appendChild(await createPullWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 3){
+                            zellen[j].appendChild(await createLegsWorkout(3));
+                            counterForTrainingOrder++;
+                        }
+                    } else if(weekdays == 5){
+                        // Push, Pull, Legs, Push, Pull, Legs (Bro Split)
+                        if(counterForTrainingOrder == 1){
+                            // zellen[j].innerText = await createChestWorkout(3);
+                            zellen[j].appendChild(await createChestWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 2){
+                            zellen[j].appendChild(await createLegsWorkout(3));
+                            counterForTrainingOrder++;
+                        }else if(counterForTrainingOrder == 3){
+                            // zellen[j].innerText = await createBackWorkout(3);
+                            zellen[j].appendChild(await createBackWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 4){
+                            // zellen[j].innerText = await createShoulderNeckWorkout(3);
+                            zellen[j].appendChild(await createShoulderNeckWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 5){
+                            // zellen[j].innerText = await createArmWorkout(3);
+                            zellen[j].appendChild(await createShoulderNeckWorkout(3));
+                            counterForTrainingOrder++;
+                        }
+                    } else if(weekdays == 6){
+                        // Push, Pull, Legs, Push, Pull, Legs
+                        if(counterForTrainingOrder == 1 || counterForTrainingOrder == 4){
+                            zellen[j].appendChild(await createPushWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 2 || counterForTrainingOrder == 5){
+                            zellen[j].appendChild(await createPullWorkout(3));
+                            counterForTrainingOrder++;
+                        }else if(counterForTrainingOrder == 3 || counterForTrainingOrder == 6){
+                            zellen[j].appendChild(await createLegsWorkout(3));
+                            counterForTrainingOrder++;
+                        }
+                    } else if(weekdays == 7){
+                        // Push, Pull, Legs, Recovery, Push, Pull, Legs
+                        if(counterForTrainingOrder == 1){
+                            zellen[j].appendChild(await createPushWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 2){
+                            zellen[j].appendChild(await createPullWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 3){
+                            zellen[j].appendChild(await createLegsWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 4){
+                            zellen[j].appendChild(await createPushWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 5){
+                            zellen[j].appendChild(await createPullWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 6){
+                            zellen[j].appendChild(await createLegsWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 7){
+                            zellen[j].appendChild(await createRecoveryButton());
+                            counterForTrainingOrder++;
+                        }
+                    }
+                }
+            }
         }
+        else if(trainingGoal == "Abnehmen"){
+            showText.innerHTML = "Trainingspläne für Männder mit dem Ziel abzunehmen sind bisher noch nicht verfügbar."
+        }
+        else if(trainingGoal == "Reha"){
+            showText.innerHTML = "Trainingspläne für Männer mit dem Ziel Rehabilitation sind bisher noch nicht verfügbar."
+        }
+    } else if(userGender = "Female"){
+        showText.innerHTML = "Trainingspläne für Frauen sind bisher noch nicht verfügbar."
+    } else{
+        showText.innerHTML = "Trainingspläne für Diverse Personen sind bisher noch nicht verfügbar."
     }
+
+
+
+    
 }
 
