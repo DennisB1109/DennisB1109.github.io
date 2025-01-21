@@ -984,7 +984,7 @@ async function displayPlan(){
     const showText = document.getElementById("TitleTextContainer");
     showText.innerHTML = "Basierend auf deinen Angaben wurde für dich folgender Trainingsplan erstellt";
     showText.style.display = "block";
-    if(userGender = "Male"){
+    if(userGender == "Male"){
         if(userAge < 16) {
             showText.innerHTML = "Trainingspläne für Männer unter 16 Jahren sind bisher noch nicht verfügbar."
         }
@@ -1149,7 +1149,7 @@ async function displayPlan(){
         else if(trainingGoal == "Reha"){
             showText.innerHTML = "Trainingspläne für Männer mit dem Ziel Rehabilitation sind bisher noch nicht verfügbar."
         }
-    } else if(userGender = "Female"){
+    } else if(userGender == "Female"){
         showText.innerHTML = "Trainingspläne für Frauen sind bisher noch nicht verfügbar."
     } else{
         showText.innerHTML = "Trainingspläne für Diverse Personen sind bisher noch nicht verfügbar."
