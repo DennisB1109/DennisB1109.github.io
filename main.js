@@ -854,17 +854,24 @@ function openImageModal(imageSrc) {
 
 async function createFullBodyWorkout(fitnesslevel) {
     const fullBody = ["Beine", "Brust", "Rücken", "Schultern", "Trizeps", "Bizeps"];
+    return createWorkout(fitnesslevel, fullBody);
+}
+
+async function createWorkout(fitnesslevel, muscleGroups) {
     const trainingsplan = [];
+    const hinzugefuegteUebungen = new Set(); // Doppelte Übungen vermeiden
 
     // Filtere und wähle Übungen aus
-    fullBody.forEach(muskelgruppe => {
+    muscleGroups.forEach(muskelgruppe => {
         const verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
             exercise.muscle_group.includes(muskelgruppe) &&
-            exercise.difficulty <= fitnesslevel
+            exercise.difficulty <= fitnesslevel &&
+            !hinzugefuegteUebungen.has(exercise.name)
         ));
 
         if (verfuegbareUebungen.length > 0) {
             trainingsplan.push(verfuegbareUebungen[0].name[0]); // Name der Übung
+            hinzugefuegteUebungen.add(verfuegbareUebungen[0].name);
         }
     });
 
@@ -893,291 +900,37 @@ async function createFullBodyWorkout(fitnesslevel) {
 
 async function createPushWorkout(fitnesslevel) {
     const push = ["Brust", "Brust", "Brust", "Schultern", "Schultern", "Schultern", "Trizeps", "Trizeps"];
-    const trainingsplan = [];
-
-    // Filtere und wähle Übungen aus
-    push.forEach(muskelgruppe => {
-        const verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
-            exercise.muscle_group.includes(muskelgruppe) &&
-            exercise.difficulty <= fitnesslevel
-        ));
-
-        if (verfuegbareUebungen.length > 0) {
-            trainingsplan.push(verfuegbareUebungen[0].name[0]); // Name der Übung
-        }
-    });
-
-    // Buttons erstellen
-    const buttonContainer = document.createElement('div');
-    buttonContainer.style.display = 'flex';
-    buttonContainer.style.flexWrap = 'wrap';
-    buttonContainer.style.gap = '5px';
-
-    trainingsplan.slice(0, 6).forEach(exerciseName => { // Maximal 6 Buttons
-        const button = document.createElement('button');
-        button.innerText = exerciseName;
-        button.classList.add('exercise-button'); // Optional für Styling
-
-        // Event-Listener für das Öffnen des Modals hinzufügen
-        button.addEventListener('click', () => {
-            const imagePath = ("Images/Exercises/" + exerciseName + ".png").replace(/\s+/g, "_"); // Passe den Pfad an
-            openImageModal(imagePath);
-        });
-
-        buttonContainer.appendChild(button);
-    });
-
-    return buttonContainer; // Rückgabe des Containers mit Buttons
+    return createWorkout(fitnesslevel, push);
 }
-
 
 async function createPullWorkout(fitnesslevel) {
     const pull = ["Rücken", "Rücken", "Rücken", "Nacken", "Bizeps", "Bizeps"];
-    const trainingsplan = [];
-
-    // Filtere und wähle Übungen aus
-    pull.forEach(muskelgruppe => {
-        const verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
-            exercise.muscle_group.includes(muskelgruppe) &&
-            exercise.difficulty <= fitnesslevel
-        ));
-
-        if (verfuegbareUebungen.length > 0) {
-            trainingsplan.push(verfuegbareUebungen[0].name[0]); // Name der Übung
-        }
-    });
-
-    // Buttons erstellen
-    const buttonContainer = document.createElement('div');
-    buttonContainer.style.display = 'flex';
-    buttonContainer.style.flexWrap = 'wrap';
-    buttonContainer.style.gap = '5px';
-
-    trainingsplan.slice(0, 6).forEach(exerciseName => { // Maximal 6 Buttons
-        const button = document.createElement('button');
-        button.innerText = exerciseName;
-        button.classList.add('exercise-button'); // Optional für Styling
-
-        // Event-Listener für das Öffnen des Modals hinzufügen
-        button.addEventListener('click', () => {
-            const imagePath = ("Images/Exercises/" + exerciseName + ".png").replace(/\s+/g, "_"); // Passe den Pfad an
-            openImageModal(imagePath);
-        });
-
-        buttonContainer.appendChild(button);
-    });
-
-    return buttonContainer; // Rückgabe des Containers mit Buttons
+    return createWorkout(fitnesslevel, pull);
 }
 
 async function createLegsWorkout(fitnesslevel) {
     const legs = ["Beine", "Beine", "Quadtrizeps", "Beinbeuger", "Waden", "Waden"];
-    const trainingsplan = [];
-    const hinzugefuegteUebungen = new Set(); // Doppelte Übungen vermeiden
-
-    // Filtere und wähle Übungen aus
-    legs.forEach(muskelgruppe => {
-        const verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
-            exercise.muscle_group.includes(muskelgruppe) &&
-            exercise.difficulty <= fitnesslevel &&
-            !hinzugefuegteUebungen.has(exercise.name)
-        ));
-
-        if (verfuegbareUebungen.length > 0) {
-            trainingsplan.push(verfuegbareUebungen[0].name[0]); // Name der Übung
-            hinzugefuegteUebungen.add(verfuegbareUebungen[0].name);
-        }
-    });
-
-    // Buttons erstellen
-    const buttonContainer = document.createElement('div');
-    buttonContainer.style.display = 'flex';
-    buttonContainer.style.flexWrap = 'wrap';
-    buttonContainer.style.gap = '5px';
-
-    trainingsplan.slice(0, 6).forEach(exerciseName => { // Maximal 6 Buttons
-        const button = document.createElement('button');
-        button.innerText = exerciseName;
-        button.classList.add('exercise-button'); // Optional für Styling
-
-        // Event-Listener für das Öffnen des Modals hinzufügen
-        button.addEventListener('click', () => {
-            const imagePath = ("Images/Exercises/" + exerciseName + ".png").replace(/\s+/g, "_"); // Passe den Pfad an
-            openImageModal(imagePath);
-        });
-
-        buttonContainer.appendChild(button);
-    });
-
-    return buttonContainer; // Rückgabe des Containers mit Buttons
+    return createWorkout(fitnesslevel, legs);
 }
 
 async function createBackWorkout(fitnesslevel) {
     const back = ["Latissimus", "Oberer Trapezius", "Unterer Trapezius", "Unterer Rücken", "Rotatorenmanschette", "Teres Major"];
-    const trainingsplan = [];
-    const hinzugefuegteUebungen = new Set(); // Doppelte Übungen vermeiden
-
-    // Filtere und wähle Übungen aus
-    back.forEach(muskelgruppe => {
-        const verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
-            exercise.muscle_group.includes(muskelgruppe) &&
-            exercise.difficulty <= fitnesslevel &&
-            !hinzugefuegteUebungen.has(exercise.name)
-        ));
-
-        if (verfuegbareUebungen.length > 0) {
-            trainingsplan.push(verfuegbareUebungen[0].name[0]); // Name der Übung
-            hinzugefuegteUebungen.add(verfuegbareUebungen[0].name);
-        }
-    });
-
-    // Buttons erstellen
-    const buttonContainer = document.createElement('div');
-    buttonContainer.style.display = 'flex';
-    buttonContainer.style.flexWrap = 'wrap';
-    buttonContainer.style.gap = '5px';
-
-    trainingsplan.slice(0, 6).forEach(exerciseName => { // Maximal 6 Buttons
-        const button = document.createElement('button');
-        button.innerText = exerciseName;
-        button.classList.add('exercise-button'); // Optional für Styling
-
-        // Event-Listener für das Öffnen des Modals hinzufügen
-        button.addEventListener('click', () => {
-            const imagePath = ("Images/Exercises/" + exerciseName + ".png").replace(/\s+/g, "_"); // Passe den Pfad an
-            openImageModal(imagePath);
-        });
-
-        buttonContainer.appendChild(button);
-    });
-
-    return buttonContainer; // Rückgabe des Containers mit Buttons
+    return createWorkout(fitnesslevel, back);
 }
 
 async function createShoulderNeckWorkout(fitnesslevel) {
     const shoulderNeck = ["Vordere Schulter", "Vordere Schulter", "Seitliche Schulter", "Seitliche Schulter", "Hintere Schulter", "Hintere Schulter", "Nacken", "Nacken"];
-    const trainingsplan = [];
-    const hinzugefuegteUebungen = new Set(); // Doppelte Übungen vermeiden
-
-    // Filtere und wähle Übungen aus
-    shoulderNeck.forEach(muskelgruppe => {
-        const verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
-            exercise.muscle_group.includes(muskelgruppe) &&
-            exercise.difficulty <= fitnesslevel &&
-            !hinzugefuegteUebungen.has(exercise.name)
-        ));
-
-        if (verfuegbareUebungen.length > 0) {
-            trainingsplan.push(verfuegbareUebungen[0].name[0]); // Name der Übung
-            hinzugefuegteUebungen.add(verfuegbareUebungen[0].name);
-        }
-    });
-
-    // Buttons erstellen
-    const buttonContainer = document.createElement('div');
-    buttonContainer.style.display = 'flex';
-    buttonContainer.style.flexWrap = 'wrap';
-    buttonContainer.style.gap = '5px';
-
-    trainingsplan.slice(0, 6).forEach(exerciseName => { // Maximal 6 Buttons
-        const button = document.createElement('button');
-        button.innerText = exerciseName;
-        button.classList.add('exercise-button'); // Optional für Styling
-
-        // Event-Listener für das Öffnen des Modals hinzufügen
-        button.addEventListener('click', () => {
-            const imagePath = ("Images/Exercises/" + exerciseName + ".png").replace(/\s+/g, "_"); // Passe den Pfad an
-            openImageModal(imagePath);
-        });
-
-        buttonContainer.appendChild(button);
-    });
-
-    return buttonContainer; // Rückgabe des Containers mit Buttons
+    return createWorkout(fitnesslevel, shoulderNeck);
 }
 
 async function createArmWorkout(fitnesslevel) {
     const arms = ["Bizeps", "Bizeps", "Bizeps", "Bizeps", "Trizeps", "Trizeps", "Trizeps"];
-    const trainingsplan = [];
-    const hinzugefuegteUebungen = new Set(); // Doppelte Übungen vermeiden
-
-    // Filtere und wähle Übungen aus
-    arms.forEach(muskelgruppe => {
-        const verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
-            exercise.muscle_group.includes(muskelgruppe) &&
-            exercise.difficulty <= fitnesslevel &&
-            !hinzugefuegteUebungen.has(exercise.name)
-        ));
-
-        if (verfuegbareUebungen.length > 0) {
-            trainingsplan.push(verfuegbareUebungen[0].name[0]); // Name der Übung
-            hinzugefuegteUebungen.add(verfuegbareUebungen[0].name);
-        }
-    });
-
-    // Buttons erstellen
-    const buttonContainer = document.createElement('div');
-    buttonContainer.style.display = 'flex';
-    buttonContainer.style.flexWrap = 'wrap';
-    buttonContainer.style.gap = '5px';
-
-    trainingsplan.slice(0, 6).forEach(exerciseName => { // Maximal 6 Buttons
-        const button = document.createElement('button');
-        button.innerText = exerciseName;
-        button.classList.add('exercise-button'); // Optional für Styling
-
-        // Event-Listener für das Öffnen des Modals hinzufügen
-        button.addEventListener('click', () => {
-            const imagePath = ("Images/Exercises/" + exerciseName + ".png").replace(/\s+/g, "_"); // Passe den Pfad an
-            openImageModal(imagePath);
-        });
-
-        buttonContainer.appendChild(button);
-    });
-
-    return buttonContainer; // Rückgabe des Containers mit Buttons
+    return createWorkout(fitnesslevel, arms);
 }
 
 async function createChestWorkout(fitnesslevel) {
-    const arms = ["Mittlere Brust", "Mittlere Brust", "Obere Brust", "Obere Brust", "Untere Brust", "Innere Brust"];
-    const trainingsplan = [];
-    const hinzugefuegteUebungen = new Set(); // Doppelte Übungen vermeiden
-
-    // Filtere und wähle Übungen aus
-    arms.forEach(muskelgruppe => {
-        const verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
-            exercise.muscle_group.includes(muskelgruppe) &&
-            exercise.difficulty <= fitnesslevel &&
-            !hinzugefuegteUebungen.has(exercise.name)
-        ));
-
-        if (verfuegbareUebungen.length > 0) {
-            trainingsplan.push(verfuegbareUebungen[0].name[0]); // Name der Übung
-            hinzugefuegteUebungen.add(verfuegbareUebungen[0].name);
-        }
-    });
-
-    // Buttons erstellen
-    const buttonContainer = document.createElement('div');
-    buttonContainer.style.display = 'flex';
-    buttonContainer.style.flexWrap = 'wrap';
-    buttonContainer.style.gap = '5px';
-
-    trainingsplan.slice(0, 6).forEach(exerciseName => { // Maximal 6 Buttons
-        const button = document.createElement('button');
-        button.innerText = exerciseName;
-        button.classList.add('exercise-button'); // Optional für Styling
-
-        // Event-Listener für das Öffnen des Modals hinzufügen
-        button.addEventListener('click', () => {
-            const imagePath = ("Images/Exercises/" + exerciseName + ".png").replace(/\s+/g, "_"); // Passe den Pfad an
-            openImageModal(imagePath);
-        });
-
-        buttonContainer.appendChild(button);
-    });
-
-    return buttonContainer; // Rückgabe des Containers mit Buttons
+    const chest = ["Mittlere Brust", "Mittlere Brust", "Obere Brust", "Obere Brust", "Untere Brust", "Innere Brust"];
+    return createWorkout(fitnesslevel, chest);
 }
 
 function createRecoveryButton() {
