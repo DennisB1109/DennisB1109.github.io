@@ -991,7 +991,7 @@ async function displayPlan(){
         else if(userAge >= 60) {
             showText.innerHTML = "Trainingspläne für Senioren ab 60 Jahren sind bisher noch nicht verfügbar."
         }
-        else if(userAge => 16 && userAge < 60 && weekdays == 4 && trainingGoal == "Muskelaufbau"){
+        else if(16 >= userAge || userAge < 60 && weekdays == 4 && trainingGoal == "Muskelaufbau"){
             // Zeige 3-wöchige Tabelle
             triweeklyTableContainer.style.display = "block";
             var tabelle = document.getElementById("triweeklyID").getElementsByTagName("table")[0];
@@ -1054,7 +1054,7 @@ async function displayPlan(){
                 }
             }
         } 
-        else if(userAge => 16 && userAge < 60 && weekdays != 4 && trainingGoal == "Muskelaufbau"){
+        else if(16 >= userAge || userAge < 60 && weekdays != 4 && trainingGoal == "Muskelaufbau"){
             // Zeige 1-wöchige Tabelle
             weeklyTableContainer.style.display = "block";
             var tabelle = document.getElementById("weeklyID").getElementsByTagName("table")[0];
