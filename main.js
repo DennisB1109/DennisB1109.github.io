@@ -508,7 +508,7 @@ let exercises = [
     {
         "name": ["Bulgarian Split Squats"],
         "difficulty": 3,
-        "muscle_group": ["Beine", "Quadrizeps"],
+        "muscle_group": ["Beine", "Po", "Quadrizeps"],
         "training_location": ["Gym"],
         "age": [1, 100],
         "goal": "Muskelaufbau",
@@ -535,7 +535,7 @@ let exercises = [
     {
         "name": ["Wadenheben sitzend"],
         "difficulty": 1,
-        "muscle_group": ["Beine", "Waden"],
+        "muscle_group": ["Waden"],
         "training_location": ["Gym"],
         "age": [1, 100],
         "goal": "Muskelaufbau",
@@ -544,7 +544,7 @@ let exercises = [
     {
         "name": ["Wadenheben stehend"],
         "difficulty": 1,
-        "muscle_group": ["Beine", "Waden"],
+        "muscle_group": ["Waden"],
         "training_location": ["Gym"],
         "age": [1, 100],
         "goal": "Muskelaufbau",
@@ -919,6 +919,33 @@ let exercises = [
         "goal": "Muskelaufbau",
         "gender": ["Female"]
     },
+    {
+        "name": ["Cable Kickbacks"],
+        "difficulty": 2,
+        "muscle_group": ["Po"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau",
+        "gender": ["Female"]
+    },
+    {
+        "name": ["Abduction Machine"],
+        "difficulty": 1,
+        "muscle_group": ["Po"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau",
+        "gender": ["Female"]
+    },
+    {
+        "name": ["Goblet Squat"],
+        "difficulty": 1,
+        "muscle_group": ["Po"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau",
+        "gender": ["Female"]
+    }
 ];
 
 /* Funktion zum erstellen eines Fensters das beim drücken eines Knopfes geöffnet wird */
@@ -1047,7 +1074,12 @@ async function createLowerWorkoutFemale(fitnesslevel) {
 }
 
 async function createUpperWorkoutFemale(fitnesslevel) {
-    const chest = ["Rücken", "Unterer Rücken", "Vordere Schulter", "Hintere Schulter", "Core"];
+    const chest = ["Rücken", "Unterer Rücken", "Vordere Schulter", "Hintere Schulter", "Bizeps", "Core"];
+    return createWorkout(fitnesslevel, chest, "Female");
+}
+
+async function createPoWorkoutFemale(fitnesslevel) {
+    const chest = ["Po", "Po", "Po", "Po", "Po"];
     return createWorkout(fitnesslevel, chest, "Female");
 }
 
@@ -1297,45 +1329,60 @@ async function displayPlan(){
                             counterForTrainingOrder++;
                         }
                     } else if(weekdays == 3){
-                        // Push, Pull, Legs
+                        // Unterkörpter (Po-Fokus), Oberkörper, Unterkörper (Beine Fokus)
                         if(counterForTrainingOrder == 1){
-                            zellen[j].appendChild(await createPushWorkout(3));
+                            zellen[j].appendChild(await createPoWorkoutFemale(3));
                             counterForTrainingOrder++;
                         } else if(counterForTrainingOrder == 2){
-                            zellen[j].appendChild(await createPullWorkout(3));
+                            zellen[j].appendChild(await createUpperWorkoutFemale(3));
                             counterForTrainingOrder++;
                         } else if(counterForTrainingOrder == 3){
                             zellen[j].appendChild(await createLegsWorkout(3));
                             counterForTrainingOrder++;
-                        }
-                    } else if(weekdays == 5){
-                        // Push, Pull, Legs, Push, Pull, Legs (Bro Split)
+                        } 
+                    } else if(weekdays == 4){
+                        // Unterkörper (Glute- und Quadrizeps-Fokus), Oberkörper (Kraft und Haltung), Unterkörper (Beinbizeps- und Waden-Fokus), Oberkörper (Schulter- und Arm-Fokus)
+                        console.log("Entered?");
                         if(counterForTrainingOrder == 1){
-                            // zellen[j].innerText = await createChestWorkout(3);
-                            zellen[j].appendChild(await createChestWorkout(3));
+                            zellen[j].appendChild(await createPoWorkoutFemale(3));
                             counterForTrainingOrder++;
                         } else if(counterForTrainingOrder == 2){
-                            zellen[j].appendChild(await createLegsWorkout(3));
+                            zellen[j].appendChild(await createUpperWorkoutFemale(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 3){
+                            zellen[j].appendChild(await createLowerWorkoutFemale(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 4){
+                            zellen[j].appendChild(await createUpperWorkoutFemale(3));
+                            counterForTrainingOrder++;
+                        } 
+                    } else if(weekdays == 5){
+                        if(counterForTrainingOrder == 1){
+                            // zellen[j].innerText = await createChestWorkout(3);
+                            zellen[j].appendChild(await createPoWorkoutFemale(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 2){
+                            zellen[j].appendChild(await createUpperWorkoutFemale(3));
                             counterForTrainingOrder++;
                         }else if(counterForTrainingOrder == 3){
                             // zellen[j].innerText = await createBackWorkout(3);
-                            zellen[j].appendChild(await createBackWorkout(3));
+                            zellen[j].appendChild(await createLegsWorkout(3));
                             counterForTrainingOrder++;
                         } else if(counterForTrainingOrder == 4){
                             // zellen[j].innerText = await createShoulderNeckWorkout(3);
-                            zellen[j].appendChild(await createShoulderNeckWorkout(3));
+                            zellen[j].appendChild(await createUpperWorkoutFemale(3));
                             counterForTrainingOrder++;
                         } else if(counterForTrainingOrder == 5){
                             // zellen[j].innerText = await createArmWorkout(3);
-                            zellen[j].appendChild(await createShoulderNeckWorkout(3));
+                            zellen[j].appendChild(await createLowerWorkoutFemale(3));
                             counterForTrainingOrder++;
                         }
                     } else if(weekdays == 6){
                         // Push, Pull, Legs, Push, Pull, Legs
-                        if(counterForTrainingOrder == 1 || counterForTrainingOrder == 4){
-                            zellen[j].appendChild(await createPushWorkout(3));
+                        if(counterForTrainingOrder == 1 || counterForTrainingOrder == 5){
+                            zellen[j].appendChild(await createPoWorkoutFemale(3));
                             counterForTrainingOrder++;
-                        } else if(counterForTrainingOrder == 2 || counterForTrainingOrder == 5){
+                        } else if(counterForTrainingOrder == 2 || counterForTrainingOrder == 4){
                             zellen[j].appendChild(await createPullWorkout(3));
                             counterForTrainingOrder++;
                         }else if(counterForTrainingOrder == 3 || counterForTrainingOrder == 6){
@@ -1345,22 +1392,22 @@ async function displayPlan(){
                     } else if(weekdays == 7){
                         // Push, Pull, Legs, Recovery, Push, Pull, Legs
                         if(counterForTrainingOrder == 1){
-                            zellen[j].appendChild(await createPushWorkout(3));
+                            zellen[j].appendChild(await createPoWorkoutFemale(3));
                             counterForTrainingOrder++;
                         } else if(counterForTrainingOrder == 2){
-                            zellen[j].appendChild(await createPullWorkout(3));
+                            zellen[j].appendChild(await createUpperWorkoutFemale(3));
                             counterForTrainingOrder++;
                         } else if(counterForTrainingOrder == 3){
                             zellen[j].appendChild(await createLegsWorkout(3));
                             counterForTrainingOrder++;
                         } else if(counterForTrainingOrder == 4){
-                            zellen[j].appendChild(await createPushWorkout(3));
+                            zellen[j].appendChild(await createLegsWorkout(3));
                             counterForTrainingOrder++;
                         } else if(counterForTrainingOrder == 5){
-                            zellen[j].appendChild(await createPullWorkout(3));
+                            zellen[j].appendChild(await createUpperWorkoutFemale(3));
                             counterForTrainingOrder++;
                         } else if(counterForTrainingOrder == 6){
-                            zellen[j].appendChild(await createLegsWorkout(3));
+                            zellen[j].appendChild(await createLowerWorkoutFemale(3));
                             counterForTrainingOrder++;
                         } else if(counterForTrainingOrder == 7){
                             zellen[j].appendChild(await createRecoveryButton());
