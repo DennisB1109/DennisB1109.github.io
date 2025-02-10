@@ -508,7 +508,7 @@ let exercises = [
     {
         "name": ["Bulgarian Split Squats"],
         "difficulty": 3,
-        "muscle_group": ["Beine"],
+        "muscle_group": ["Beine", "Quadrizeps"],
         "training_location": ["Gym"],
         "age": [1, 100],
         "goal": "Muskelaufbau",
@@ -904,7 +904,16 @@ let exercises = [
     {
         "name": ["Glute Bridges"],
         "difficulty": 1,
-        "muscle_group": ["Core", "Po", ""],
+        "muscle_group": ["Core", "Po"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau",
+        "gender": ["Female"]
+    },
+    {
+        "name": ["Hyperextensions"],
+        "difficulty": 1,
+        "muscle_group": ["Unterer Rücken"],
         "training_location": ["Gym"],
         "age": [1, 100],
         "goal": "Muskelaufbau",
@@ -944,20 +953,21 @@ function openImageModal(imageSrc) {
     document.body.appendChild(modalOverlay);
 }
 
-async function createFullBodyWorkoutFemale(fitnesslevel) {
-    const fullBody = ["Po", "Quadrizeps", "Beinbeuger", "Core", "Rücken", "Rücken"];
-    return createWorkout(fitnesslevel, fullBody, "Female");
-}
 
 async function createFullBodyWorkout(fitnesslevel) {
     const fullBody = ["Beine", "Brust", "Rücken", "Schultern", "Trizeps", "Bizeps"];
     return createWorkout(fitnesslevel, fullBody, "Male");
 }
 
+async function createFullBodyWorkoutFemale(fitnesslevel) {
+    const fullBody = ["Po", "Quadrizeps", "Beinbeuger", "Core", "Rücken", "Rücken"];
+    return createWorkout(fitnesslevel, fullBody, "Female");
+}
+
 async function createWorkout(fitnesslevel, muscleGroups, gender) {
     const trainingsplan = [];
     const hinzugefuegteUebungen = new Set(); // Doppelte Übungen vermeiden
-
+    
     // Filtere und wähle Übungen aus
     muscleGroups.forEach(muskelgruppe => {
         const verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
@@ -966,19 +976,19 @@ async function createWorkout(fitnesslevel, muscleGroups, gender) {
             exercise.gender.includes(gender) && // Überprüfung auf Geschlecht
             !hinzugefuegteUebungen.has(exercise.name)
         ));
-
+        
         if (verfuegbareUebungen.length > 0) {
             trainingsplan.push(verfuegbareUebungen[0].name[0]); // Name der Übung
             hinzugefuegteUebungen.add(verfuegbareUebungen[0].name);
         }
     });
-
+    
     // Buttons erstellen
     const buttonContainer = document.createElement('div');
     buttonContainer.style.display = 'flex';
     buttonContainer.style.flexWrap = 'wrap';
     buttonContainer.style.gap = '5px';
-
+    
     trainingsplan.slice(0, 6).forEach(exerciseName => { // Maximal 6 Buttons
         const button = document.createElement('button');
         button.innerText = exerciseName;
@@ -1029,6 +1039,16 @@ async function createArmWorkout(fitnesslevel) {
 async function createChestWorkout(fitnesslevel) {
     const chest = ["Mittlere Brust", "Mittlere Brust", "Obere Brust", "Obere Brust", "Untere Brust", "Innere Brust"];
     return createWorkout(fitnesslevel, chest, "Male");
+}
+
+async function createLowerWorkoutFemale(fitnesslevel) {
+    const chest = ["Po", "Po", "Beinbeuger", "Quadrizeps", "Waden", "Core"];
+    return createWorkout(fitnesslevel, chest, "Female");
+}
+
+async function createUpperWorkoutFemale(fitnesslevel) {
+    const chest = ["Rücken", "Unterer Rücken", "Vordere Schulter", "Hintere Schulter", "Core"];
+    return createWorkout(fitnesslevel, chest, "Female");
 }
 
 function createRecoveryButton() {
@@ -1269,8 +1289,13 @@ async function displayPlan(){
                         zellen[j].appendChild(await createFullBodyWorkoutFemale(3));
                     } else if(weekdays == 2){
                         // Upper-/Lower-Split
-                        //ToDo
-                        zellen[j].appendChild(await createFullBodyWorkoutFemale(3));
+                        if(counterForTrainingOrder == 1){
+                            zellen[j].appendChild(await createUpperWorkoutFemale(3));
+                            counterForTrainingOrder++;
+                        } else if (counterForTrainingOrder == 2){
+                            zellen[j].appendChild(await createLowerWorkoutFemale(3));
+                            counterForTrainingOrder++;
+                        }
                     } else if(weekdays == 3){
                         // Push, Pull, Legs
                         if(counterForTrainingOrder == 1){
