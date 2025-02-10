@@ -354,67 +354,75 @@ window.onload = async function() {
 let exercises = [
     {
         "name": ["Bankdrücken"],
-        "difficulty": 3,
+        "difficulty": 2,
         "muscle_group": ["Brust", "Mittlere Brust"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male"]
     },
     {
         "name": ["Butterfly-Maschine"],
-        "difficulty": 3,
-        "muscle_group": ["Brust", "Innere Brust"],
-        "training_location": ["Gym"],
-        "age": [1, 100],
-        "goal": "Muskelaufbau"
-    },
-    {
-        "name": ["Fliegende mit Kurzhanteln"],
         "difficulty": 1,
         "muscle_group": ["Brust", "Innere Brust"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
-        "name": ["Schrägbankdrücken"],
-        "difficulty": 3,
-        "muscle_group": ["Brust", "Obere Brust"],
-        "training_location": ["Gym"],
-        "age": [1, 100],
-        "goal": "Muskelaufbau"
-    },
-    {
-        "name": ["Negativbankdrücken"],
-        "difficulty": 3,
-        "muscle_group": ["Brust", "Untere Brust"],
-        "training_location": ["Gym"],
-        "age": [1, 100],
-        "goal": "Muskelaufbau"
-    },
-    {
-        "name": ["Cable Fly"],
-        "difficulty": 3,
+        "name": ["Fliegende mit Kurzhanteln"],
+        "difficulty": 2,
         "muscle_group": ["Brust", "Innere Brust"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
+    },
+    {
+        "name": ["Schrägbankdrücken"],
+        "difficulty": 2,
+        "muscle_group": ["Brust", "Obere Brust"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau",
+        "gender": ["Male"]
+    },
+    {
+        "name": ["Negativbankdrücken"],
+        "difficulty": 2,
+        "muscle_group": ["Brust", "Untere Brust"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau",
+        "gender": ["Male"]
+    },
+    {
+        "name": ["Cable Fly"],
+        "difficulty": 1,
+        "muscle_group": ["Brust", "Innere Brust"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Brustpresse Maschine"],
-        "difficulty": 3,
+        "difficulty": 1,
         "muscle_group": ["Brust", "Mittlere Brust"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Latzug"],
-        "difficulty": 3,
+        "difficulty": 2,
         "muscle_group": ["Rücken", "Latissimus", "Teres Major"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Kreuzheben"],
@@ -422,31 +430,35 @@ let exercises = [
         "muscle_group": ["Rücken", "Unterer Rücken"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male"]
     },
     {
         "name": ["Kurzhantel Rudern", "Dumbbell Bent-Over Rows"],
-        "difficulty": 3,
+        "difficulty": 2,
         "muscle_group": ["Rücken", "Latissimus", "Teres Major"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Langhantel Rudern", "Barbell Bent-Over Rows"],
-        "difficulty": 3,
+        "difficulty": 2,
         "muscle_group": ["Rücken", "Latissimus", "Teres Major"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Shrugs mit Kurzhanteln"],
-        "difficulty": 3,
+        "difficulty": 1,
         "muscle_group": ["Nacken", "Oberer Trapezius"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male"]
     },
     {
         "name": ["Schulterdrücken", "Shoulder Press"],
@@ -454,15 +466,17 @@ let exercises = [
         "muscle_group": ["Schultern", "Vordere Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Ausfallschritte"],
-        "difficulty": 3,
+        "difficulty": 1,
         "muscle_group": ["Beine"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Kniebeugen"],
@@ -470,23 +484,26 @@ let exercises = [
         "muscle_group": ["Beine"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Schrägbeinpresse"],
-        "difficulty": 3,
+        "difficulty": 2,
         "muscle_group": ["Beine"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Beinpresse"],
-        "difficulty": 3,
+        "difficulty": 2,
         "muscle_group": ["Beine"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Bulgarian Split Squats"],
@@ -494,207 +511,233 @@ let exercises = [
         "muscle_group": ["Beine"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Beinstrecker"],
-        "difficulty": 3,
-        "muscle_group": ["Beine", "Quadtrizeps"],
+        "difficulty": 1,
+        "muscle_group": ["Beine", "Quadrizeps"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Beinbeuger"],
-        "difficulty": 3,
+        "difficulty": 1,
         "muscle_group": ["Beine", "Beinbeuger"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Wadenheben sitzend"],
-        "difficulty": 3,
+        "difficulty": 1,
         "muscle_group": ["Beine", "Waden"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Wadenheben stehend"],
-        "difficulty": 3,
+        "difficulty": 1,
         "muscle_group": ["Beine", "Waden"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Trizepsdrücken"],
-        "difficulty": 3,
+        "difficulty": 1,
         "muscle_group": ["Arme", "Trizeps"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Arnold Dips"],
-        "difficulty": 3,
+        "difficulty": 1,
         "muscle_group": ["Arme", "Trizeps"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Dips"],
-        "difficulty": 3,
+        "difficulty": 2,
         "muscle_group": ["Arme", "Trizeps", "Vordere Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["French Press"],
-        "difficulty": 3,
+        "difficulty": 2,
         "muscle_group": ["Arme", "Trizeps"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Enges Bankdrücken"],
-        "difficulty": 3,
+        "difficulty": 2,
         "muscle_group": ["Arme", "Trizeps"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Trizeps Kickbacks"],
-        "difficulty": 3,
+        "difficulty": 1,
         "muscle_group": ["Arme", "Trizeps"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Bizepscurls"],
-        "difficulty": 3,
+        "difficulty": 1,
         "muscle_group": ["Arme", "Bizeps"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Aufrechtes Rudern", "Cable Upright Row"],
-        "difficulty": 3,
+        "difficulty": 1,
         "muscle_group": ["Rücken", "Oberer Trapezius"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Face Pulls"],
-        "difficulty": 3,
+        "difficulty": 2,
         "muscle_group": ["Rücken", "Unterer Trapezius", "Rotatorenmanschette", "Hintere Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Reverse Flys"],
-        "difficulty": 3,
+        "difficulty": 1,
         "muscle_group": ["Rücken", "Unterer Trapezius", "Hintere Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Prone Y-Raises"],
-        "difficulty": 3,
+        "difficulty": 1,
         "muscle_group": ["Rücken", "Unterer Trapezius"],
         "training_location": ["Gym", "Zuhause"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Klimmzüge", "Pull-Ups"],
-        "difficulty": 3,
+        "difficulty": 2,
         "muscle_group": ["Rücken", "Unterer Trapezius", "Oberer Trapezius", "Latissimus", "Teres Major"],
         "training_location": ["Gym", "Cali-Park"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Kabelaußenrotation", "Außenrotation am Kabelzug"],
-        "difficulty": 3,
+        "difficulty": 1,
         "muscle_group": ["Rücken", "Rotatorenmanschette"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Frontheben mit Kurzhanteln", "Dumbbell Front Raise"],
-        "difficulty": 3,
+        "difficulty": 1,
         "muscle_group": ["Schultern", "Vordere Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Frontheben mit Langhantel", "Barbell Front Raise"],
-        "difficulty": 3,
+        "difficulty": 1,
         "muscle_group": ["Schultern", "Vordere Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Arnold Presse", "Arnold Press"],
-        "difficulty": 3,
+        "difficulty": 2,
         "muscle_group": ["Schultern", "Vordere Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male"]
     },
     {
         "name": ["Frontheben am Kabelturm", "Cable Front Raise"],
-        "difficulty": 3,
+        "difficulty": 1,
         "muscle_group": ["Schultern", "Vordere Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Rear Delt Flys am Kabelzug", "Cable Front Raise"],
-        "difficulty": 3,
+        "difficulty": 1,
         "muscle_group": ["Schultern", "Hintere Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Bent-Over Reverse Flys"],
-        "difficulty": 3,
+        "difficulty": 2,
         "muscle_group": ["Schultern", "Hintere Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Seitheben", "Lateral Raise"],
-        "difficulty": 3,
+        "difficulty": 2,
         "muscle_group": ["Schultern", "Seitliche Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Seitheben am Kabelzug", "Lateral Raise"],
-        "difficulty": 3,
+        "difficulty": 1,
         "muscle_group": ["Schultern", "Seitliche Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Seitheben an der Maschine", "Lateral Raise"],
@@ -702,7 +745,8 @@ let exercises = [
         "muscle_group": ["Schultern", "Seitliche Schulter"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Brustpresse mit Kurzhanteln", "Dumbbell Bench Press"],
@@ -710,7 +754,8 @@ let exercises = [
         "muscle_group": ["Brust", "Mittlere Brust"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male"]
     },
     {
         "name": ["Kurzhantel Überzüge", "Dumbbell Pullover"],
@@ -718,7 +763,8 @@ let exercises = [
         "muscle_group": ["Brust", "Untere Brust"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Liegestütze", "Push Ups"],
@@ -726,7 +772,8 @@ let exercises = [
         "muscle_group": ["Brust", "Mittlere Brust"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Negativ Liegestütze (Füße auf Bank)", "Decline Push Up (Feet on Bench)"],
@@ -734,7 +781,8 @@ let exercises = [
         "muscle_group": ["Brust", "Obere Brust"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Positiv Liegestütze (Hände auf Bank)", "Incline Push Up (Hands on Bench)"],
@@ -742,7 +790,8 @@ let exercises = [
         "muscle_group": ["Brust", "Untere Brust"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Positiv Bankdrücken (Smith Machine)", "Smith Machine Incline Bench Press"],
@@ -750,7 +799,8 @@ let exercises = [
         "muscle_group": ["Brust", "Obere Brust"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male"]
     },
     {
         "name": ["Bankdrücken (Smith Machine)", "Smith Machine Bench Press"],
@@ -758,7 +808,8 @@ let exercises = [
         "muscle_group": ["Brust", "Mittlere Brust"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male"]
     },
     {
         "name": ["Reverse Curls"],
@@ -766,7 +817,8 @@ let exercises = [
         "muscle_group": ["Arme", "Bizeps"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Konzentrations Curl", "Concentration Curl"],
@@ -774,7 +826,8 @@ let exercises = [
         "muscle_group": ["Arme", "Bizeps"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Hammer Curl"],
@@ -782,7 +835,8 @@ let exercises = [
         "muscle_group": ["Arme", "Bizeps"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Preacher Curl (Maschine)", "Preacher Curl (Machine)"],
@@ -790,7 +844,8 @@ let exercises = [
         "muscle_group": ["Arme", "Bizeps"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Kabel Curl", "Kabel Curl"],
@@ -798,7 +853,8 @@ let exercises = [
         "muscle_group": ["Arme", "Bizeps"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Curls mit SZ-Stange"],
@@ -806,7 +862,8 @@ let exercises = [
         "muscle_group": ["Arme", "Bizeps"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Muskelaufbau"
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
     },
     {
         "name": ["Aktive Erholung", "Active Rest"],
@@ -814,7 +871,44 @@ let exercises = [
         "muscle_group": ["Erholung"],
         "training_location": ["Gym"],
         "age": [1, 100],
-        "goal": "Erholung"
+        "goal": "Erholung",
+        "gender": ["Male", "Female"]
+    },
+    {
+        "name": ["Hip Thrusts"],
+        "difficulty": 3,
+        "muscle_group": ["Po"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau",
+        "gender": ["Female"]
+    },
+    {
+        "name": ["Plank"],
+        "difficulty": 1,
+        "muscle_group": ["Core"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau",
+        "gender": ["Male", "Female"]
+    },
+    {
+        "name": ["Rumänisches Kreuzheben", "Romanian Deadlifts"],
+        "difficulty": 2,
+        "muscle_group": ["Po"],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau",
+        "gender": ["Female"]
+    },
+    {
+        "name": ["Glute Bridges"],
+        "difficulty": 1,
+        "muscle_group": ["Core", "Po", ""],
+        "training_location": ["Gym"],
+        "age": [1, 100],
+        "goal": "Muskelaufbau",
+        "gender": ["Female"]
     },
 ];
 
@@ -850,13 +944,17 @@ function openImageModal(imageSrc) {
     document.body.appendChild(modalOverlay);
 }
 
+async function createFullBodyWorkoutFemale(fitnesslevel) {
+    const fullBody = ["Po", "Quadrizeps", "Beinbeuger", "Core", "Rücken", "Rücken"];
+    return createWorkout(fitnesslevel, fullBody, "Female");
+}
 
 async function createFullBodyWorkout(fitnesslevel) {
     const fullBody = ["Beine", "Brust", "Rücken", "Schultern", "Trizeps", "Bizeps"];
-    return createWorkout(fitnesslevel, fullBody);
+    return createWorkout(fitnesslevel, fullBody, "Male");
 }
 
-async function createWorkout(fitnesslevel, muscleGroups) {
+async function createWorkout(fitnesslevel, muscleGroups, gender) {
     const trainingsplan = [];
     const hinzugefuegteUebungen = new Set(); // Doppelte Übungen vermeiden
 
@@ -865,6 +963,7 @@ async function createWorkout(fitnesslevel, muscleGroups) {
         const verfuegbareUebungen = shuffleArray(exercises.filter(exercise =>
             exercise.muscle_group.includes(muskelgruppe) &&
             exercise.difficulty <= fitnesslevel &&
+            exercise.gender.includes(gender) && // Überprüfung auf Geschlecht
             !hinzugefuegteUebungen.has(exercise.name)
         ));
 
@@ -899,37 +998,37 @@ async function createWorkout(fitnesslevel, muscleGroups) {
 
 async function createPushWorkout(fitnesslevel) {
     const push = ["Brust", "Brust", "Brust", "Schultern", "Schultern", "Schultern", "Trizeps", "Trizeps"];
-    return createWorkout(fitnesslevel, push);
+    return createWorkout(fitnesslevel, push, "Male");
 }
 
 async function createPullWorkout(fitnesslevel) {
     const pull = ["Rücken", "Rücken", "Rücken", "Nacken", "Bizeps", "Bizeps"];
-    return createWorkout(fitnesslevel, pull);
+    return createWorkout(fitnesslevel, pull, "Male");
 }
 
 async function createLegsWorkout(fitnesslevel) {
-    const legs = ["Beine", "Beine", "Quadtrizeps", "Beinbeuger", "Waden", "Waden"];
-    return createWorkout(fitnesslevel, legs);
+    const legs = ["Beine", "Beine", "Quadrizeps", "Beinbeuger", "Waden", "Waden"];
+    return createWorkout(fitnesslevel, legs, "Male");
 }
 
 async function createBackWorkout(fitnesslevel) {
     const back = ["Latissimus", "Oberer Trapezius", "Unterer Trapezius", "Unterer Rücken", "Rotatorenmanschette", "Teres Major"];
-    return createWorkout(fitnesslevel, back);
+    return createWorkout(fitnesslevel, back, "Male");
 }
 
 async function createShoulderNeckWorkout(fitnesslevel) {
     const shoulderNeck = ["Vordere Schulter", "Vordere Schulter", "Seitliche Schulter", "Seitliche Schulter", "Hintere Schulter", "Hintere Schulter", "Nacken", "Nacken"];
-    return createWorkout(fitnesslevel, shoulderNeck);
+    return createWorkout(fitnesslevel, shoulderNeck, "Male");
 }
 
 async function createArmWorkout(fitnesslevel) {
     const arms = ["Bizeps", "Bizeps", "Bizeps", "Bizeps", "Trizeps", "Trizeps", "Trizeps"];
-    return createWorkout(fitnesslevel, arms);
+    return createWorkout(fitnesslevel, arms, "Male");
 }
 
 async function createChestWorkout(fitnesslevel) {
     const chest = ["Mittlere Brust", "Mittlere Brust", "Obere Brust", "Obere Brust", "Untere Brust", "Innere Brust"];
-    return createWorkout(fitnesslevel, chest);
+    return createWorkout(fitnesslevel, chest, "Male");
 }
 
 function createRecoveryButton() {
@@ -1150,7 +1249,108 @@ async function displayPlan(){
             showText.innerHTML = "Trainingspläne für Männer mit dem Ziel Rehabilitation sind bisher noch nicht verfügbar."
         }
     } else if(userGender == "Female"){
-        showText.innerHTML = "Trainingspläne für Frauen sind bisher noch nicht verfügbar."
+        if(userAge < 16) {
+            showText.innerHTML = "Trainingspläne für Frauen unter 16 Jahren sind bisher noch nicht verfügbar."
+        }
+        else if(userAge >= 60) {
+            showText.innerHTML = "Trainingspläne für Seniorinnen ab 60 Jahren sind bisher noch nicht verfügbar."
+        }
+        else if(16 >= userAge || userAge < 60 && trainingGoal == "Muskelaufbau"){
+            // Zeige 1-wöchige Tabelle
+            weeklyTableContainer.style.display = "block";
+            var tabelle = document.getElementById("weeklyID").getElementsByTagName("table")[0];
+            var zeilen = tabelle.getElementsByTagName("tr");
+            var zellen = zeilen[1].getElementsByTagName("td");
+            let counterForTrainingOrder = 1;
+            for (var j = 0; j < zellen.length; j++) {
+                if(results[6][j] == 1){
+                    if (weekdays == 1){
+                        // Ganzkörper
+                        zellen[j].appendChild(await createFullBodyWorkoutFemale(3));
+                    } else if(weekdays == 2){
+                        // Upper-/Lower-Split
+                        //ToDo
+                        zellen[j].appendChild(await createFullBodyWorkoutFemale(3));
+                    } else if(weekdays == 3){
+                        // Push, Pull, Legs
+                        if(counterForTrainingOrder == 1){
+                            zellen[j].appendChild(await createPushWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 2){
+                            zellen[j].appendChild(await createPullWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 3){
+                            zellen[j].appendChild(await createLegsWorkout(3));
+                            counterForTrainingOrder++;
+                        }
+                    } else if(weekdays == 5){
+                        // Push, Pull, Legs, Push, Pull, Legs (Bro Split)
+                        if(counterForTrainingOrder == 1){
+                            // zellen[j].innerText = await createChestWorkout(3);
+                            zellen[j].appendChild(await createChestWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 2){
+                            zellen[j].appendChild(await createLegsWorkout(3));
+                            counterForTrainingOrder++;
+                        }else if(counterForTrainingOrder == 3){
+                            // zellen[j].innerText = await createBackWorkout(3);
+                            zellen[j].appendChild(await createBackWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 4){
+                            // zellen[j].innerText = await createShoulderNeckWorkout(3);
+                            zellen[j].appendChild(await createShoulderNeckWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 5){
+                            // zellen[j].innerText = await createArmWorkout(3);
+                            zellen[j].appendChild(await createShoulderNeckWorkout(3));
+                            counterForTrainingOrder++;
+                        }
+                    } else if(weekdays == 6){
+                        // Push, Pull, Legs, Push, Pull, Legs
+                        if(counterForTrainingOrder == 1 || counterForTrainingOrder == 4){
+                            zellen[j].appendChild(await createPushWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 2 || counterForTrainingOrder == 5){
+                            zellen[j].appendChild(await createPullWorkout(3));
+                            counterForTrainingOrder++;
+                        }else if(counterForTrainingOrder == 3 || counterForTrainingOrder == 6){
+                            zellen[j].appendChild(await createLegsWorkout(3));
+                            counterForTrainingOrder++;
+                        }
+                    } else if(weekdays == 7){
+                        // Push, Pull, Legs, Recovery, Push, Pull, Legs
+                        if(counterForTrainingOrder == 1){
+                            zellen[j].appendChild(await createPushWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 2){
+                            zellen[j].appendChild(await createPullWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 3){
+                            zellen[j].appendChild(await createLegsWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 4){
+                            zellen[j].appendChild(await createPushWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 5){
+                            zellen[j].appendChild(await createPullWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 6){
+                            zellen[j].appendChild(await createLegsWorkout(3));
+                            counterForTrainingOrder++;
+                        } else if(counterForTrainingOrder == 7){
+                            zellen[j].appendChild(await createRecoveryButton());
+                            counterForTrainingOrder++;
+                        }
+                    }
+                }
+            }
+        }
+        else if(trainingGoal == "Abnehmen"){
+            showText.innerHTML = "Trainingspläne für Frauen mit dem Ziel abzunehmen sind bisher noch nicht verfügbar."
+        }
+        else if(trainingGoal == "Reha"){
+            showText.innerHTML = "Trainingspläne für Frauen mit dem Ziel Rehabilitation sind bisher noch nicht verfügbar."
+        }
     } else{
         showText.innerHTML = "Trainingspläne für Diverse Personen sind bisher noch nicht verfügbar."
     }
