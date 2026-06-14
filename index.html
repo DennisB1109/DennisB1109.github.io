@@ -1,338 +1,325 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=yes">
-    <link rel="stylesheet" href="style.css">
-    <!-- <link rel="stylesheet" href="style2.css"> -->
-    <title>Dein Trainingsplan</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            /* background-color: #f4f4f4; */
-        }
-
-        .format {
-            font-size: 24px;
-            font-weight: bold;
-            text-align: center;
-            color: #2f2f2f;
-            margin-bottom: 20px;
-        }
-
-        .spacer {
-            height: 20px;
-        }
-
-        #prevButton{
-            display: none;
-        }
-
-        #nextButton{
-            display: none;
-        }
-
-        .button-container {
-            position: fixed;
-            bottom: 0;
-            margin-bottom: 1vh;
-            display: flex;
-            justify-content: space-between;
-            padding: 10px; /* optional: Abstand vom unteren Rand */
-        }
-
-        .ageSliderContainer {
-            display: none;
-        }
-
-        .slider {
-        -webkit-appearence: none;
-        width: 100%;
-        height: 20px;
-        background: linear-gradient(90deg, rgb(117,252,117) 60%, rgb(214,214,214) 60%);
-        outline: none;
-        opacity: 0.7;
-        -webkit-transition: 0.2s;
-        transition: opacity 0.2s;
-        border-radius: 12px;
-        box-shadow: 0px 1px 10px 1px black;
-        }
-        
-		
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=3">
+  <title>Trainingsplan Generator</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="toggle">
-        <i class="indicator"></i>
+
+  <!-- =============================================
+       PROGRESS BAR (Signature Element)
+       Zeigt den Fortschritt durch die Fragen
+  ============================================= -->
+  <div id="progress-bar-wrapper">
+    <div id="progress-bar"></div>
+  </div>
+
+  <!-- Dark Mode Toggle -->
+  <button id="toggle" aria-label="Dark Mode umschalten">
+    <span class="indicator"></span>
+  </button>
+
+  <!-- =============================================
+       HAUPT-KARTE — alle Fragen leben hier drin
+  ============================================= -->
+  <div class="main-card" id="main-card">
+
+    <!-- ---- SCHRITT 0: Startbildschirm ---- -->
+    <div class="question-section visible" id="step-intro">
+      <div class="step-label">Willkommen</div>
+      <h1 class="question-title">Dein persönlicher Trainingsplan</h1>
+      <p class="intro-text">
+        Beantworte ein paar kurze Fragen – wir erstellen dann einen Plan, 
+        der genau zu dir passt.
+      </p>
+      <button class="btn btn-primary" onclick="App.startQuestions()">
+        Jetzt starten →
+      </button>
     </div>
-    
-    <div class="formatTitle" id="TitleTextContainer">
-        Hi!<br>Diese Website soll dir dabei helfen einen Trainingsplan zu erstellen<br> 
-        Zum starten, drücke auf den unten stehenden Button
-    </div>
-    <div class="spacer"></div>
-    <button class="waves" onclick="startQuestions()" id="test">Start</button>
-        
-    <div class="containerGender" id="genderID">
-        <div class="radioTileGroupGender">
-            <div class="inputContainerGender">
-                <input id="male" type="radio" name="radio">
-                <div class="radio-tile">
-                    <ion-icon name="man-outline"></ion-icon>
-                    <label for="male">Male</label>
-                </div>
-            </div>
-            <div class="inputContainerGender">
-                <input id="female" type="radio" name="radio">
-                <div class="radio-tile">
-                    <ion-icon name="woman-outline"></ion-icon>
-                    <label for="female">Female</label>
-                </div>
-            </div>
-            <div class="inputContainerGender">
-                <input id="diverse" type="radio" name="radio" disabled>
-                <div class="radio-tile">
-                    <ion-icon name="male-female-outline"></ion-icon>
-                    <label for="diverse">Diverse</label>
-                </div>
-            </div>
+
+    <!-- ---- SCHRITT 1: Geschlecht ---- -->
+    <div class="question-section" id="step-gender">
+      <div class="step-label">Schritt 1 von 6</div>
+      <h2 class="question-title">Wie identifizierst du dich?</h2>
+
+      <div class="tile-group">
+        <!-- Männlich -->
+        <div class="tile-item">
+          <input id="male" type="radio" name="gender" value="male">
+          <div class="tile">
+            <ion-icon name="man-outline"></ion-icon>
+            <label for="male">Männlich</label>
+          </div>
         </div>
-    </div>
 
-    <div class="slideContainer" id="slideContainerID">
-        <p>Alter: <span id="alter"></span></p>
-        <input type="range" min="1" max="100" value="1" id="myRange" class="slider">
-    </div>
-
-    <div class="containerFitnessLevel" id="fitnessLevelID">
-        <div class="radioTileGroupFitnessLevel">
-            <div class="inputContainerFitnessLevel">
-                <input id="lauch" type="radio" name="radio">
-                <div class="radio-tile">
-                    <img src="Images/Lauch.png" alt="Lauch">
-                    <label for="lauch">Lauch</label>
-                </div>
-            </div>
-            <div class="inputContainerFitnessLevel">
-                <input id="erfahren" type="radio" name="radio">
-                <div class="radio-tile">
-                    <img src="Images/Fortgeschritten.png" alt="Erfahren">
-                    <label for="erfahren">Erfahren</label>
-                </div>
-            </div>
-            <div class="inputContainerFitnessLevel">
-                <input id="profi" type="radio" name="radio">
-                <div class="radio-tile">
-                    <img src="Images/Profi.png" alt="Profi">
-                    <label for="profi">Profi</label>
-                </div>
-            </div>
+        <!-- Weiblich -->
+        <div class="tile-item">
+          <input id="female" type="radio" name="gender" value="female">
+          <div class="tile">
+            <ion-icon name="woman-outline"></ion-icon>
+            <label for="female">Weiblich</label>
+          </div>
         </div>
-    </div>
 
-    <div class="containerInjuries" id="verletzungenID">
-        <div class="checkboxGroupInjuries">
-            <div class="inputContainerInjuries">
-                <input id="kneeCheckbox" type="checkbox" name="injuries" disabled>
-                <div class="checkbox-tile">
-                    <img src="Images/Knie.png" alt="Knie">
-                    <label for="kneeCheckbox">Knie</label>
-                </div>
-            </div>
-            <div class="inputContainerInjuries">
-                <input id="hipCheckbox" type="checkbox" name="injuries" disabled>
-                <div class="checkbox-tile">
-                    <img src="Images/Huefte.png" alt="Huefte">
-                    <label for="hipCheckbox">Hüfte</label>
-                </div>
-            </div>
-            <div class="inputContainerInjuries">
-                <input id="shoulderCheckbox" type="checkbox" name="injuries" disabled>
-                <div class="checkbox-tile">
-                    <img src="Images/Schulter.png" alt="Schulter">
-                    <label for="shoulderCheckbox">Schulter</label>
-                </div>
-            </div>
-            <div class="inputContainerInjuries">
-                <input id="backCheckbox" type="checkbox" name="injuries" disabled>
-                <div class="checkbox-tile">
-                    <img src="Images/Ruecken.png" alt="Ruecken">
-                    <label for="backCheckbox">Rücken</label>
-                </div>
-            </div>
+        <!-- Divers (deaktiviert) -->
+        <div class="tile-item">
+          <input id="diverse" type="radio" name="gender" value="diverse" disabled>
+          <div class="tile">
+            <ion-icon name="male-female-outline"></ion-icon>
+            <label for="diverse">Divers</label>
+          </div>
         </div>
+      </div>
     </div>
 
-    <div class="containerTrainingGoals" id="trainingsZieleID">
-        <div class="checkboxGroupTrainingGoals">
-            <div class="inputContainerTrainingGoals">
-                <input id="muskelaufbau" type="checkbox" name="ziele">
-                <div class="checkbox-tile">
-                    <img src="Images/Muskelaufbau.png" alt="Knie">
-                    <label for="muskelaufbau">Muskelaufbau</label>
-                </div>
-            </div>
-            <div class="inputContainerTrainingGoals">
-                <input id="abnehmen" type="checkbox" name="ziele" disabled>
-                <div class="checkbox-tile">
-                    <img src="Images/Abnehmen.png" alt="Huefte">
-                    <label for="abnehmen">Abnehmen</label>
-                </div>
-            </div>
-            <div class="inputContainerTrainingGoals">
-                <input id="reha" type="checkbox" name="ziele" disabled>
-                <div class="checkbox-tile">
-                    <img src="Images/Reha.png" alt="Schulter">
-                    <label for="reha">Reha</label>
-                </div>
-            </div>
+    <!-- ---- SCHRITT 2: Alter ---- -->
+    <div class="question-section" id="step-age">
+      <div class="step-label">Schritt 2 von 6</div>
+      <h2 class="question-title">Wie alt bist du?</h2>
+
+      <div class="slider-wrapper">
+        <div class="slider-label">
+          <span>18 Jahre</span>
+          <span class="slider-value" id="age-display">30</span>
+          <span>80 Jahre</span>
         </div>
+        <input
+          type="range"
+          id="age-slider"
+          min="18"
+          max="80"
+          value="30"
+          oninput="App.updateSlider(this)"
+          aria-label="Alter auswählen"
+        >
+      </div>
     </div>
 
-    <div class="containerTrainingLocation" id="trainingLocationID">
-        <div class="radioTileGroupTrainingLocation">
-            <div class="inputContainerTrainingLocation">
-                <input id="zuhause" type="radio" name="radio" disabled>
-                <div class="radio-tile">
-                    <img src="Images/Zuhause.png" alt="Zuhause">
-                    <label for="zuhause">Zuhause</label>
-                </div>
-            </div>
-            <div class="inputContainerTrainingLocation">
-                <input id="gym" type="radio" name="radio">
-                <div class="radio-tile">
-                    <img src="Images/Gym.png" alt="Gym">
-                    <label for="gym">Gym</label>
-                </div>
-            </div>
-            <div class="inputContainerTrainingLocation">
-                <input id="caliPark" type="radio" name="radio" disabled>
-                <div class="radio-tile">
-                    <img src="Images/CaliPark.png" alt="CaliPark">
-                    <label for="caliPark">Cali-Park</label>
-                </div>
-            </div>
+    <!-- ---- SCHRITT 3: Fitnesslevel ---- -->
+    <div class="question-section" id="step-fitness">
+      <div class="step-label">Schritt 3 von 6</div>
+      <h2 class="question-title">Wie fit bist du aktuell?</h2>
+
+      <div class="tile-group">
+        <div class="tile-item">
+          <input id="lauch" type="radio" name="fitnessLevel" value="lauch">
+          <div class="tile">
+            <img src="Images/Lauch.png" alt="">
+            <label for="lauch">Anfänger</label>
+          </div>
         </div>
+        <div class="tile-item">
+          <input id="erfahren" type="radio" name="fitnessLevel" value="erfahren">
+          <div class="tile">
+            <img src="Images/Fortgeschritten.png" alt="">
+            <label for="erfahren">Erfahren</label>
+          </div>
+        </div>
+        <div class="tile-item">
+          <input id="profi" type="radio" name="fitnessLevel" value="profi">
+          <div class="tile">
+            <img src="Images/Profi.png" alt="">
+            <label for="profi">Profi</label>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="containerSchedule" id="wochenplanID">
-        <table>
-            <tr>
-                <td class="checkboxCellWeeklySchedule">
-                    <input id="mondayCheckbox" type="checkbox" name="weeklySchedule">
-                    <label for="mondayCheckbox">Mon</label>
-                </td>
-                <td class="checkboxCellWeeklySchedule">
-                    <input id="tuesdayCheckbox" type="checkbox" name="weeklySchedule">
-                    <label for="tuesdayCheckbox">Di</label>
-                </td>
-                <td class="checkboxCellWeeklySchedule">
-                    <input id="wednesdayCheckbox" type="checkbox" name="weeklySchedule">
-                    <label for="wednesdayCheckbox">Mit</label>
-                </td>
-                <td class="checkboxCellWeeklySchedule">
-                    <input id="thursdayCheckbox" type="checkbox" name="weeklySchedule">
-                    <label for="thursdayCheckbox">Do</label>
-                </td>
-                <td class="checkboxCellWeeklySchedule">
-                    <input id="fridayCheckbox" type="checkbox" name="weeklySchedule">
-                    <label for="fridayCheckbox">Fr</label>
-                </td>
-                <td class="checkboxCellWeeklySchedule">
-                    <input id="saturdayCheckbox" type="checkbox" name="weeklySchedule">
-                    <label for="saturdayCheckbox">Sa</label>
-                </td>
-                <td class="checkboxCellWeeklySchedule">
-                    <input id="sundayCheckbox" type="checkbox" name="weeklySchedule">
-                    <label for="sundayCheckbox">So</label>
-                </td>
-            </tr>
-        </table>
-    </div>
-    
-    <div class="button-container">
-        <button class="waves" onclick="showPrevQuestions()" id="prevButton">Zurück</button>
-        <div class="spacer">&nbsp</div>
-        <button class="waves" onclick="showNextQuestions()" id="nextButton">Weiter</button>
-    </div>
-    
-    <div class="formatText" id="weeklyID">
-        <table border = "1">
-            <tr>
-                <th>Montag</th>
-                <th>Dienstag</th>
-                <th>Mittwoch</th>
-                <th>Donnerstag</th>
-                <th>Freitag</th>
-                <th>Samstag</th>
-                <th>Sonntag</th>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-        </table>
+    <!-- ---- SCHRITT 4: Verletzungen ---- -->
+    <div class="question-section" id="step-injuries">
+      <div class="step-label">Schritt 4 von 6</div>
+      <h2 class="question-title">Hast du Verletzungen?</h2>
+      <p class="intro-text" style="font-size:0.85rem">Mehrfachauswahl möglich</p>
+
+      <div class="tile-group">
+        <div class="tile-item">
+          <input id="kneeCheckbox" type="checkbox" name="injuries" value="knee" disabled>
+          <div class="tile">
+            <img src="Images/Knie.png" alt="">
+            <label for="kneeCheckbox">Knie</label>
+          </div>
+        </div>
+        <div class="tile-item">
+          <input id="hipCheckbox" type="checkbox" name="injuries" value="hip" disabled>
+          <div class="tile">
+            <img src="Images/Huefte.png" alt="">
+            <label for="hipCheckbox">Hüfte</label>
+          </div>
+        </div>
+        <div class="tile-item">
+          <input id="shoulderCheckbox" type="checkbox" name="injuries" value="shoulder" disabled>
+          <div class="tile">
+            <img src="Images/Schulter.png" alt="">
+            <label for="shoulderCheckbox">Schulter</label>
+          </div>
+        </div>
+        <div class="tile-item">
+          <input id="backCheckbox" type="checkbox" name="injuries" value="back" disabled>
+          <div class="tile">
+            <img src="Images/Ruecken.png" alt="">
+            <label for="backCheckbox">Rücken</label>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="table-container" id="triweeklyID">
-        <table class="formatText" border="1">
-            <tr>
-                <th></th>
-                <th>Montag</th>
-                <th>Dienstag</th>
-                <th>Mittwoch</th>
-                <th>Donnerstag</th>
-                <th>Freitag</th>
-                <th>Samstag</th>
-                <th>Sonntag</th>
-            </tr>
-            <tr>
-                <th>Woche 1</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th>Woche 2</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th>Woche 3</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
+    <!-- ---- SCHRITT 5: Trainingsziele ---- -->
+    <div class="question-section" id="step-goals">
+      <div class="step-label">Schritt 5 von 6</div>
+      <h2 class="question-title">Was sind deine Ziele?</h2>
+      <p class="intro-text" style="font-size:0.85rem">Mehrfachauswahl möglich</p>
+
+      <div class="tile-group">
+        <div class="tile-item">
+          <input id="muskelaufbau" type="checkbox" name="goals" value="muscle">
+          <div class="tile">
+            <img src="Images/Muskelaufbau.png" alt="">
+            <label for="muskelaufbau">Muskelaufbau</label>
+          </div>
+        </div>
+        <div class="tile-item">
+          <input id="abnehmen" type="checkbox" name="goals" value="weightloss" disabled>
+          <div class="tile">
+            <img src="Images/Abnehmen.png" alt="">
+            <label for="abnehmen">Abnehmen</label>
+          </div>
+        </div>
+        <div class="tile-item">
+          <input id="reha" type="checkbox" name="goals" value="reha" disabled>
+          <div class="tile">
+            <img src="Images/Reha.png" alt="">
+            <label for="reha">Reha</label>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <script src="main.js"></script>
-    <script type="module" src="model.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- ---- SCHRITT 6: Trainingsort & Wochentage ---- -->
+    <div class="question-section" id="step-schedule">
+      <div class="step-label">Schritt 6 von 6</div>
+      <h2 class="question-title">Wo & wann trainierst du?</h2>
+
+      <!-- Trainingsort -->
+      <div class="tile-group">
+        <div class="tile-item">
+          <input id="zuhause" type="radio" name="location" value="home" disabled>
+          <div class="tile">
+            <img src="Images/Zuhause.png" alt="">
+            <label for="zuhause">Zuhause</label>
+          </div>
+        </div>
+        <div class="tile-item">
+          <input id="gym" type="radio" name="location" value="gym">
+          <div class="tile">
+            <img src="Images/Gym.png" alt="">
+            <label for="gym">Gym</label>
+          </div>
+        </div>
+        <div class="tile-item">
+          <input id="caliPark" type="radio" name="location" value="calipark" disabled>
+          <div class="tile">
+            <img src="Images/CaliPark.png" alt="">
+            <label for="caliPark">Cali-Park</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wochentage -->
+      <div class="schedule-grid">
+        <div class="day-cell">
+          <input id="mon" type="checkbox" name="schedule" value="monday">
+          <label for="mon">Mo</label>
+        </div>
+        <div class="day-cell">
+          <input id="tue" type="checkbox" name="schedule" value="tuesday">
+          <label for="tue">Di</label>
+        </div>
+        <div class="day-cell">
+          <input id="wed" type="checkbox" name="schedule" value="wednesday">
+          <label for="wed">Mi</label>
+        </div>
+        <div class="day-cell">
+          <input id="thu" type="checkbox" name="schedule" value="thursday">
+          <label for="thu">Do</label>
+        </div>
+        <div class="day-cell">
+          <input id="fri" type="checkbox" name="schedule" value="friday">
+          <label for="fri">Fr</label>
+        </div>
+        <div class="day-cell">
+          <input id="sat" type="checkbox" name="schedule" value="saturday">
+          <label for="sat">Sa</label>
+        </div>
+        <div class="day-cell">
+          <input id="sun" type="checkbox" name="schedule" value="sunday">
+          <label for="sun">So</label>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.main-card -->
+
+  <!-- =============================================
+       ERGEBNIS-TABELLEN (nach Fertigstellung)
+  ============================================= -->
+
+  <!-- Wöchentlicher Trainingsplan -->
+  <div class="result-table-wrapper" id="result-weekly">
+    <table class="result-table">
+      <thead>
+        <tr>
+          <th>Mo</th><th>Di</th><th>Mi</th>
+          <th>Do</th><th>Fr</th><th>Sa</th><th>So</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td><td></td><td></td>
+          <td></td><td></td><td></td><td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 3-Wochen Trainingsplan -->
+  <div class="result-table-wrapper" id="result-triweekly">
+    <table class="result-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Mo</th><th>Di</th><th>Mi</th>
+          <th>Do</th><th>Fr</th><th>Sa</th><th>So</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><th>Woche 1</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><th>Woche 2</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><th>Woche 3</th><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- =============================================
+       NAVIGATIONS-FOOTER (Zurück / Weiter)
+  ============================================= -->
+  <nav class="nav-footer" id="nav-footer" style="display:none">
+    <button class="btn btn-ghost" id="btn-prev" onclick="App.showPrev()">
+      ← Zurück
+    </button>
+    <button class="btn btn-primary" id="btn-next" onclick="App.showNext()">
+      Weiter →
+    </button>
+  </nav>
+
+  <!-- =============================================
+       SCRIPTS
+  ============================================= -->
+  <script src="model.js"></script>
+  <script src="main.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
 </html>
