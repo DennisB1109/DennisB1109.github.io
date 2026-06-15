@@ -65,7 +65,7 @@ const EXERCISE_DB = [
   { name: "Bodyweight Squats",   sets: 3, reps: "15-20", location: ["home","calipark"],   level: ["lauch"],             muscle: "quads",    avoidIfInjury: ["knee"] },
 
   // ── BEINE (Hamstrings / Gesäß) ─────────────────────────
-  { name: "Rumänisches KH",      sets: 4, reps: "8-10",  location: ["gym"],               level: ["erfahren","profi"],  muscle: "hamstrings",avoidIfInjury: ["back","hip"] },
+  { name: "Rumänisches Kreuzheben",      sets: 4, reps: "8-10",  location: ["gym"],               level: ["erfahren","profi"],  muscle: "hamstrings",avoidIfInjury: ["back","hip"] },
   { name: "Beinbeuger-Maschine", sets: 3, reps: "12-15", location: ["gym"],               level: ["lauch","erfahren"],  muscle: "hamstrings",avoidIfInjury: ["knee"] },
   { name: "Hip Thrusts",         sets: 4, reps: "10-12", location: ["gym"],               level: ["lauch","erfahren"],  muscle: "hamstrings",avoidIfInjury: ["hip","back"] },
   { name: "Glute Bridges",       sets: 3, reps: "15-20", location: ["home"],              level: ["lauch"],             muscle: "hamstrings",avoidIfInjury: [] },
