@@ -236,14 +236,7 @@ function generatePlan(userData) {
 
 
 // ============================================================
-// 5. GLOBALE REGISTRIERUNG
-// Macht generatePlan & renderPlan für main.js (klassisches Script) zugänglich.
-// ============================================================
-window.TrainingModel = { generatePlan, renderPlan };
-
-
-// ============================================================
-// 7. TABELLEN-RENDERING
+// 5. RENDERING — Tabelle & Modal
 // ============================================================
 
 const DAY_LABELS = {
@@ -257,16 +250,34 @@ const DAY_LABELS = {
 };
 
 /**
- * Formatiert eine einzelne Übung als HTML-String.
+ * Wandelt den Übungsnamen in einen Dateinamen um.
+ * Leerzeichen → Unterstriche, Sonderzeichen entfernt.
+ * Beispiel: "Bankdrücken" → "Bankdrücken.png"
+ * (Dateinamen müssen exakt so heißen wie der Übungsname)
+ * @param {string} name
+ * @returns {string} Pfad zur Bilddatei
+ */
+function exerciseImagePath(name) {
+  return `Images/Exercises/${name}.png`;
+}
+
+/**
+ * Rendert eine einzelne Übung als anklickbaren Button.
+ * Klick öffnet das Bild-Modal.
  * @param {object} ex
- * @returns {string}
+ * @returns {string} HTML-String
  */
 function renderExercise(ex) {
+  // data-Attribut für den Modal-Handler
   return `
-    <div class="exercise-entry">
+    <button
+      class="exercise-entry"
+      onclick="TrainingModel.openModal('${ex.name.replace(/'/g, "\\'")}')"
+      title="${ex.name} ansehen"
+    >
       <span class="exercise-name">${ex.name}</span>
       <span class="exercise-meta">${ex.sets}×${ex.reps}</span>
-    </div>`;
+    </button>`;
 }
 
 /**
@@ -279,7 +290,6 @@ function renderPlan(plan) {
 
   const ALL_DAYS = ["monday","tuesday","wednesday","thursday","friday","saturday","sunday"];
 
-  // Tabellen-HTML bauen
   const headerCells = ALL_DAYS
     .map(d => `<th>${DAY_LABELS[d]}</th>`)
     .join('');
@@ -304,13 +314,95 @@ function renderPlan(plan) {
   wrapper.style.display = 'block';
   wrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-  // Inline-Styles für neue Elemente (keine extra CSS-Klassen nötig)
   injectResultStyles();
+  initModal();
 }
 
 
 // ============================================================
-// 8. HILFSSTILE FÜR ERGEBNISDARSTELLUNG
+// 6. BILD-MODAL
+// ============================================================
+
+/**
+ * Erstellt das Modal einmalig im DOM (falls noch nicht vorhanden).
+ */
+function initModal() {
+  if (document.getElementById('exercise-modal')) return;
+
+  const modal = document.createElement('div');
+  modal.id = 'exercise-modal';
+  modal.setAttribute('role', 'dialog');
+  modal.setAttribute('aria-modal', 'true');
+  modal.setAttribute('aria-label', 'Übungsvorschau');
+  modal.innerHTML = `
+    <div class="modal-backdrop" onclick="TrainingModel.closeModal()"></div>
+    <div class="modal-card">
+      <button class="modal-close" onclick="TrainingModel.closeModal()" aria-label="Schließen">✕</button>
+      <h3 class="modal-title" id="modal-title"></h3>
+      <div class="modal-image-wrapper">
+        <img id="modal-img" src="" alt="" />
+        <p class="modal-missing" id="modal-missing" style="display:none">
+          Kein Bild vorhanden
+        </p>
+      </div>
+      <p class="modal-meta" id="modal-meta"></p>
+    </div>
+  `;
+  document.body.appendChild(modal);
+
+  // Escape-Taste schließt Modal
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeModal();
+  });
+}
+
+/**
+ * Öffnet das Modal für eine bestimmte Übung.
+ * Wird direkt aus dem onclick-Attribut aufgerufen.
+ * @param {string} exerciseName
+ */
+function openModal(exerciseName) {
+  const modal = document.getElementById('exercise-modal');
+  if (!modal) return;
+
+  // Übung aus DB suchen
+  const ex = EXERCISE_DB.find(e => e.name === exerciseName);
+
+  // Titel & Meta befüllen
+  document.getElementById('modal-title').textContent = exerciseName;
+  document.getElementById('modal-meta').textContent = ex
+    ? `${ex.sets} Sätze × ${ex.reps} Wiederholungen`
+    : '';
+
+  // Bild laden
+  const img     = document.getElementById('modal-img');
+  const missing = document.getElementById('modal-missing');
+  const path    = exerciseImagePath(exerciseName);
+
+  img.style.display = 'none';
+  missing.style.display = 'none';
+
+  img.onload  = () => { img.style.display = 'block'; };
+  img.onerror = () => { missing.style.display = 'block'; };
+  img.src = path;
+  img.alt = exerciseName;
+
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden'; // Scrollen sperren
+}
+
+/**
+ * Schließt das Modal.
+ */
+function closeModal() {
+  const modal = document.getElementById('exercise-modal');
+  if (modal) modal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+
+// ============================================================
+// 7. STYLES (Tabelle + Modal)
 // ============================================================
 
 function injectResultStyles() {
@@ -319,21 +411,36 @@ function injectResultStyles() {
   const style = document.createElement('style');
   style.id = 'model-styles';
   style.textContent = `
+    /* ── Übungs-Einträge (jetzt Buttons) ── */
     .exercise-entry {
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: center;
       gap: 8px;
-      padding: 6px 0;
+      padding: 8px 10px;
+      width: 100%;
+      border: none;
       border-bottom: 1px solid var(--border);
+      background: transparent;
+      cursor: pointer;
+      border-radius: 6px;
+      text-align: left;
+      transition: background 0.15s ease;
     }
     .exercise-entry:last-child {
       border-bottom: none;
+    }
+    .exercise-entry:hover {
+      background: var(--bg);
+    }
+    .exercise-entry:hover .exercise-name {
+      color: var(--accent);
     }
     .exercise-name {
       font-family: var(--font-body);
       font-size: 0.85rem;
       color: var(--text-primary);
+      transition: color 0.15s ease;
     }
     .exercise-meta {
       font-family: var(--font-display);
@@ -353,6 +460,105 @@ function injectResultStyles() {
       font-size: 0.8rem;
       font-style: italic;
     }
+
+    /* ── Modal ── */
+    #exercise-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      align-items: center;
+      justify-content: center;
+    }
+    #exercise-modal.open {
+      display: flex;
+    }
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(4px);
+    }
+    .modal-card {
+      position: relative;
+      z-index: 1;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px 28px;
+      width: min(420px, 90vw);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      animation: modal-in 0.2s ease;
+    }
+    @keyframes modal-in {
+      from { opacity: 0; transform: scale(0.95) translateY(8px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+    }
+    .modal-close:hover {
+      background: var(--border);
+    }
+    .modal-title {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-align: center;
+      margin: 0;
+    }
+    .modal-image-wrapper {
+      width: 100%;
+      aspect-ratio: 4/3;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #modal-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .modal-missing {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+    .modal-meta {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin: 0;
+    }
   `;
   document.head.appendChild(style);
 }
+
+
+// ============================================================
+// 8. GLOBALE REGISTRIERUNG
+// Muss nach allen Funktionsdefinitionen stehen.
+// ============================================================
+window.TrainingModel = { generatePlan, renderPlan, openModal, closeModal };
